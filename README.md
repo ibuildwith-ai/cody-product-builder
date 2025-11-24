@@ -125,7 +125,7 @@ Commands use the format: `:cody [command]`
 | `:cody refresh` | Refreshes the AI agent’s memory about the project. |
 | `:cody refresh update` | Refresh + sync: updates PRD, plan, and release notes. |
 | `:cody relearn` | Forces the AI agent to re-learn how Cody PBT works. |
-| `:cody upgrade` | Upgrades Cody PBT to the latest version. |
+| `:cody upgrade` | Upgrades Cody PBT to the latest version. Only works with v1.2.0 or later. |
 | `:cody assets list` | Lists asset files and their purpose. |
 
 ---

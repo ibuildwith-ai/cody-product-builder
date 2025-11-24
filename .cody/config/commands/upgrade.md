@@ -1,12 +1,12 @@
 ---
 command: ":cody upgrade"
-description: Upgrades the Cody framework to the latest version from GitHub.
+description: Upgrades Cody Product Builder Toolkit to the latest version from GitHub. Only works with version 1.2.0 or later.
 ---
 
-# UPGRADE CODY FRAMEWORK
+# UPGRADE CODY PBT
 
 ### ANNOUNCE TO THE **USER**
-- Tell the **USER** that you (**AGENT**) are checking for Cody framework updates.
+- Tell the **USER** that you (**AGENT**) are checking for Cody PBT updates.
 
 ### CHECK FOR UPDATES
 - Use the Bash tool to run and execute: `{{cfScripts}}/upgrade-check.sh`
@@ -19,7 +19,7 @@ description: Upgrades the Cody framework to the latest version from GitHub.
 
 ### HANDLE CHECK RESULTS
 - If the status is "up_to_date":
-  - Tell the **USER** that their Cody framework is already up to date
+  - Tell the **USER** that their Cody PBT is already up to date
   - Display the `local_version`.
   - On a separate line, display the `remote_version`
   - Skip to COMPLETION section
@@ -46,7 +46,7 @@ description: Upgrades the Cody framework to the latest version from GitHub.
   - Continue to DOWNLOAD UPGRADE section
 
 ### DOWNLOAD UPGRADE
-- Tell the **USER** that you (**AGENT**) are downloading the new Cody framework version
+- Tell the **USER** that you (**AGENT**) are downloading the new Cody PBT version
 - Use the Bash tool to run: `{{cfScripts}}/upgrade-download.sh [remote_version]` (use the remote_version from the check script output)
 - Parse the JSON output from the download script and extract:
   - status (required): "success" or "error"
@@ -83,7 +83,7 @@ description: Upgrades the Cody framework to the latest version from GitHub.
 - If the status is "success":
   - Congratulate the **USER** on the successful upgrade
   - Display: "Upgraded from version [from_version] to [to_version]"
-  - Tell the **USER** that their Cody framework is now up to date
+  - Tell the **USER** that their Cody PBT is now up to date
   - Inform the **USER** that a backup of their previous configuration was created
   - If backup_path is provided, tell them the backup location: [backup_path]
   - Let them know they can delete the backup folder if they no longer need it
@@ -99,7 +99,7 @@ description: Upgrades the Cody framework to the latest version from GitHub.
   - Skip to COMPLETION section
 
 ### RELEARN AFTER UPGRADE (only if upgrade was successful)
-- Tell the **USER** that since the framework was upgraded, the **AGENT** will now relearn the framework
+- Tell the **USER** that since Cody Product Builder Toolkit was upgraded, the **AGENT** will now relearn it
 - Execute the command `:cody relearn`
 
 ### COMPLETION

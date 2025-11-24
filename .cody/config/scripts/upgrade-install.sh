@@ -183,7 +183,7 @@ if [ -f "$LOCAL_CONFIG_PATH/settings.json" ]; then
     if [ -n "$installed_content" ]; then
         installed_version=$(extract_version "$installed_content")
         if [ "$installed_version" = "$TARGET_VERSION" ]; then
-            output_json "success" "$CURRENT_VERSION" "$TARGET_VERSION" "Cody framework successfully upgraded. Backup saved to .cody/backup/$CURRENT_VERSION" "$backup_path"
+            output_json "success" "$CURRENT_VERSION" "$TARGET_VERSION" "Cody PBT successfully upgraded. Backup saved to .cody/backup/$CURRENT_VERSION" "$backup_path"
         else
             output_json "error" "$CURRENT_VERSION" "$installed_version" "Installation completed but version verification failed. Expected $TARGET_VERSION, got $installed_version. Backup available at $backup_path." "$backup_path"
         fi

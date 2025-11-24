@@ -98,7 +98,7 @@ fi
 
 # Compare versions
 if version_compare "$local_version" "$remote_version"; then
-    output_json "update_available" "$local_version" "$remote_version" "A newer version of Cody framework is available."
+    output_json "update_available" "$local_version" "$remote_version" "A newer version of Cody PBT is available."
 else
-    output_json "up_to_date" "$local_version" "$remote_version" "Your Cody framework is already up to date."
+    output_json "up_to_date" "$local_version" "$remote_version" "Your Cody PBT is already up to date."
 fi

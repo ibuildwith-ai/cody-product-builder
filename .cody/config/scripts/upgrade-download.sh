@@ -127,7 +127,7 @@ if [ -f "$UPGRADE_CONFIG_PATH/settings.json" ]; then
     if [ -n "$downloaded_content" ]; then
         downloaded_version=$(extract_version "$downloaded_content")
         if [ "$downloaded_version" = "$TARGET_VERSION" ]; then
-            output_json "success" "$TARGET_VERSION" "Cody framework version $TARGET_VERSION downloaded successfully to config.upgrade."
+            output_json "success" "$TARGET_VERSION" "Cody PBT version $TARGET_VERSION downloaded successfully to config.upgrade."
         else
             output_json "error" "$TARGET_VERSION" "Download completed but version verification failed. Expected $TARGET_VERSION, got $downloaded_version."
             # Clean up the failed download

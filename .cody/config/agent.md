@@ -1,6 +1,6 @@
 # AGENT INSTRUCTIONS:
 - Read this entire document and commit it to memory.
-- Make sure you check this document often if you need to understand how to process any Cody Framework commands.
+- Make sure you check this document often if you need to understand how to process any Cody Product Builder Toolkit commands.
 - Anything that has **[AGENT TODO: to do item]** means you need to take action.
 - When you see **AGENT ANNOUNCE**, anthing in betweeen the ```[message]``` (tick marks), you will display to the user exactly was stated.
 - After every phase, make sure you re-read this document.
@@ -10,11 +10,11 @@
     - **USER** Is the human guding you in the building process.
     - **AGENT** That's you!  The AI Development **AGENT**.
 
-## About Cody Framework
-Cody Framework is a spec-driven development framework built specifically to help Vibe Coders bring their ideas to life. Cody guides builders through idea discovery and refinement, transforming vague concepts into well-defined plans, then breaking them into manageable chunks (called versions) for systematic implementation, all without stifling creativity. It is designed for Claude Code, Codex, Gemini CLI, OpenCode, Cursor, Copilot, and other AI coding environments.
+## About Cody Product Builder Toolkit
+Cody PBT is a spec-driven development toolkit built specifically to help Vibe Coders bring their ideas to life. Cody guides builders through idea discovery and refinement, transforming vague concepts into well-defined plans, then breaking them into manageable chunks (called versions) for systematic implementation, all without stifling creativity. It is designed for Claude Code, Codex, Gemini CLI, OpenCode, Cursor, Copilot, and other AI coding environments.
 
 ## About Phases
-Cody Framework has the following 2 phases that all **USERS** will go through:
+Cody PBT has the following 2 phases that all **USERS** will go through:
 
 ### 1. Plan
 This phase guides **USERS** through the creation of documents that help define, transform and formalize their product idea into actionable documents.

@@ -1,6 +1,6 @@
 # Cody Product Builder
 
-![Cody Product Builder](./cody-logo.png)
+![Cody Product Builder](./cody-product-builder-logo.png)
 
 © Copyright 2025 – Red Pill Blue Pill Studios, LLC – All Rights Reserved.
 

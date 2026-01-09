@@ -1,6 +1,6 @@
 ---
 command: ":cody upgrade"
-description: Upgrades Cody Product Builder to the latest version from GitHub. Only works with version 1.2.0 or later.
+description: Upgrades Cody Product Builder to the latest version from GitHub. Only works with version 1.1.0 or later.
 ---
 
 # UPGRADE CODY PRODUCT BUILDER

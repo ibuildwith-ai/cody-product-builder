@@ -2,7 +2,7 @@
 
 ![Cody Product Builder](./cody-product-builder-logo.png)
 
-![Version](https://img.shields.io/badge/version-1.2.1-blue)
+![Version](https://img.shields.io/badge/version-1.2.2-blue)
 [![License](https://img.shields.io/badge/license-Custom-orange)](LICENSE.md)
 [![iBuildWith.ai](https://img.shields.io/badge/by-iBuildWith.ai-20c05b)](https://www.ibuildwith.ai)
 
@@ -15,7 +15,7 @@ Get the latest updates, news, and more by [joining our Discord community](https:
 # About Cody Product Builder
 Cody Product Builder is an opinionated, spec‑driven AI agent skill that helps product builders who use vibe coding techniques turn loose ideas into fully planned, production‑ready products using AI. Instead of jumping straight into “vibe coding,” Cody Product Builder guides you through a structured flow - discovery, planning, chunking, and building - so you think clearly before generating code.
 
-Cody Product Builder began as a simple spec‑driven development framework, but it has evolved into a full AI agent skill that includes templates, scripts, commands, and a repeatable methodology for building products using AI consistently and fast.
+Cody Product Builder began as a simple spec‑driven development framework, but it has evolved into a full AI agent skill that includes templates, commands, and a repeatable methodology for building products using AI consistently and fast.
 
 # What Cody Product Builder Helps You Do
 
@@ -37,7 +37,7 @@ AI coding tools are powerful - but without structure, things fall apart:
 Cody Product Builder solves this by giving you:
 
 - A repeatable, spec‑driven workflow AI coding tools can follow  
-- Templates and scripts that eliminate guesswork  
+- Templates and commands that eliminate guesswork  
 - A shared rhythm between you, your team, and your AI coding agents  
 - A clear methodology that turns vibe coding techniques into predictable building  
 
@@ -124,7 +124,6 @@ Commands use the format: `:cody [command]`
 | `:cody refresh` | Refreshes the AI agent’s memory about the project. |
 | `:cody refresh update` | Refresh + sync: updates PRD, plan, and release notes. |
 | `:cody relearn` | Forces the AI agent to re-learn how Cody Product Builder works. |
-| `:cody upgrade` | Upgrades Cody Product Builder to the latest version. Only works with v1.2.0 or later. |
 | `:cody assets list` | Lists asset files and their purpose. |
 
 ---
@@ -142,7 +141,6 @@ Commands use the format: `:cody [command]`
 │   ├── agent.md           # Core agent instructions and command registry
 │   ├── settings.json      # Tool version and settings
 │   ├── commands/          # Command implementation files (help, plan, build, etc.)
-│   ├── scripts/           # Utility scripts (upgrade, version management)
 │   └── templates/         # Document templates for plan and build phases
 │       ├── plan/          # Templates for discovery.md, prd.md, plan.md
 │       └── build/         # Templates for feature-backlog.md, release-notes.md

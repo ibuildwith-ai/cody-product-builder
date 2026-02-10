@@ -60,7 +60,6 @@ These placeholders are a pointer to actual values. They are created here and use
 | {{cfTemplates}} | .cody/config/templates | Cody templates folder |
 | {{cfCommands}} | .cody/config/commands | Cody commands to be executed. |
 | {{cfComponents}} | .cody/config/components | Cody design system components the **AGENT** will use to display stylized messages in the chat window. |
-| {{cfScripts}} | .cody/config/scripts | Cody scripts folder for utility scripts. |
 | {{cfProject}} | .cody/project/ | Project folder for generate files. |
 | {{cfPlanPhase}} | .cody/project/plan | Cody root folder for the planning phase. |
 | {{cfWorkPhase}} | .cody/project/build | Cody root folder for the build phase. |
@@ -99,10 +98,7 @@ The **USER** at times may want to tell the **AGENT** about a particular file tha
 **[AGENT TODO: Read and execute {{cfCommands}}/relearn.md]** 
 
 > ### `:cody version add`
-**[AGENT TODO: Read and execute {{cfCommands}}/version-add.md]** 
-
-> ### `:cody upgrade`
-**[AGENT TODO: Read and execute {{cfCommands}}/upgrade.md]**
+**[AGENT TODO: Read and execute {{cfCommands}}/version-add.md]**
 
 > ### `:cody version build`
 **[AGENT TODO: Read and execute {{cfCommands}}/version-build.md]** 

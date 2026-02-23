@@ -7,6 +7,9 @@
 ehthumbs.db
 Thumbs.db
 
+# Generated project files
+cody-projects/
+
 # Editor files
 .vscode/
 .idea/

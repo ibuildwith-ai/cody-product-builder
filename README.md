@@ -2,7 +2,7 @@
 
 ![Cody Product Builder](./cody-product-builder-logo.png)
 
-![Version](https://img.shields.io/badge/version-1.2.2-blue)
+![Version](https://img.shields.io/badge/version-1.3.0-blue)
 [![License](https://img.shields.io/badge/license-Custom-orange)](LICENSE.md)
 [![iBuildWith.ai](https://img.shields.io/badge/by-iBuildWith.ai-20c05b)](https://www.ibuildwith.ai)
 
@@ -124,7 +124,6 @@ Commands use the format: `:cody [command]`
 | `:cody refresh` | Refreshes the AI agent’s memory about the project. |
 | `:cody refresh update` | Refresh + sync: updates PRD, plan, and release notes. |
 | `:cody relearn` | Forces the AI agent to re-learn how Cody Product Builder works. |
-| `:cody assets list` | Lists asset files and their purpose. |
 
 ---
 
@@ -133,28 +132,30 @@ Commands use the format: `:cody [command]`
 ```
 .claude/
 └── commands/              # Claude Code slash commands
-    └── cody.md            # Main activation command for Claude Code
+    └── cody.md            # Activation command for Claude Code
+
+.cursor/
+└── commands/              # Cursor slash commands
+    └── cody.md            # Activation command for Cursor
 
 .cody/
-├── config/                # Configuration and core files
-│   ├── activate.md        # Activation instructions for AI agents
-│   ├── agent.md           # Core agent instructions and command registry
-│   ├── settings.json      # Tool version and settings
-│   ├── commands/          # Command implementation files (help, plan, build, etc.)
-│   └── templates/         # Document templates for plan and build phases
-│       ├── plan/          # Templates for discovery.md, prd.md, plan.md
-│       └── build/         # Templates for feature-backlog.md, release-notes.md
-│           └── version/   # Templates for design.md, tasklist.md, retrospective.md
-└── project/               # Generated project files (created during :cody plan)
-    ├── library/           # Project-specific resources
-    │   ├── assets/        # Images, diagrams, reference files
-    │   ├── docs/          # Tech stack, design system, API documentation
-    ├── plan/              # Planning phase documents (discovery, PRD, plan)
-    └── build/             # Build phase documents (backlog, release notes, versions)
+├── activate.md            # Activation instructions for AI agents
+├── agent.md               # Core agent instructions and command registry
+├── settings.json          # Tool version and settings
+├── commands/              # Command implementation files
+└── templates/             # Document templates
+    ├── plan/              # Templates for discovery.md, prd.md, plan.md
+    └── build/             # Templates for feature-backlog.md, release-notes.md
+        └── version/       # Templates for design.md, tasklist.md, retrospective.md
 
 .github/
 └── prompts/               # GitHub Copilot prompt files
-    └── cody.prompt.md     # Main activation prompt for GitHub Copilot
+    └── cody.prompt.md     # Activation prompt for GitHub Copilot
+
+cody-projects/
+└── product-builder/       # Generated project files (created during :cody plan)
+    ├── plan/              # Planning phase documents
+    └── build/             # Build phase documents (backlog, versions)
 ```
 
 ---
@@ -182,12 +183,13 @@ Commands use the format: `:cody [command]`
 
 ## Installing
 1. Clone or download Cody Product Builder from: https://github.com/ibuildwith-ai/cody-product-builder
-2. Copy the `.cody`, `.claude`, and `.github` folders into your project root.
+2. Copy the `.cody`, `.claude`, `.cursor`, and `.github` folders into your project root.
 
 ## Activating
-- **Claude Code**: Use the `/cody` command  
-- **GitHub Copilot**: Use the `/cody` command  
-- **Other AI Agents**: Say: *"Please read and execute the @.cody/config/activate.md"*  
+- **Claude Code**: Use the `/cody` command
+- **Cursor**: Use the `/cody` command
+- **GitHub Copilot**: Use the `/cody` command
+- **Other AI Agents**: Say: *"Please read and execute the @.cody/activate.md"*
 
 ## Using
 - `:cody help` – Overview of all commands  
@@ -213,7 +215,7 @@ See [LICENSE.md](LICENSE.md) for complete terms.
 
 ## Release Notes
 
-Coming soon.
+See [RELEASE-NOTES.md](RELEASE-NOTES.md) for version history.
 
 ## Links
 

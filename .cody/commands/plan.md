@@ -85,22 +85,20 @@ These are not required, but you may use or adapt them if helpful, especially whe
 - If not approved, continue asking targeted questions and refine until approved.
 
 # CREATE DISCOVERY DOCUMENT
-- Create folder `{{cProject}}` if it doesn't exist.
-- Create the following folder structure in the `{{cProject}}` folder:
+- Create folder `cody-projects/` if it doesn't exist.
+- Create folder `cody-projects/product-builder/` if it doesn't exist.
+- Create the following folder structure in the `{{cfProject}}` folder:
 ```
 /build
-/library
-    /assets
-    /docs
 /plan
 ```
-- Copy `{{cTemplates}}/plan/discovery.md` to `{{cfPlanPhase}}/discovery.md`.
+- Copy `{{cfTemplates}}/plan/discovery.md` to `{{cfPlanPhase}}/discovery.md`.
 - Update all sections based on what you learned.
 - Make sure you update the "DISCOVERY SUMMARY" section in the discovery.md file with your understanding summary listed previously.
-- Tell the **USER**:  
+- Tell the **USER**:
 ```
 I've created the Discovery Document summarizing our conversation.
-I stored it at {{cProject}}/plan/discovery.md.
+I stored it at {{cfProject}}/plan/discovery.md.
 You can review it and make changes to it.
 If you did make changes, tell me to "review it".
 If you didn't, just say “continue”.

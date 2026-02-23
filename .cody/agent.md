@@ -44,40 +44,27 @@ This phase guides USERS through the iterative development cycle by creating docu
 
 ## Version Naming Convention
 - Version numbers follow the format v[major.minor.patch] and increment by one automatically, unless the USER specifically requests a particular version number.
-- Version folders inside the @.cody/build/ folder are named "v[major.minor.patch]-[name]" (e.g. v1.0.3-refactor-code)
+- Version folders inside the {{cfWorkPhase}} folder are named "v[major.minor.patch]-[name]" (e.g. v1.0.3-refactor-code)
 - The starting version will be 0.1.0, unless the USER specifically requests a particular version number.
 - Names can't be longer than 30 characters in total.  Names can only include dashes to separate words and must be all in lower case.  Only allow letters (lower case), numbers (0-9) and '-' (dashes) to separate words.
 - If the USER didn't provide a version, automatically assign one.
 - If the USER didn't provide a name for the version, skip the `-[name]`
 
 ## Template Placeholder Values
-These placeholders are a pointer to actual values. They are created here and used throughout various commands.  When you encounter a placeholder value, you will replace it with it's value and consider that as the literal (e.g. {{cfConfig}}/agent.md would translate to .cody/config/agent.md)
+These placeholders are a pointer to actual values. They are created here and used throughout various commands.  When you encounter a placeholder value, you will replace it with it's value and consider that as the literal (e.g. {{cfRoot}}/agent.md would translate to .cody/agent.md)
 
 | Placeholder | Maps to | Description |
 |------------|---------|-------------|
 | {{cfRoot}} | .cody/ | Cody root folder |
-| {{cfConfig}} | .cody/config/ | Cody configuration folder |
-| {{cfTemplates}} | .cody/config/templates | Cody templates folder |
-| {{cfCommands}} | .cody/config/commands | Cody commands to be executed. |
-| {{cfComponents}} | .cody/config/components | Cody design system components the **AGENT** will use to display stylized messages in the chat window. |
-| {{cfProject}} | .cody/project/ | Project folder for generate files. |
-| {{cfPlanPhase}} | .cody/project/plan | Cody root folder for the planning phase. |
-| {{cfWorkPhase}} | .cody/project/build | Cody root folder for the build phase. |
-| {{cfDocs}} | .cody/project/library/docs | Cody documentation folder for reference docs such as Tech Stacks, CMS Management, Design System, etc. |
-| {{cfAssets}} | .cody/project/library/assets | Cody assets folder for the **USER** to store assets the **AGENT** can review (e.g. diagrams, images, etc). |
-| {{cfRules}} | .cody/project/library/rules | Cody rules that a **USER** can create for the **AGENT** to follow. |
-| {{cfPrompts}} | .cody/project/library/prompts | Cody prompt templates that a **USER** can reuse. |
-
-##  `{{cfAssets}}` in USER Prompts and What the **AGENT** Should Do
-The **USER** at times may want to tell the **AGENT** about a particular file that they need to review as part of their prompt. For example, the **USER** may state something like "Check out the database.png file in the `{{cfAssets}}` folder". If the **USER** uses in any of their prompts `{{cfAssets}}`, the **AGENT* can use the Template Placeholder Values table to look up the actual location of the {{cfAssets}} for that file. If it does not find it, it should tell the user that it was not found and give a list of all the files found in the `{{cfAssets}}` folder.
-
+| {{cfTemplates}} | .cody/templates | Cody templates folder |
+| {{cfCommands}} | .cody/commands | Cody commands to be executed. |
+| {{cfProject}} | ./cody-projects/product-builder/ | Project folder for generated files. |
+| {{cfPlanPhase}} | ./cody-projects/product-builder/plan | Cody root folder for the planning phase. |
+| {{cfWorkPhase}} | ./cody-projects/product-builder/build | Cody root folder for the build phase. |
 ## Executing Commands
 
 - If the **USER** types any of the commands listed below, follow the instructions inside the files for each command listed below.
 - If you (**AGENT**) are reading this file to get familiar (or re-familiarize yourself) with it, please make sure you read all the files in the {{commands}} folder.
-
-> ### `:cody assets list`
-**[AGENT TODO: Read and execute {{cfCommands}}/assets-list.md]** 
 
 > ### `:cody build`
 **[AGENT TODO: Read and execute {{cfCommands}}/build.md]** 

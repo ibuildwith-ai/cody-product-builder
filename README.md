@@ -2,7 +2,7 @@
 
 ![Cody Product Builder](./cody-product-builder-logo.png)
 
-![Version](https://img.shields.io/badge/version-1.3.0-blue)
+![Version](https://img.shields.io/badge/version-1.4.0-blue)
 [![License](https://img.shields.io/badge/license-Custom-orange)](LICENSE.md)
 [![iBuildWith.ai](https://img.shields.io/badge/by-iBuildWith.ai-20c05b)](https://www.ibuildwith.ai)
 
@@ -70,13 +70,16 @@ Cody Product Builder bridges the gap between brainstorming and systematic develo
 ### Phase 1: Plan
 Turn raw ideas into actionable plans using three core documents:
 
-### **Discovery Document (`discovery.md`)**  
-> Captures the unfiltered initial idea and starts an interactive Q&A with the AI agent. The outcome is a clear vision and baseline requirements.
+### **Discovery Document (`discovery.md`)**
+> Captures the unfiltered initial idea and starts an interactive Q&A with the AI agent. The outcome is a clear vision and baseline requirements. Used for greenfield projects.
 
-### **Product Requirements Document (`prd.md`)**  
+### **Brownfield Analysis (`brownfield-analysis.md`)**
+> For existing codebases: captures an autonomous technical audit of the project — tech stack, architecture, dependencies, existing features — combined with targeted user Q&A. Replaces `discovery.md` for brownfield projects.
+
+### **Product Requirements Document (`prd.md`)**
 > Defines “what and why,” including goals, target users, features, success criteria, stories, assumptions, and dependencies.
 
-### **Implementation Plan (`plan.md`)**  
+### **Implementation Plan (`plan.md`)**
 > Defines “how and when,” including architecture, components, data model, milestones, risks, tooling, and delivery strategy.
 
 ### Phase 2: Build
@@ -121,7 +124,7 @@ Commands use the format: `:cody [command]`
 | `:cody build` | Starts the BUILD phase and creates the backlog. |
 | `:cody version build` | Builds a specific version and updates release notes once completed. |
 | `:cody version add` | Adds a new version to the backlog. |
-| `:cody refresh` | Refreshes the AI agent’s memory about the project. |
+| `:cody refresh` | Refreshes the AI agent’s memory about the project. Auto-detects brownfield projects. |
 | `:cody refresh update` | Refresh + sync: updates PRD, plan, and release notes. |
 | `:cody relearn` | Forces the AI agent to re-learn how Cody Product Builder works. |
 
@@ -144,7 +147,7 @@ Commands use the format: `:cody [command]`
 ├── settings.json          # Tool version and settings
 ├── commands/              # Command implementation files
 └── templates/             # Document templates
-    ├── plan/              # Templates for discovery.md, prd.md, plan.md
+    ├── plan/              # Templates for discovery.md, brownfield-analysis.md, prd.md, plan.md
     └── build/             # Templates for feature-backlog.md, release-notes.md
         └── version/       # Templates for design.md, tasklist.md, retrospective.md
 

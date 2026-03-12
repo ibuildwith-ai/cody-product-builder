@@ -10,62 +10,43 @@
 ⭐⭐ **If you find this skill helpful, please star this repo to show your support!** ⭐⭐
 
 # About Cody Product Builder
-Cody Product Builder is an opinionated, spec‑driven AI agent skill that helps product builders who use vibe coding techniques turn loose ideas into fully planned, production‑ready products using AI. Instead of jumping straight into “vibe coding,” Cody Product Builder guides you through a structured flow - discovery, planning, chunking, and building - so you think clearly before generating code.
+Cody Product Builder is an AI agent skill that helps you go from idea to finished product, whether you're building apps, workflows, tools, or agents. It guides you through a structured flow of discovery, planning, and building so your AI-built projects are scalable, maintainable, and built right from the start.
 
-Cody Product Builder began as a simple spec‑driven development framework, but it has evolved into a full AI agent skill that includes templates, commands, and a repeatable methodology for building products using AI consistently and fast.
+Whether you're a knowledge worker building your first app, a domain expert turning expertise into software, or a product builder scaling an existing project, Cody gives you a repeatable methodology that works with any AI coding environment (Claude Code, Codex, Cursor, OpenCode, GitHub Copilot, and others).
+
+**Starting fresh?** Cody walks you through idea refinement, requirements, and planning before a single line of code is written.
+
+**Have an existing project?** Cody analyzes your codebase, understands what's already built, and picks up from there.
+
+**Need a quick fix?** Patches let you skip the full build cycle while still tracking what was changed and why.
 
 # What Cody Product Builder Helps You Do
 
 ### **Idea Discovery & Refinement**  
-> Capture sparks of inspiration and shape them into clear, aligned, well‑defined product concepts.
+> Capture sparks of inspiration and shape them into clear, aligned, well-defined product concepts.
 
 ### **Structured Planning (without killing creativity)**  
-> Use AI‑ready documents that organize your thoughts, requirements, flows, and decisions - while still letting ideas evolve naturally.
+> Use AI-ready documents that organize your thoughts, requirements, flows, and decisions - while still letting ideas evolve naturally.
 
 ### **Chunked Implementation (Versions)**
 > Break the work into manageable, incremental “versions” that you can build, test, and ship faster with AI.
 
 ### **Lightweight Patches**
-> Fix bugs and make small enhancements quickly without the overhead of a full version build cycle — while still tracking everything.
+> Fix bugs and make small enhancements quickly without the overhead of a full version build cycle, while still tracking everything.
 
 # Why Cody Product Builder Exists
 
-AI coding tools are powerful - but without structure, things fall apart:
-
-> messy prompts → inconsistent code → unclear requirements → lost context → endless rework.
+AI tools are powerful, but without structure, things fall apart: messy prompts, inconsistent code, unclear requirements, lost context, and endless rework.
 
 Cody Product Builder solves this by giving you:
 
-- A repeatable, spec‑driven workflow AI coding tools can follow  
-- Templates and commands that eliminate guesswork  
-- A shared rhythm between you, your team, and your AI coding agents  
-- A clear methodology that turns vibe coding techniques into predictable building  
+- A repeatable workflow your AI coding tools can follow
+- Templates and commands that eliminate guesswork
+- A shared rhythm between you, your team, and your AI agents
+- A consistent structure for specs, docs, tasks, and versions
+- A methodology for building **products**, not just writing code
 
-### What You Get With Cody Product Builder
-- A consistent structure for specs, docs, tasks, and versions  
-- Faster progress with less rework  
-- Better collaboration between humans + AI  
-- A methodology for building **products**, not just writing code  
-
-Cody Product Builder blends the creativity of vibe coding techniques with the structure of professional product development - powered by AI from end to end.
-
-# Built for Product Builders Who Use Vibe Coding Techniques
-
-- **Scaffolding:** Templates, docs, and patterns to help you start faster  
-- **Agent‑friendly flexibility:** Cody Product Builder guides, you stay in control  
-- **AI‑first integration:** Works directly with AI dev environments  
-- **Consistency at scale:** Solo or team, Cody Product Builder keeps everything aligned  
-
-# Core Philosophy
-
-Cody Product Builder bridges the gap between brainstorming and systematic development:
-
-- **Structure Without Rigidity** – Supports you without limiting creativity  
-- **Iterative Refinement** – Built‑in loops between you and AI  
-- **Version‑based Development** – Work broken into modular chunks  
-- **Living Documentation** – Docs evolve as your product evolves  
-
-# Two‑Phase Development Cycle
+# Two-Phase Development Cycle
 
 ### Phase 1: Plan
 Turn raw ideas into actionable plans using three core documents:
@@ -74,7 +55,7 @@ Turn raw ideas into actionable plans using three core documents:
 > Captures the unfiltered initial idea and starts an interactive Q&A with the AI agent. The outcome is a clear vision and baseline requirements. Used for greenfield projects.
 
 ### **Brownfield Analysis (`brownfield-analysis.md`)**
-> For existing codebases: captures an autonomous technical audit of the project — tech stack, architecture, dependencies, existing features — combined with targeted user Q&A. Replaces `discovery.md` for brownfield projects.
+> For existing codebases: captures an autonomous technical audit of the project (tech stack, architecture, dependencies, existing features) combined with targeted user Q&A. Replaces `discovery.md` for brownfield projects.
 
 ### **Product Requirements Document (`prd.md`)**
 > Defines “what and why,” including goals, target users, features, success criteria, stories, assumptions, and dependencies.
@@ -83,7 +64,7 @@ Turn raw ideas into actionable plans using three core documents:
 > Defines “how and when,” including architecture, components, data model, milestones, risks, tooling, and delivery strategy.
 
 ### Phase 2: Build
-The build phase translates the plan into structured, version‑based execution.
+The build phase translates the plan into structured, version-based execution.
 
 ### **Feature Backlog (`feature-backlog.md`)**  
 > A centralized list of all features, organized into versions with priority and status tracking (🔴 Not Started, 🟡 In Progress, 🟢 Completed).
@@ -104,7 +85,7 @@ Each version includes:
 Patches are lightweight fixes or small enhancements that skip the full version build cycle. Each patch lives in its own folder alongside versions in the build directory.
 
 #### **Patch Document (`patch.md`)**
-> Captures the problem, the plan, the solution, and files changed — without requiring a design doc, tasklist, or retrospective.
+> Captures the problem, the plan, the solution, and files changed. Does not require a design doc, tasklist, or retrospective.
 
 ### **Release Notes (`release-notes.md`)**
 > Automatically updated after each version or patch, tracking changes, enhancements, and fixes.
@@ -128,7 +109,7 @@ Commands use the format: `:cody [command]`
 | `:cody help` | Shows help and all available commands. |
 | `:cody plan` | Starts the PLAN phase and creates a new Cody Product Builder project. |
 | `:cody build backlog` | Generates the feature backlog from the plan. |
-| `:cody build version` | Work on a version — choose an existing version or add a new one. |
+| `:cody build version` | Work on a version: choose an existing version or add a new one. |
 | `:cody patch` | Applies a lightweight patch (bug fix or small enhancement) without the full version build cycle. |
 | `:cody refresh` | Refreshes the AI agent’s memory about the project. Auto-detects brownfield projects. Optionally updates PRD, plan, and release notes. |
 
@@ -199,20 +180,28 @@ cody-projects/
 - **Other AI Agents**: Say: *"Please read and execute the @.cody/activate.md"*
 
 ## Using
-- `:cody help` – Overview of all commands  
-- `:cody plan` – Begin the structured PLAN phase  
 
-Cody Product Builder works with any AI Development Environment (Claude Code, Codex, Cursor, OpenCode, GitHub Copilot, etc.) with file management capabilities.
+**Get help and see all available commands:**
+`:cody help`
+
+**Starting a new project from scratch:**
+`:cody plan` to kick off the planning phase, then `:cody build backlog` and `:cody build version` to start building.
+
+**Working on an existing project:**
+`:cody refresh` to have Cody analyze your codebase and generate all planning documents automatically, then continue with the build phase.
+
+**Quick bug fixes, small enhancements, or updates:**
+`:cody patch` to apply a lightweight fix without going through the full version build cycle.
 
 ## Author
 
 **iBuildWith.ai**
 
-© Copyright 2026 – Red Pill Blue Pill Studios, LLC – All Rights Reserved.
+Copyright 2026, Red Pill Blue Pill Studios, LLC. All Rights Reserved.
 
 Part of the Cody family of AI Agent Skills:
-- Cody Product Builder — Build products with AI
-- Cody Article Writer — Write articles with AI
+- Cody Product Builder: Build products with AI
+- Cody Article Writer: Write articles with AI
 
 ## License
 

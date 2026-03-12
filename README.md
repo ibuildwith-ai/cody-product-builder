@@ -6,9 +6,6 @@
 [![License](https://img.shields.io/badge/license-Custom-orange)](LICENSE.md)
 [![iBuildWith.ai](https://img.shields.io/badge/by-iBuildWith.ai-20c05b)](https://www.ibuildwith.ai)
 
-# Join our Discord Server
-Get the latest updates, news, and more by [joining our Discord community](https://discord.gg/Mz7vdRmpJH).
-
 # Star the Repo
 ⭐⭐ **If you find this skill helpful, please star this repo to show your support!** ⭐⭐
 

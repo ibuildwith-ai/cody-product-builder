@@ -1,6 +1,6 @@
 ---
-command: ":cody version add"
-description: Adds a new version to the feature-backlog.md file.
+internal: true
+description: Adds a new version to the feature backlog. Delegated from build-version.md.
 ---
 
 # ADD NEW VERSION
@@ -21,5 +21,5 @@ description: Adds a new version to the feature-backlog.md file.
 ### TELL **USER** VERSION READY TO BUILD
 - Tell the **USER** that the version has been added to the feature-backlog.md file in {{cfWorkPhase}}
 - Ask the **USER** if they want to start working on this version.
-- If the **USER** confirms (says yes or anything close to it), execute the command `:cody version build [and add the version number and name here]`
+- If the **USER** confirms (says yes or anything close to it), execute the command `:cody build version`
 - If the **USER** doesn't confirm or says nothing, stop here.

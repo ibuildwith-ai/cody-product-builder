@@ -2,7 +2,7 @@
 
 ![Cody Product Builder](./cody-product-builder-logo.png)
 
-![Version](https://img.shields.io/badge/version-1.4.0-blue)
+![Version](https://img.shields.io/badge/version-1.5.0-blue)
 [![License](https://img.shields.io/badge/license-Custom-orange)](LICENSE.md)
 [![iBuildWith.ai](https://img.shields.io/badge/by-iBuildWith.ai-20c05b)](https://www.ibuildwith.ai)
 
@@ -25,8 +25,11 @@ Cody Product Builder began as a simple spec‑driven development framework, but 
 ### **Structured Planning (without killing creativity)**  
 > Use AI‑ready documents that organize your thoughts, requirements, flows, and decisions - while still letting ideas evolve naturally.
 
-### **Chunked Implementation (Versions)**  
+### **Chunked Implementation (Versions)**
 > Break the work into manageable, incremental “versions” that you can build, test, and ship faster with AI.
+
+### **Lightweight Patches**
+> Fix bugs and make small enhancements quickly without the overhead of a full version build cycle — while still tracking everything.
 
 # Why Cody Product Builder Exists
 
@@ -97,11 +100,17 @@ Each version includes:
 #### **Task List (`tasklist.md`)**  
 > A detailed breakdown of tasks derived from the Feature Backlog.
 
-#### **Retrospective (`retrospective.md`)**  
+#### **Retrospective (`retrospective.md`)**
 > Lessons learned, improvements, successes, and feedback for both you and the AI agent.
 
-### **Release Notes (`release-notes.md`)**  
-> Automatically updated after each version, tracking changes, enhancements, and fixes.
+### **Patches**
+Patches are lightweight fixes or small enhancements that skip the full version build cycle. Each patch lives in its own folder alongside versions in the build directory.
+
+#### **Patch Document (`patch.md`)**
+> Captures the problem, the plan, the solution, and files changed — without requiring a design doc, tasklist, or retrospective.
+
+### **Release Notes (`release-notes.md`)**
+> Automatically updated after each version or patch, tracking changes, enhancements, and fixes.
 
 # Version Naming Convention
 
@@ -121,12 +130,10 @@ Commands use the format: `:cody [command]`
 |--------|-------------|
 | `:cody help` | Shows help and all available commands. |
 | `:cody plan` | Starts the PLAN phase and creates a new Cody Product Builder project. |
-| `:cody build` | Starts the BUILD phase and creates the backlog. |
-| `:cody version build` | Builds a specific version and updates release notes once completed. |
-| `:cody version add` | Adds a new version to the backlog. |
-| `:cody refresh` | Refreshes the AI agent’s memory about the project. Auto-detects brownfield projects. |
-| `:cody refresh update` | Refresh + sync: updates PRD, plan, and release notes. |
-| `:cody relearn` | Forces the AI agent to re-learn how Cody Product Builder works. |
+| `:cody build backlog` | Generates the feature backlog from the plan. |
+| `:cody build version` | Work on a version — choose an existing version or add a new one. |
+| `:cody patch` | Applies a lightweight patch (bug fix or small enhancement) without the full version build cycle. |
+| `:cody refresh` | Refreshes the AI agent’s memory about the project. Auto-detects brownfield projects. Optionally updates PRD, plan, and release notes. |
 
 ---
 
@@ -148,7 +155,7 @@ Commands use the format: `:cody [command]`
 ├── commands/              # Command implementation files
 └── templates/             # Document templates
     ├── plan/              # Templates for discovery.md, brownfield-analysis.md, prd.md, plan.md
-    └── build/             # Templates for feature-backlog.md, release-notes.md
+    └── build/             # Templates for feature-backlog.md, release-notes.md, patch.md
         └── version/       # Templates for design.md, tasklist.md, retrospective.md
 
 .github/
@@ -158,7 +165,7 @@ Commands use the format: `:cody [command]`
 cody-projects/
 └── product-builder/       # Generated project files (created during :cody plan)
     ├── plan/              # Planning phase documents
-    └── build/             # Build phase documents (backlog, versions)
+    └── build/             # Build phase documents (backlog, versions, patches)
 ```
 
 ---

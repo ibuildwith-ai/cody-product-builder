@@ -6,6 +6,50 @@ The order of releases listed below are descending — the latest version is alwa
 
 ---
 
+# v1.5.0 - Patches & Command Restructure - 2026-03-12
+
+## Overview
+Two changes in this release: (1) lightweight patches for quick fixes that skip the full version build cycle, and (2) a command restructure that simplifies the command surface from 9 commands down to 6.
+
+## Key Features
+
+### Patches
+- **`:cody patch` command** — New command that kicks off a streamlined patch workflow: brief Q&A to understand the problem, user-confirmed plan, fix, auto-generated patch document, and release notes update
+- **Patch template** — New `patch.md` template in `.cody/templates/build/` with structured fields for version, date, type, original prompt, problem, plan, solution, files changed (auto-generated), and testing notes
+- **Patch versioning** — Patches use the same `v[major.minor.patch]` numbering as versions, incrementing the patch segment (e.g., v1.1.0 is a version, v1.1.1 is a patch)
+- **Patch folders in build directory** — Patch folders live alongside version folders in `cody-projects/product-builder/build/`, distinguished by containing only a `patch.md` file
+
+### Command Restructure
+- **`:cody build` → `:cody build backlog`** — Renamed for clarity (it creates the feature backlog, not a build)
+- **`:cody version add` + `:cody version build` → `:cody build version`** — Merged into a single router command that asks "existing or new?" and delegates accordingly
+- **`:cody refresh update` folded into `:cody refresh`** — Refresh now asks "Would you like me to update the PRD, plan, and release notes?" at the end, instead of requiring a separate command
+- **`:cody relearn` removed** — Redundant with the `/cody` slash command activation, which reads the same files
+- **Internal files renamed** — `version-build.md` → `build-version-existing.md`, `version-add.md` → `build-version-new.md` so all build-related files group together alphabetically
+
+### Final 6-Command Set
+| Command | Description |
+|---------|-------------|
+| `:cody help` | Shows help and all available commands |
+| `:cody plan` | Starts the PLAN phase |
+| `:cody build backlog` | Generates the feature backlog from the plan |
+| `:cody build version` | Work on a version — choose existing or add new |
+| `:cody patch` | Lightweight fix or small enhancement |
+| `:cody refresh` | Refreshes agent memory, optionally updates docs |
+
+## Enhancements
+- Updated release notes template with separate entry formats for versions (full entry) and patches (lightweight inline entry with type and summary)
+- Updated `agent.md` command registry to reflect 6-command structure
+- Updated `refresh.md` to include recent patch documents when refreshing agent memory and to offer document updates at the end
+- Updated README with patch documentation, new command table, and file structure diagram
+- Internal delegation files (`refresh-update.md`, `refresh-brownfield.md`, `build-version-existing.md`, `build-version-new.md`) now use `internal: true` frontmatter instead of user-facing command names
+
+## Other Notes
+- Patches are not tracked in the feature backlog — they are reactive, not planned
+- Patches do not include design docs, tasklists, or retrospectives — that's the point
+- No changes to the Plan phase workflow, templates, or placeholder system
+
+---
+
 # v1.4.0 - Brownfield Project Support - 2026-02-26
 
 ## Overview

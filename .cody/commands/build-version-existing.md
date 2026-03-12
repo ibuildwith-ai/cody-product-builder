@@ -1,6 +1,6 @@
 ---
-command: ":cody version build"
-description: Creates a version using the feature-backlog.md file.  The USER will pick which version to build
+internal: true
+description: Builds an existing version from the feature backlog. Delegated from build-version.md.
 ---
 
 # BUILD VERSION
@@ -26,7 +26,7 @@ description: Creates a version using the feature-backlog.md file.  The USER will
 - Tell the **USER** to review the tasklist.md document in the current version and when they are done, to tell you.
 - Stop and wait for the **USER**.
 
-### CHOOSE WHAT TO BUILD 
+### CHOOSE WHAT TO BUILD
 - Ask the **USER** which task or phase in the tasklist.md file they would like to start working on.
 - Stop here and wait for **USER** to tell you.
 
@@ -62,12 +62,11 @@ This version is now completed. If you think the PRD or PLAN files need update
 due to the changes implemented in this version, you can use the following
 command:
 
-:cody refresh update
+:cody refresh
 
 Otherwise, you can continue working on a new version with:
 
-:cody version build (work on another version in the backlog)
-:cody version add (add a new version to the backlog)
+:cody build version
 
 What would you like to do next?
 ```

@@ -21,8 +21,15 @@ description: Refreshes the memory about the current project of the AI AGENT.
 - If you still need more information, read {{cfPlanPhase}}/brownfield-analysis.md (if it exists)
 - If you still need more information, read {{cfWorkPhase}}/feature-backlog.md
 - If you still need more information, read all the files for the last version in the {{cfWorkPhase}} folder
+- If you still need more information, read the most recent patch documents in the {{cfWorkPhase}} folder (patch folders contain a `patch.md` file)
 - If you still need more information, review the entire project, from the root level.
 - If you still need more information, ask the **USER**.
 
 ### DONE REVIEWING THE ENTIRE PROJECT
 - Please tell the **USER** that your memory is refreshed and that you are ready to start working.
+
+### OFFER TO UPDATE DOCUMENTS
+- Ask the **USER**: `Would you also like me to review and update the PRD, plan, and release notes?`
+- **STOP** and wait for the **USER**.
+- If YES → **[AGENT TODO: Read and execute {{cfCommands}}/refresh-update.md]**
+- If NO → done.

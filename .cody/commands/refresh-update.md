@@ -1,6 +1,6 @@
 ---
-command: ":cody refresh update"
-description: Refreshes the memory about the current project of the AI AGENT and the AGENT will update the plan.md and prd.md files with any changes.
+internal: true
+description: Refreshes memory and updates PRD, plan, and release notes. Delegated from refresh.md.
 ---
 
 # REFRESH AGENT MEMORY AND UPDATE DOCS

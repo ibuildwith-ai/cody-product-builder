@@ -190,6 +190,9 @@ cody-projects/
 **Working on an existing project:**
 `:cody refresh` to have Cody analyze your codebase and generate all planning documents automatically, then continue with the build phase.
 
+**Returning to a Cody-managed project in a new AI session?**
+Activate Cody first, then `:cody refresh` so the agent reads your existing project documents and picks up where you left off.
+
 **Quick bug fixes, small enhancements, or updates:**
 `:cody patch` to apply a lightweight fix without going through the full version build cycle.
 

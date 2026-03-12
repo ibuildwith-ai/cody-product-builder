@@ -146,27 +146,6 @@ cody-projects/
     └── build/             # Build phase documents (backlog, versions, patches)
 ```
 
----
-
-# Best Practices
-
-### Planning Phase
-- Be thorough during discovery  
-- Break complexity into modular components  
-- Identify integrations and dependencies upfront  
-
-### Build Phase
-- Start small for early wins  
-- Keep the backlog current  
-- Use retrospectives deliberately  
-- Group features into logical versions  
-
-### AI Collaboration
-- Provide context early  
-- Treat AI output as drafts  
-- Explore alternatives and edge cases  
-- Iterate frequently  
-
 # Installing and Using Cody Product Builder
 
 ## Installing
@@ -202,10 +181,6 @@ Activate Cody first, then `:cody refresh` so the agent reads your existing proje
 
 Copyright 2026, Red Pill Blue Pill Studios, LLC. All Rights Reserved.
 
-Part of the Cody family of AI Agent Skills:
-- Cody Product Builder: Build products with AI
-- Cody Article Writer: Write articles with AI
-
 ## License
 
 Cody Product Builder is licensed under a custom license that permits free use for product building (including commercial use), but prohibits redistribution, modification, and sale of the software itself.
@@ -215,8 +190,3 @@ See [LICENSE.md](LICENSE.md) for complete terms.
 ## Release Notes
 
 See [RELEASE-NOTES.md](RELEASE-NOTES.md) for version history.
-
-## Links
-
-- [iBuildWith.ai](https://www.ibuildwith.ai)
-- [Agent Skills Specification](https://agentskills.io/specification)

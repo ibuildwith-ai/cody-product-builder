@@ -1,8 +1,8 @@
-# Patch – **[AI AGENT TODO: Add Patch Version]**
+# Patch – **[AI AGENT TODO: Add Patch Version and Name (e.g., v0.2.1 — Fix Login Bug)]**
 This document captures a lightweight fix or small enhancement that does not require a full version build cycle.
 
 ## Patch Version
-**[AI AGENT TODO: Add the patch version number (e.g., v0.2.1)]**
+**[AI AGENT TODO: Add the patch version number and name (e.g., v0.2.1 — Fix Login Bug)]**
 
 ## Date
 **[AI AGENT TODO: Add the date the patch was created]**

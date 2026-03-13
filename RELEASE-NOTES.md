@@ -6,6 +6,19 @@ The order of releases listed below are descending — the latest version is alwa
 
 ---
 
+# v1.5.1 - Patch Workflow Improvements - 2026-03-13
+
+## Overview
+Improvements to the patch workflow and template based on initial usage feedback.
+
+## Enhancements
+- **Patch title now includes name** — Patch template title and version field now include both version number and name (e.g., "v0.2.1 -- Fix Login Bug") instead of just the version number
+- **Agent verification step** — New "VERIFY THE FIX" step where the agent runs its own checks (compile, tests, sanity check) before handing off to the user
+- **User testing step** — New "USER TESTING" step where the agent presents testing notes, waits for user confirmation, and loops back to fix if issues are found
+- **Improved closing message** — Updated to tell the user to commit and push (previously only said commit)
+
+---
+
 # v1.5.0 - Patches & Command Restructure - 2026-03-12
 
 ## Overview

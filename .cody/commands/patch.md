@@ -37,7 +37,7 @@ PATCH : START
 - Create the patch folder in {{cfWorkPhase}} using the confirmed version name (e.g., `v0.2.1-fix-login-bug`).
 - Copy `{{cfTemplates}}/build/patch.md` to the patch folder.
 - Fill in the following sections of the patch document:
-  - **Patch Version** — the confirmed version number
+  - **Patch Version** — the confirmed version number and name
   - **Date** — today's date
   - **Type** — Bug Fix, Small Enhancement, or Hotfix (determine from the conversation)
   - **Original Prompt** — the **USER's** original request
@@ -65,6 +65,16 @@ PATCH : START
     - Copy from {{cfTemplates}}/build/release-notes.md to {{cfWorkPhase}}/release-notes.md.
 - Add a patch entry to the release notes in the correct chronological position (latest at the top). Use the patch entry format defined in the release notes template.
 
+### VERIFY THE FIX
+- Run any applicable verification you (**AGENT**) can do: check the code compiles, run related tests, or do a quick sanity check.
+- If anything fails, fix it and iterate with the **USER** before continuing.
+
+### USER TESTING
+- Present the **Testing Notes** from the patch document to the **USER**.
+- Ask the **USER** to test the fix and confirm it works.
+- **STOP** and wait for the **USER**.
+- If the **USER** reports issues, go back to "DO THE FIX" and iterate.
+
 ### DONE
 
 - **AGENT** show the **USER** the following:
@@ -74,11 +84,11 @@ PATCH : COMPLETED
 +---------------+
 ```
 
-- Tell the **USER** to test the fix and then `commit to git`.
-
 **AGENT ANNOUNCE**
 ```
-Patch completed. You can continue with:
+Patch completed and verified. Please commit and push your changes to git.
+
+When you're ready, you can continue with:
 
 :cody patch (apply another patch)
 :cody build version (work on a version from the backlog)

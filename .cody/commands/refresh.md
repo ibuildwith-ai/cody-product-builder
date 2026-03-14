@@ -12,6 +12,16 @@ description: Refreshes the memory about the current project of the AI AGENT.
     - If YES (brownfield) → **[AGENT TODO: Read and execute {{cfCommands}}/refresh-brownfield.md]**. Stop here.
     - If NO (empty project) → tell the **USER** no project files were found. Suggest running `:cody plan` to start from scratch. Stop here.
 
+### CHECK PROJECT SETTINGS
+- Check if `{{cfProject}}/project.json` exists.
+  - If it does NOT exist AND `{{cfProject}}` folder exists, tell the **USER**: "This version of Cody Product Builder uses a project settings file. Let me set that up."
+    - Read the PRD or plan docs to determine the project name and description.
+    - Scan version and patch folders in {{cfWorkPhase}} to find the latest completed version (default to `"0.0.0"` if none found).
+    - Set phase to `"build"` if {{cfWorkPhase}} has version or patch folders, otherwise `"plan"`.
+    - Present all values to the **USER** for confirmation.
+    - **STOP** and wait for the **USER**.
+    - Copy `{{cfTemplates}}/project.json` to `{{cfProject}}/project.json` and fill in the confirmed values. Use `YYYY-MM-DD` format for dates.
+
 ### ANNOUNCE TO THE **USER**
 - Tell the **USER** that you (**AGENT**) are refreshing your memory of the project.
 

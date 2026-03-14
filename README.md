@@ -2,7 +2,7 @@
 
 ![Cody Product Builder](./cody-product-builder-logo.png)
 
-![Version](https://img.shields.io/badge/version-1.5.1-blue)
+![Version](https://img.shields.io/badge/version-1.5.2-blue)
 [![License](https://img.shields.io/badge/license-Custom-orange)](LICENSE.md)
 [![iBuildWith.ai](https://img.shields.io/badge/by-iBuildWith.ai-20c05b)](https://www.ibuildwith.ai)
 
@@ -132,6 +132,7 @@ Commands use the format: `:cody [command]`
 ├── settings.json          # Tool version and settings
 ├── commands/              # Command implementation files
 └── templates/             # Document templates
+    ├── project.json       # Template for project metadata settings
     ├── plan/              # Templates for discovery.md, brownfield-analysis.md, prd.md, plan.md
     └── build/             # Templates for feature-backlog.md, release-notes.md, patch.md
         └── version/       # Templates for design.md, tasklist.md, retrospective.md
@@ -142,6 +143,7 @@ Commands use the format: `:cody [command]`
 
 cody-projects/
 └── product-builder/       # Generated project files (created during :cody plan)
+    ├── project.json       # Project metadata (name, version, phase, dates)
     ├── plan/              # Planning phase documents
     └── build/             # Build phase documents (backlog, versions, patches)
 ```

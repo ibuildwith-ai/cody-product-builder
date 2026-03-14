@@ -92,6 +92,18 @@ These are not required, but you may use or adapt them if helpful, especially whe
 /build
 /plan
 ```
+
+### CREATE PROJECT SETTINGS
+- Copy `{{cfTemplates}}/project.json` to `{{cfProject}}/project.json`.
+- Fill in:
+  - **name** and **description** from what you learned during discovery
+  - **createdAt** and **updatedAt** with today's date (use `YYYY-MM-DD` format)
+  - **version** as `"0.0.0"`
+  - **phase** as `"plan"`
+- Present the values to the **USER** and ask them to confirm or change anything.
+- **STOP** and wait for the **USER**.
+- Apply any changes the USER requests, then continue.
+
 - Copy `{{cfTemplates}}/plan/discovery.md` to `{{cfPlanPhase}}/discovery.md`.
 - Update all sections based on what you learned.
 - Make sure you update the "DISCOVERY SUMMARY" section in the discovery.md file with your understanding summary listed previously.

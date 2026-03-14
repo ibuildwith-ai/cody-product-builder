@@ -10,6 +10,16 @@ description: Creates a lightweight patch for a quick bug fix or small enhancemen
   - If it does NOT exist, tell the **USER** they need to complete the plan phase first (`:cody plan`). Stop here.
 - If {{cfWorkPhase}} folder does not exist, create it.
 
+### CHECK PROJECT SETTINGS
+- Check if `{{cfProject}}/project.json` exists.
+  - If it does NOT exist, tell the **USER**: "This version of Cody Product Builder uses a project settings file. Let me set that up."
+    - Read the PRD or plan docs to determine the project name and description.
+    - Scan version and patch folders in {{cfWorkPhase}} to find the latest completed version (default to `"0.0.0"` if none found).
+    - Set phase to `"build"` if {{cfWorkPhase}} has version or patch folders, otherwise `"plan"`.
+    - Present all values to the **USER** for confirmation.
+    - **STOP** and wait for the **USER**.
+    - Copy `{{cfTemplates}}/project.json` to `{{cfProject}}/project.json` and fill in the confirmed values. Use `YYYY-MM-DD` format for dates.
+
 ### ASK WHAT NEEDS TO BE DONE
 
 - **AGENT** show the **USER** the following:
@@ -74,6 +84,12 @@ PATCH : START
 - Ask the **USER** to test the fix and confirm it works.
 - **STOP** and wait for the **USER**.
 - If the **USER** reports issues, go back to "DO THE FIX" and iterate.
+
+### UPDATE PROJECT SETTINGS
+- Update `{{cfProject}}/project.json`:
+  - Set **version** to the patch version number just completed
+  - If **phase** is `"plan"`, update it to `"build"`
+  - Set **updatedAt** to today's date (use `YYYY-MM-DD` format)
 
 ### DONE
 

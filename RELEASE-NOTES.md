@@ -6,6 +6,26 @@ The order of releases listed below are descending — the latest version is alwa
 
 ---
 
+# v1.5.2 - Project Settings File - 2026-03-14
+
+## Overview
+Added a `project.json` file that tracks project metadata (name, description, version, phase, dates). Created automatically during project setup and updated after version/patch completions. Designed for consumption by external tooling to discover and understand Cody-managed projects.
+
+## Key Features
+- **`project.json` created during `:cody plan`** -- Populated from discovery Q&A, confirmed by the user before saving
+- **`project.json` created during brownfield setup** -- Populated from codebase analysis, user provides current version
+- **Auto-creation on older projects** -- Entry-point commands (`:cody build backlog`, `:cody build version`, `:cody patch`, `:cody refresh`) detect when `project.json` is missing and create it by reading existing project docs, with user confirmation
+- **Automatic version tracking** -- `version` field updated after every version or patch completion
+- **Phase transitions** -- `phase` field updates from `"plan"` to `"build"` when entering the build phase
+- **Name/description sync via refresh** -- When `:cody refresh` updates PRD/plan docs, it checks if the project name or description changed and offers to update `project.json` (with user confirmation)
+
+## Other Notes
+- Template stored at `.cody/templates/project.json`
+- All dates use `YYYY-MM-DD` (ISO 8601) format
+- `project.json` lives at `cody-projects/product-builder/project.json` (project root)
+
+---
+
 # v1.5.1 - Patch Workflow Improvements - 2026-03-13
 
 ## Overview

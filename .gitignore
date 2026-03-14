@@ -16,3 +16,6 @@ cody-projects/
 *.swp
 *.swo
 *~
+
+# Ignore Folder
+ignore/

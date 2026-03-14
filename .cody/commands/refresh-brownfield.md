@@ -98,6 +98,19 @@ Keep asking until all **Knowledge Criteria** are satisfied:
 /plan
 ```
 
+### CREATE PROJECT SETTINGS
+- Copy `{{cfTemplates}}/project.json` to `{{cfProject}}/project.json`.
+- Fill in:
+  - **name** and **description** from what you learned during the codebase analysis and Q&A
+  - **createdAt** and **updatedAt** with today's date (use `YYYY-MM-DD` format)
+  - **phase** as `"build"`
+- Ask the **USER**: `What version is your project currently at? (e.g., 1.0.0, 0.5.0)`
+- **STOP** and wait for the **USER**.
+- Fill in **version** with the USER's answer.
+- Present all values to the **USER** and ask them to confirm or change anything.
+- **STOP** and wait for the **USER**.
+- Apply any changes the USER requests, then continue.
+
 ---
 
 ## WRITE BROWNFIELD ANALYSIS

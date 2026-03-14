@@ -5,6 +5,16 @@ description: Builds an existing version from the feature backlog. Delegated from
 
 # BUILD VERSION
 
+### CHECK PROJECT SETTINGS
+- Check if `{{cfProject}}/project.json` exists.
+  - If it does NOT exist, tell the **USER**: "This version of Cody Product Builder uses a project settings file. Let me set that up."
+    - Read the PRD or plan docs to determine the project name and description.
+    - Scan version and patch folders in {{cfWorkPhase}} to find the latest completed version (default to `"0.0.0"` if none found).
+    - Set phase to `"build"` if {{cfWorkPhase}} has version or patch folders, otherwise `"plan"`.
+    - Present all values to the **USER** for confirmation.
+    - **STOP** and wait for the **USER**.
+    - Copy `{{cfTemplates}}/project.json` to `{{cfProject}}/project.json` and fill in the confirmed values. Use `YYYY-MM-DD` format for dates.
+
 ### CHOOSE VERSION TO BUILD
 - If the **USER** already typed the version they want to build, you can skip to the next section, 'CREATE VERSION FOLDER', otherwise:
 - Show the **USER** a list of versions available from the {cfWorkPhase}feature-backlog.md file that have a Status of "Not Started" or "In Progress"
@@ -47,6 +57,11 @@ When you (**AGENT**) reached the end of the version, tell the **USER** this vers
 - Tell the **USER** that you will create a Retrospective now.
 - Copy from {{cfTemplates}}/build/version/retrospective.md to the current version folder.
 - Update the retrospective.md file.
+
+### UPDATE PROJECT SETTINGS
+- Update `{{cfProject}}/project.json`:
+  - Set **version** to the version number just completed
+  - Set **updatedAt** to today's date (use `YYYY-MM-DD` format)
 
 ### CREATE / UPDATE RELEASE NOTES
 - Check to see if the {{cfWorkPhase}}/release-notes.md file exists.

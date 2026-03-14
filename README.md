@@ -2,7 +2,7 @@
 
 ![Cody Product Builder](./cody-product-builder-logo.png)
 
-![Version](https://img.shields.io/badge/version-1.5.2-blue)
+![Version](https://img.shields.io/badge/version-1.6.0-blue)
 [![License](https://img.shields.io/badge/license-Custom-orange)](LICENSE.md)
 [![iBuildWith.ai](https://img.shields.io/badge/by-iBuildWith.ai-20c05b)](https://www.ibuildwith.ai)
 
@@ -108,9 +108,7 @@ Commands use the format: `:cody [command]`
 |--------|-------------|
 | `:cody help` | Shows help and all available commands. |
 | `:cody plan` | Starts the PLAN phase and creates a new Cody Product Builder project. |
-| `:cody build backlog` | Generates the feature backlog from the plan. |
-| `:cody build version` | Work on a version: choose an existing version or add a new one. |
-| `:cody patch` | Applies a lightweight patch (bug fix or small enhancement) without the full version build cycle. |
+| `:cody build` | Guided build phase: creates the feature backlog if needed, then lets you create a new version, work on an existing version, or work on a patch. |
 | `:cody refresh` | Refreshes the AI agent’s memory about the project. Auto-detects brownfield projects. Optionally updates PRD, plan, and release notes. |
 
 ---
@@ -166,16 +164,19 @@ cody-projects/
 `:cody help`
 
 **Starting a new project from scratch:**
-`:cody plan` to kick off the planning phase, then `:cody build backlog` and `:cody build version` to start building.
+`:cody plan` to kick off the planning phase, then `:cody build` to start building.
+
+**Building versions:**
+`:cody build` to add a new version or work on an existing one. Cody will create the feature backlog automatically if it doesn't exist yet.
+
+**Quick bug fixes, small enhancements, or updates:**
+`:cody build` and choose the patch option for a lightweight fix without going through the full version build cycle.
 
 **Working on an existing project:**
-`:cody refresh` to have Cody analyze your codebase and generate all planning documents automatically, then continue with the build phase.
+`:cody refresh` to have Cody analyze your codebase and generate all planning documents automatically, then `:cody build` to start building.
 
 **Returning to a Cody-managed project in a new AI session?**
 Activate Cody first, then `:cody refresh` so the agent reads your existing project documents and picks up where you left off.
-
-**Quick bug fixes, small enhancements, or updates:**
-`:cody patch` to apply a lightweight fix without going through the full version build cycle.
 
 ## Author
 

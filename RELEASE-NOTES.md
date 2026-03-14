@@ -6,6 +6,37 @@ The order of releases listed below are descending — the latest version is alwa
 
 ---
 
+# v1.6.0 - Unified Build Command - 2026-03-14
+
+## Overview
+Consolidated `:cody build backlog`, `:cody build version`, and `:cody patch` into a single guided `:cody build` command. Reduces the command surface from 6 to 4, making it simpler for non-technical users to navigate the build phase.
+
+## Key Features
+- **Unified `:cody build` command** -- One entry point for all build work. Creates the feature backlog automatically if it doesn't exist, explains what it is, then presents a menu:
+  1. Create a new version
+  2. Work on an existing version
+  3. Work on a patch (quick fix or small enhancement)
+- **Workflow banners** -- Each delegated workflow now shows its own banner (`BUILD VERSION : START`, `NEW VERSION : START`, `PATCH : START`) so the user always knows which workflow they're in
+- **Simplified command set** -- Down to 4 commands: `help`, `plan`, `build`, `refresh`
+
+## Changes
+- Created `build.md` as the unified build entry point
+- Converted `build-backlog.md` to internal delegation file (removed banner, prereq checks, stop points)
+- Converted `patch.md` to internal delegation file (removed prereq checks)
+- Deleted `build-version.md` (router replaced by `build.md` menu)
+- Removed project settings auto-creation checks from `build-backlog.md`, `patch.md`, and `build-version-existing.md` (centralized in `build.md`)
+- Added banners to `build-version-existing.md` and `build-version-new.md`
+- Updated all closing messages to reference `:cody build` instead of old commands
+- Updated `agent.md` command registry to 4 commands
+- Updated README command table and usage instructions
+
+## Other Notes
+- All internal workflows (version building, patching, backlog creation) remain functionally identical
+- Previous individual commands are no longer available as separate entry points
+- project.json auto-creation check now lives in two places: `build.md` and `refresh.md`
+
+---
+
 # v1.5.2 - Project Settings File - 2026-03-14
 
 ## Overview

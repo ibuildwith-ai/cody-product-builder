@@ -1,9 +1,16 @@
 ---
 internal: true
-description: Adds a new version to the feature backlog. Delegated from build-version.md.
+description: Adds a new version to the feature backlog. Delegated from build.md.
 ---
 
 # ADD NEW VERSION
+
+- **AGENT** show the **USER** the following:
+```
++---------------------+
+NEW VERSION : START
++---------------------+
+```
 
 ### CREATE VERSION FOLDER
 - Ask the **USER** what's the version number and name.
@@ -21,5 +28,5 @@ description: Adds a new version to the feature backlog. Delegated from build-ver
 ### TELL **USER** VERSION READY TO BUILD
 - Tell the **USER** that the version has been added to the feature-backlog.md file in {{cfWorkPhase}}
 - Ask the **USER** if they want to start working on this version.
-- If the **USER** confirms (says yes or anything close to it), execute the command `:cody build version`
+- If the **USER** confirms (says yes or anything close to it), **[AGENT TODO: Read and execute {{cfCommands}}/build-version-existing.md]**
 - If the **USER** doesn't confirm or says nothing, stop here.

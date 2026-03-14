@@ -85,14 +85,8 @@ These placeholders are a pointer to actual values. They are created here and use
 > ### `:cody plan`
 **[AGENT TODO: Read and execute {{cfCommands}}/plan.md]**
 
-> ### `:cody build backlog`
-**[AGENT TODO: Read and execute {{cfCommands}}/build-backlog.md]**
-
-> ### `:cody build version`
-**[AGENT TODO: Read and execute {{cfCommands}}/build-version.md]**
-
-> ### `:cody patch`
-**[AGENT TODO: Read and execute {{cfCommands}}/patch.md]**
+> ### `:cody build`
+**[AGENT TODO: Read and execute {{cfCommands}}/build.md]**
 
 > ### `:cody refresh`
 **[AGENT TODO: Read and execute {{cfCommands}}/refresh.md]**

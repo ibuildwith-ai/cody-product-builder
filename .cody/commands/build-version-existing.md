@@ -1,19 +1,16 @@
 ---
 internal: true
-description: Builds an existing version from the feature backlog. Delegated from build-version.md.
+description: Builds an existing version from the feature backlog. Delegated from build.md.
 ---
 
 # BUILD VERSION
 
-### CHECK PROJECT SETTINGS
-- Check if `{{cfProject}}/project.json` exists.
-  - If it does NOT exist, tell the **USER**: "This version of Cody Product Builder uses a project settings file. Let me set that up."
-    - Read the PRD or plan docs to determine the project name and description.
-    - Scan version and patch folders in {{cfWorkPhase}} to find the latest completed version (default to `"0.0.0"` if none found).
-    - Set phase to `"build"` if {{cfWorkPhase}} has version or patch folders, otherwise `"plan"`.
-    - Present all values to the **USER** for confirmation.
-    - **STOP** and wait for the **USER**.
-    - Copy `{{cfTemplates}}/project.json` to `{{cfProject}}/project.json` and fill in the confirmed values. Use `YYYY-MM-DD` format for dates.
+- **AGENT** show the **USER** the following:
+```
++--------------------------+
+BUILD VERSION : START
++--------------------------+
+```
 
 ### CHOOSE VERSION TO BUILD
 - If the **USER** already typed the version they want to build, you can skip to the next section, 'CREATE VERSION FOLDER', otherwise:
@@ -79,9 +76,9 @@ command:
 
 :cody refresh
 
-Otherwise, you can continue working on a new version with:
+Otherwise, you can continue building with:
 
-:cody build version
+:cody build
 
 What would you like to do next?
 ```

@@ -1,24 +1,9 @@
 ---
-command: ":cody patch"
-description: Creates a lightweight patch for a quick bug fix or small enhancement, skipping the full version build cycle.
+internal: true
+description: Creates a lightweight patch for a quick bug fix or small enhancement. Delegated from build.md.
 ---
 
 # PATCH
-
-### CHECK PREREQUISITES
-- Check if {{cfPlanPhase}} folder exists and has plan phase documents (prd.md or plan.md).
-  - If it does NOT exist, tell the **USER** they need to complete the plan phase first (`:cody plan`). Stop here.
-- If {{cfWorkPhase}} folder does not exist, create it.
-
-### CHECK PROJECT SETTINGS
-- Check if `{{cfProject}}/project.json` exists.
-  - If it does NOT exist, tell the **USER**: "This version of Cody Product Builder uses a project settings file. Let me set that up."
-    - Read the PRD or plan docs to determine the project name and description.
-    - Scan version and patch folders in {{cfWorkPhase}} to find the latest completed version (default to `"0.0.0"` if none found).
-    - Set phase to `"build"` if {{cfWorkPhase}} has version or patch folders, otherwise `"plan"`.
-    - Present all values to the **USER** for confirmation.
-    - **STOP** and wait for the **USER**.
-    - Copy `{{cfTemplates}}/project.json` to `{{cfProject}}/project.json` and fill in the confirmed values. Use `YYYY-MM-DD` format for dates.
 
 ### ASK WHAT NEEDS TO BE DONE
 
@@ -33,13 +18,13 @@ PATCH : START
 - **STOP** and wait for the **USER**.
 
 ### UNDERSTAND THE PROBLEM
-- Ask brief, targeted follow-up questions until you (**AGENT**) understand the problem clearly. Keep it to 2–3 questions maximum — patches are meant to be fast.
+- Ask brief, targeted follow-up questions until you (**AGENT**) understand the problem clearly. Keep it to 2-3 questions maximum -- patches are meant to be fast.
 - If the **USER** types `help me`, provide 3 possible ways they can clarify.
 - Once you understand the problem, continue.
 
 ### DETERMINE PATCH VERSION
 - Look at all existing version and patch folders in {{cfWorkPhase}} to determine the next available patch version number.
-- Suggest a patch version number and a short name to the **USER** (following the Version Naming Convention in {{cfRoot}}/agent.md — the patch increment of `v[major.minor.patch]`).
+- Suggest a patch version number and a short name to the **USER** (following the Version Naming Convention in {{cfRoot}}/agent.md -- the patch increment of `v[major.minor.patch]`).
 - Ask the **USER** to confirm the version number and name.
 - **STOP** and wait for the **USER**.
 
@@ -47,11 +32,11 @@ PATCH : START
 - Create the patch folder in {{cfWorkPhase}} using the confirmed version name (e.g., `v0.2.1-fix-login-bug`).
 - Copy `{{cfTemplates}}/build/patch.md` to the patch folder.
 - Fill in the following sections of the patch document:
-  - **Patch Version** — the confirmed version number and name
-  - **Date** — today's date
-  - **Type** — Bug Fix, Small Enhancement, or Hotfix (determine from the conversation)
-  - **Original Prompt** — the **USER's** original request
-  - **Problem** — your understanding of the issue
+  - **Patch Version** -- the confirmed version number and name
+  - **Date** -- today's date
+  - **Type** -- Bug Fix, Small Enhancement, or Hotfix (determine from the conversation)
+  - **Original Prompt** -- the **USER's** original request
+  - **Problem** -- your understanding of the issue
 
 ### PRESENT THE PLAN
 - Write your proposed approach in the **Plan** section of the patch document.
@@ -65,9 +50,9 @@ PATCH : START
 
 ### UPDATE PATCH DOCUMENT
 - Update the patch document with:
-  - **Solution** — what was actually done
-  - **Files Changed** — auto-generate the list of files you created, modified, or deleted
-  - **Testing Notes** — how the **USER** can verify the fix
+  - **Solution** -- what was actually done
+  - **Files Changed** -- auto-generate the list of files you created, modified, or deleted
+  - **Testing Notes** -- how the **USER** can verify the fix
 
 ### UPDATE RELEASE NOTES
 - Check if {{cfWorkPhase}}/release-notes.md exists.
@@ -106,8 +91,8 @@ Patch completed and verified. Please commit and push your changes to git.
 
 When you're ready, you can continue with:
 
-:cody patch (apply another patch)
-:cody build version (work on a version from the backlog)
+:cody build (to work on another version or patch)
+:cody refresh (to update project documents)
 
 What would you like to do next?
 ```

@@ -87,6 +87,12 @@ Patches are lightweight fixes or small enhancements that skip the full version b
 #### **Patch Document (`patch.md`)**
 > Captures the problem, the plan, the solution, and files changed. Does not require a design doc, tasklist, or retrospective.
 
+### **Ideas**
+Ideas come up all the time while you're building. Instead of losing them or context-switching to another app, `:cody idea` lets you capture them on the spot. They're stored in a simple tracker alongside your project and offered as starting points when you create a new version or patch.
+
+#### **Idea Tracker (`ideas.md`)**
+> A table of captured ideas with an ID, date, description, and status (Open or Closed). Created automatically when you capture your first idea.
+
 ### **Release Notes (`release-notes.md`)**
 > Automatically updated after each version or patch, tracking changes, enhancements, and fixes.
 

@@ -2,7 +2,7 @@
 
 ![Cody Product Builder](./cody-product-builder-logo.png)
 
-![Version](https://img.shields.io/badge/version-1.6.0-blue)
+![Version](https://img.shields.io/badge/version-1.7.0-blue)
 [![License](https://img.shields.io/badge/license-Custom-orange)](LICENSE.md)
 [![iBuildWith.ai](https://img.shields.io/badge/by-iBuildWith.ai-20c05b)](https://www.ibuildwith.ai)
 
@@ -109,6 +109,7 @@ Commands use the format: `:cody [command]`
 | `:cody help` | Shows help and all available commands. |
 | `:cody plan` | Starts the PLAN phase and creates a new Cody Product Builder project. |
 | `:cody build` | Guided build phase: creates the feature backlog if needed, then lets you create a new version, work on an existing version, or work on a patch. |
+| `:cody idea` | Quick-capture an idea for later, or view all captured ideas. |
 | `:cody refresh` | Refreshes the AI agent’s memory about the project. Auto-detects brownfield projects. Optionally updates PRD, plan, and release notes. |
 
 ---
@@ -131,6 +132,7 @@ Commands use the format: `:cody [command]`
 ├── commands/              # Command implementation files
 └── templates/             # Document templates
     ├── project.json       # Template for project metadata settings
+    ├── ideas.md           # Template for idea tracker
     ├── plan/              # Templates for discovery.md, brownfield-analysis.md, prd.md, plan.md
     └── build/             # Templates for feature-backlog.md, release-notes.md, patch.md
         └── version/       # Templates for design.md, tasklist.md, retrospective.md
@@ -142,6 +144,7 @@ Commands use the format: `:cody [command]`
 cody-projects/
 └── product-builder/       # Generated project files (created during :cody plan)
     ├── project.json       # Project metadata (name, version, phase, dates)
+    ├── ideas.md           # Idea tracker (created on first capture)
     ├── plan/              # Planning phase documents
     └── build/             # Build phase documents (backlog, versions, patches)
 ```
@@ -171,6 +174,9 @@ cody-projects/
 
 **Quick bug fixes, small enhancements, or updates:**
 `:cody build` and choose the patch option for a lightweight fix without going through the full version build cycle.
+
+**Capture an idea for later:**
+`:cody idea [description]` to save it without interrupting your current work. When you start a new version or patch, Cody will offer your open ideas as a starting point.
 
 **Working on an existing project:**
 `:cody refresh` to have Cody analyze your codebase and generate all planning documents automatically, then `:cody build` to start building.

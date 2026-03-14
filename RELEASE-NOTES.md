@@ -6,6 +6,33 @@ The order of releases listed below are descending — the latest version is alwa
 
 ---
 
+# v1.7.0 - Idea Tracker - 2026-03-14
+
+## Overview
+Added a quick-capture idea tracker so users can log ideas mid-flow without disrupting their current work. Ideas are stored in a simple table and offered as starting points when creating new versions or patches.
+
+## Key Features
+- **`:cody idea [description]`** -- Captures an idea instantly. Adds a row to the ideas table with an auto-incremented ID, date, description, and status. No follow-up questions, no workflow disruption.
+- **`:cody idea`** (no args) -- Shows all captured ideas.
+- **Ideas offered during build** -- When starting a new version or patch, the agent checks for open ideas and offers them as a starting point. If the user picks one, its status updates to `In Progress`.
+- **Simple status tracking** -- Ideas are either `Open` or `Closed`. An idea is marked `Closed` the moment it's picked up as a version or patch.
+
+## Changes
+- Created `.cody/commands/idea.md` -- new user-facing command
+- Created `.cody/templates/ideas.md` -- template for the ideas tracker
+- Updated `build-version-new.md` -- checks for open ideas after the banner, before version discovery
+- Updated `patch.md` -- checks for open ideas after the banner, before asking what needs fixing
+- Updated `build-version-existing.md` and `patch.md` -- idea status updates handled at pick time, not completion
+- Updated `agent.md` -- added `:cody idea` to command registry and `ideas.md` to project documentation
+- Updated README -- added idea command to table, usage section, and file structure
+
+## Other Notes
+- Ideas are separate from the feature backlog -- they are unplanned thoughts, not structured work items
+- ideas.md is created from a template on first capture, not during project setup
+- ideas.md lives at the project root (`cody-projects/product-builder/ideas.md`)
+
+---
+
 # v1.6.0 - Unified Build Command - 2026-03-14
 
 ## Overview

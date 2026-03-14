@@ -12,6 +12,13 @@ NEW VERSION : START
 +---------------------+
 ```
 
+### CHECK FOR OPEN IDEAS
+- Check if `{{cfProject}}/ideas.md` exists and has ideas with status `Open`.
+  - If YES, show the open ideas and ask the **USER**: "Would you like to work on one of these ideas, or describe something new?"
+    - If the **USER** picks an idea, update its status to `Closed` in `{{cfProject}}/ideas.md`. Use that idea as the starting point for the new version discovery.
+    - If the **USER** wants something new, continue with the normal flow.
+  - If NO (no file or no open ideas), continue with the normal flow.
+
 ### CREATE VERSION FOLDER
 - Ask the **USER** what's the version number and name.
 - Wait for **USER** to tell you.

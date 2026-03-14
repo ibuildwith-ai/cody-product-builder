@@ -14,6 +14,13 @@ PATCH : START
 +-----------+
 ```
 
+### CHECK FOR OPEN IDEAS
+- Check if `{{cfProject}}/ideas.md` exists and has ideas with status `Open`.
+  - If YES, show the open ideas and ask the **USER**: "Would you like to work on one of these ideas, or describe something new?"
+    - If the **USER** picks an idea, update its status to `Closed` in `{{cfProject}}/ideas.md`. Use that idea as the starting point for understanding the problem.
+    - If the **USER** wants something new, continue with the normal flow below.
+  - If NO (no file or no open ideas), continue with the normal flow below.
+
 - Ask the **USER**: `What needs to be fixed or changed?`
 - **STOP** and wait for the **USER**.
 

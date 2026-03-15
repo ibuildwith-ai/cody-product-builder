@@ -11,8 +11,16 @@ This document lists features and enhancements derived from the plan. It is a liv
 
 ## Backlog
 
-| ID  | Feature             | Description                               | Priority | Status |
-|-----|---------------------|-------------------------------------------|----------|--------|
+| #  | Feature             | Description                               | Source |
+|----|---------------------|-------------------------------------------|--------|
+| 27 | Rename Commands | Rename /cody to /cody-product-builder in all command files. To standardize. | User |
+| 28 | Optimize Agent File | Update the agent.md file to be more optimized. Like a skill with progressive disclosure. | User |
+| 29 | Extensive Refresh | Make sure the refresh command is doing an extensive review not just a very simple review (both when refreshing a current Cody project or a brownfield project) | User |
+| 30 | Brownfield Backlog Options | If it's a brownfield project, when building the backlog, it should ask if we want the backlog to have stuff we already worked on or just start fresh (empty ready to add new versions to it) | User |
+| 31 | Full Management App | Full app for managing coding installations and projects across multiple projects. | User |
+| 32 | Consolidate Command Folders | Combine all commands into .commands folder and move .claude, .cursor and .github in there. The user can pick which one they want on their own. | User |
+| 33 | Remove Auto-Creation Check | Remove in June 2026, the project.json auto creation check added in v1.5.2. | User |
+
 
 ## v1.3.0 - Restructure and Improvements - 🟢 Completed
 Major structural reorganization: project output moved to `cody-projects/`, flattened `.cody/config/`, added Cursor support.
@@ -79,6 +87,15 @@ Quick-capture idea tracker for logging ideas mid-flow.
 | 22 | `:cody idea` command | Capture ideas instantly or view all ideas | High | 🟢 Completed |
 | 23 | Ideas offered during build | Open ideas shown when starting new versions or patches | Medium | 🟢 Completed |
 | 24 | Idea status tracking | Ideas marked Closed when picked up | Low | 🟢 Completed |
+
+## v1.7.2 - Consolidate Ideas Into Backlog - 🟢 Completed
+Consolidated ideas.md into the Backlog section of feature-backlog.md.
+
+| ID  | Feature                 | Description                              | Priority | Status |
+|-----|-------------------------|------------------------------------------|----------|--------|
+| 34 | Consolidate ideas into backlog | Merged ideas.md and Backlog section into a single location with Source column | High | 🟢 Completed |
+| 35 | Simplified Backlog columns | Reduced Backlog to #, Feature, Description, Source -- removed Priority and Status | Medium | 🟢 Completed |
+| 36 | Deferred backlog removal | Items stay in Backlog until version/patch entry is written, not when picked | Medium | 🟢 Completed |
 
 ## v1.7.1 - File System Check Safety - 🟢 Completed
 Added file system safety rule to prevent false negatives when checking for files and folders.

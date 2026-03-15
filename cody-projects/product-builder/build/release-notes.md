@@ -4,6 +4,7 @@ This document lists new features, bug fixes and other changes implemented during
 
 The order of releases listed below are descending -- the latest version or patch is always shown at the top.
 
+- [v1.7.2 - Consolidate Ideas Into Backlog](#v172---consolidate-ideas-into-backlog---2026-03-15)
 - [v1.7.1 - File System Check Safety](#v171---file-system-check-safety---2026-03-14)
 - [v1.7.0 - Idea Tracker](#v170---idea-tracker---2026-03-14)
 - [v1.6.0 - Unified Build Command](#v160---unified-build-command---2026-03-14)
@@ -12,6 +13,12 @@ The order of releases listed below are descending -- the latest version or patch
 - [v1.5.0 - Patches & Command Restructure](#v150---patches--command-restructure---2026-03-12)
 - [v1.4.0 - Brownfield Project Support](#v140---brownfield-project-support---2026-02-26)
 - [v1.3.0 - Restructure and Improvements](#v130---restructure-and-improvements---2026-02-23)
+
+---
+
+# v1.7.2 - Consolidate Ideas Into Backlog (Patch) - 2026-03-15
+- **Type:** Small Enhancement
+- **Summary:** Consolidated the separate `ideas.md` tracker into the Backlog section of `feature-backlog.md`. `:cody idea` now writes directly to the backlog with a Source column (User/Agent) to distinguish who added the item. Backlog section simplified to 4 columns (#, Feature, Description, Source) -- no more Priority or Status. Items stay in the Backlog until a version or patch entry is actually written. Deleted `ideas.md` template and project file. Updated all commands, agent.md, templates, and README.
 
 ---
 

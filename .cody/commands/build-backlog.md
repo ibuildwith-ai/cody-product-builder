@@ -10,6 +10,7 @@ If it does not exist:
 
 - Copy from {{cfTemplates}}/build/feature-backlog.md into {{cfWorkPhase}}
 - Review the `plan.md` document you created in the discovery phase, then generate and update the `feature-backlog.md` document.
+- When adding items to the **Backlog** section (features not assigned to a version), use Source = `Agent`. When creating version sections, use the version section format (ID, Feature, Description, Priority, Status) -- version sections do not have a Source column.
 
 If it does exist:
 

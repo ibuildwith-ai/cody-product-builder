@@ -60,8 +60,7 @@ The commands use a consistent pattern: banner display, prerequisite checks, guid
 No database. All data is stored as markdown files and a single JSON settings file:
 
 - `project.json` -- Project metadata (name, description, version, phase, dates)
-- `ideas.md` -- Idea tracker table (ID, date, description, status)
-- `feature-backlog.md` -- Feature tables grouped by version with priority and status
+- `feature-backlog.md` -- Feature tables grouped by version with priority and status; Backlog section for unscheduled ideas (ID, feature, description, source)
 - Per-version folders contain design.md, tasklist.md, and retrospective.md
 - Per-patch folders contain patch.md
 

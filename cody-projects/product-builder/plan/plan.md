@@ -49,7 +49,7 @@ All data is file-based. No database.
 | File | Location | Format | Purpose |
 |------|----------|--------|---------|
 | `project.json` | `{{cfProject}}/` | JSON | Project metadata (name, description, version, phase, dates) |
-| `ideas.md` | `{{cfProject}}/` | Markdown table | Idea tracker (ID, date, description, status) |
+| `feature-backlog.md` Backlog section | `{{cfWorkPhase}}/` | Markdown table | Unscheduled ideas and suggestions (ID, feature, description, source) |
 | `discovery.md` | `{{cfPlanPhase}}/` | Markdown | Greenfield discovery Q&A and summary |
 | `brownfield-analysis.md` | `{{cfPlanPhase}}/` | Markdown | Brownfield codebase audit and Q&A |
 | `prd.md` | `{{cfPlanPhase}}/` | Markdown | Product requirements (goals, features, users, stories) |

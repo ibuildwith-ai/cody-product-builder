@@ -13,9 +13,9 @@ This document lists features and enhancements derived from the plan. It is a liv
 
 ## Backlog
 
-| ID  | Feature             | Description                               | Priority | Status |
-|-----|---------------------|-------------------------------------------|----------|--------|
-| [id] | [Feature Name]   | [Feature Description]            | [Priority]   | [Status]  |
+| #  | Feature             | Description                               | Source |
+|----|---------------------|-------------------------------------------|--------|
+| [id] | [Feature Name]   | [Feature Description]            | [User or Agent]  |
 
 ## [Add Version] - [status]
 [Add a short description, no more than a sentence here about this version.]

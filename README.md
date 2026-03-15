@@ -2,7 +2,7 @@
 
 ![Cody Product Builder](./cody-product-builder-logo.png)
 
-![Version](https://img.shields.io/badge/version-1.7.1-blue)
+![Version](https://img.shields.io/badge/version-1.7.2-blue)
 [![License](https://img.shields.io/badge/license-Custom-orange)](LICENSE.md)
 [![iBuildWith.ai](https://img.shields.io/badge/by-iBuildWith.ai-20c05b)](https://www.ibuildwith.ai)
 
@@ -87,11 +87,8 @@ Patches are lightweight fixes or small enhancements that skip the full version b
 #### **Patch Document (`patch.md`)**
 > Captures the problem, the plan, the solution, and files changed. Does not require a design doc, tasklist, or retrospective.
 
-### **Ideas**
-Ideas come up all the time while you're building. Instead of losing them or context-switching to another app, `:cody idea` lets you capture them on the spot. They're stored in a simple tracker alongside your project and offered as starting points when you create a new version or patch.
-
-#### **Idea Tracker (`ideas.md`)**
-> A table of captured ideas with an ID, date, description, and status (Open or Closed). Created automatically when you capture your first idea.
+### **Quick Ideas**
+Ideas come up all the time while you're building. Instead of losing them or context-switching to another app, `:cody idea` lets you capture them on the spot. They're added directly to the Backlog section of the feature backlog and offered as starting points when you create a new version or patch.
 
 ### **Release Notes (`release-notes.md`)**
 > Automatically updated after each version or patch, tracking changes, enhancements, and fixes.
@@ -115,7 +112,7 @@ Commands use the format: `:cody [command]`
 | `:cody help` | Shows help and all available commands. |
 | `:cody plan` | Starts the PLAN phase and creates a new Cody Product Builder project. |
 | `:cody build` | Guided build phase: creates the feature backlog if needed, then lets you create a new version, work on an existing version, or work on a patch. |
-| `:cody idea` | Quick-capture an idea for later, or view all captured ideas. |
+| `:cody idea` | Quick-capture an idea to the backlog, or view backlog items. |
 | `:cody refresh` | Refreshes the AI agent’s memory about the project. Auto-detects brownfield projects. Optionally updates PRD, plan, and release notes. |
 
 ---
@@ -138,7 +135,6 @@ Commands use the format: `:cody [command]`
 ├── commands/              # Command implementation files
 └── templates/             # Document templates
     ├── project.json       # Template for project metadata settings
-    ├── ideas.md           # Template for idea tracker
     ├── plan/              # Templates for discovery.md, brownfield-analysis.md, prd.md, plan.md
     └── build/             # Templates for feature-backlog.md, release-notes.md, patch.md
         └── version/       # Templates for design.md, tasklist.md, retrospective.md
@@ -150,7 +146,6 @@ Commands use the format: `:cody [command]`
 cody-projects/
 └── product-builder/       # Generated project files (created during :cody plan)
     ├── project.json       # Project metadata (name, version, phase, dates)
-    ├── ideas.md           # Idea tracker (created on first capture)
     ├── plan/              # Planning phase documents
     └── build/             # Build phase documents (backlog, versions, patches)
 ```
@@ -182,7 +177,7 @@ cody-projects/
 `:cody build` and choose the patch option for a lightweight fix without going through the full version build cycle.
 
 **Capture an idea for later:**
-`:cody idea [description]` to save it without interrupting your current work. When you start a new version or patch, Cody will offer your open ideas as a starting point.
+`:cody idea [description]` to save it to the backlog without interrupting your current work. When you start a new version or patch, Cody will offer your backlog items as a starting point.
 
 **Working on an existing project:**
 `:cody refresh` to have Cody analyze your codebase and generate all planning documents automatically, then `:cody build` to start building.

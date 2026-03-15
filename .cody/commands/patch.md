@@ -14,12 +14,12 @@ PATCH : START
 +-----------+
 ```
 
-### CHECK FOR OPEN IDEAS
-- Check if `{{cfProject}}/ideas.md` exists and has ideas with status `Open`.
-  - If YES, show the open ideas and ask the **USER**: "Would you like to work on one of these ideas, or describe something new?"
-    - If the **USER** picks an idea, update its status to `Closed` in `{{cfProject}}/ideas.md`. Use that idea as the starting point for understanding the problem.
+### CHECK BACKLOG FOR IDEAS
+- Check if `{{cfWorkPhase}}/feature-backlog.md` exists and has items in the **Backlog** section.
+  - If YES, show the Backlog items and ask the **USER**: "Would you like to work on one of these backlog items, or describe something new?"
+    - If the **USER** picks a backlog item, use it as the starting point for understanding the problem. Do NOT remove it from the Backlog section yet -- it will be removed when the patch entry is written in the feature backlog.
     - If the **USER** wants something new, continue with the normal flow below.
-  - If NO (no file or no open ideas), continue with the normal flow below.
+  - If NO (no file or no Backlog items), continue with the normal flow below.
 
 - Ask the **USER**: `What needs to be fixed or changed?`
 - **STOP** and wait for the **USER**.

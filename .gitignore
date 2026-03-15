@@ -7,9 +7,6 @@
 ehthumbs.db
 Thumbs.db
 
-# Generated project files
-cody-projects/
-
 # Editor files
 .vscode/
 .idea/
@@ -17,5 +14,6 @@ cody-projects/
 *.swo
 *~
 
-# Ignore Folder
+# Other
 ignore/
+.claude/settings.local.json

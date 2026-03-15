@@ -12,3 +12,4 @@ Ideas captured during development. Use `:cody idea [description]` to add new ide
 | 4 | 2026-03-15 | If it's a brownfield project, when building the backlog, it should ask if we want the backlog to have stuff we already worked on or just start fresh (empty ready to add new versions to it) | Open |
 | 5 | 2026-03-15 | Should the idea tracker just store the ideas in the backlog? | Open |
 | 6 | 2026-03-15 | Full app for managing coding installations and projects across multiple projects. | Open |
+| 7 | 2026-03-15 | Combine all commands into .commands folder and move .claude, .cursor and .github in there. The user can pick which one they want on their own. | Open |

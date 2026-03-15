@@ -204,4 +204,4 @@ See [LICENSE.md](LICENSE.md) for complete terms.
 
 ## Release Notes
 
-See [RELEASE-NOTES.md](RELEASE-NOTES.md) for version history.
+See [Release Notes](cody-projects/product-builder/build/release-notes.md) for version history.

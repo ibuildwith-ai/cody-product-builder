@@ -1,8 +1,17 @@
 # Release Notes
 
-This document lists new features, bug fixes and other changes implemented in each version of Cody Product Builder.
+This document lists new features, bug fixes and other changes implemented during a particular build (version or patch).
 
-The order of releases listed below are descending — the latest version is always shown at the top.
+The order of releases listed below are descending -- the latest version or patch is always shown at the top.
+
+- [v1.7.1 - File System Check Safety](#v171---file-system-check-safety---2026-03-14)
+- [v1.7.0 - Idea Tracker](#v170---idea-tracker---2026-03-14)
+- [v1.6.0 - Unified Build Command](#v160---unified-build-command---2026-03-14)
+- [v1.5.2 - Project Settings File](#v152---project-settings-file---2026-03-14)
+- [v1.5.1 - Patch Workflow Improvements](#v151---patch-workflow-improvements---2026-03-13)
+- [v1.5.0 - Patches & Command Restructure](#v150---patches--command-restructure---2026-03-12)
+- [v1.4.0 - Brownfield Project Support](#v140---brownfield-project-support---2026-02-26)
+- [v1.3.0 - Restructure and Improvements](#v130---restructure-and-improvements---2026-02-23)
 
 ---
 
@@ -11,10 +20,16 @@ The order of releases listed below are descending — the latest version is alwa
 ## Overview
 Added a file system safety rule to `agent.md` to prevent false negatives when checking for files and folders. This addresses an issue where the agent incorrectly concluded a folder was empty due to a path resolution failure, triggering the wrong workflow (brownfield instead of refresh).
 
+## Key Features
+None
+
 ## Enhancements
 - **New "File System Checks" section in `agent.md`** -- Two rules:
   1. Always use placeholder paths (`{{cfPlanPhase}}`, `{{cfProject}}`, etc.), never construct paths manually or use relative paths
   2. Before concluding files don't exist, verify with at least two different methods (e.g., glob search AND directory listing) to prevent false negatives
+
+## Bug Fixes
+None
 
 ## Other Notes
 - Root cause was a relative path (`./cody-projects/...`) failing to resolve in a glob search, while the files existed and were found immediately via directory listing
@@ -30,10 +45,10 @@ Added a quick-capture idea tracker so users can log ideas mid-flow without disru
 ## Key Features
 - **`:cody idea [description]`** -- Captures an idea instantly. Adds a row to the ideas table with an auto-incremented ID, date, description, and status. No follow-up questions, no workflow disruption.
 - **`:cody idea`** (no args) -- Shows all captured ideas.
-- **Ideas offered during build** -- When starting a new version or patch, the agent checks for open ideas and offers them as a starting point. If the user picks one, its status updates to `In Progress`.
+- **Ideas offered during build** -- When starting a new version or patch, the agent checks for open ideas and offers them as a starting point. If the user picks one, its status updates to `Closed`.
 - **Simple status tracking** -- Ideas are either `Open` or `Closed`. An idea is marked `Closed` the moment it's picked up as a version or patch.
 
-## Changes
+## Enhancements
 - Created `.cody/commands/idea.md` -- new user-facing command
 - Created `.cody/templates/ideas.md` -- template for the ideas tracker
 - Updated `build-version-new.md` -- checks for open ideas after the banner, before version discovery
@@ -41,6 +56,9 @@ Added a quick-capture idea tracker so users can log ideas mid-flow without disru
 - Updated `build-version-existing.md` and `patch.md` -- idea status updates handled at pick time, not completion
 - Updated `agent.md` -- added `:cody idea` to command registry and `ideas.md` to project documentation
 - Updated README -- added idea command to table, usage section, and file structure
+
+## Bug Fixes
+None
 
 ## Other Notes
 - Ideas are separate from the feature backlog -- they are unplanned thoughts, not structured work items
@@ -62,7 +80,7 @@ Consolidated `:cody build backlog`, `:cody build version`, and `:cody patch` int
 - **Workflow banners** -- Each delegated workflow now shows its own banner (`BUILD VERSION : START`, `NEW VERSION : START`, `PATCH : START`) so the user always knows which workflow they're in
 - **Simplified command set** -- Down to 4 commands: `help`, `plan`, `build`, `refresh`
 
-## Changes
+## Enhancements
 - Created `build.md` as the unified build entry point
 - Converted `build-backlog.md` to internal delegation file (removed banner, prereq checks, stop points)
 - Converted `patch.md` to internal delegation file (removed prereq checks)
@@ -72,6 +90,9 @@ Consolidated `:cody build backlog`, `:cody build version`, and `:cody patch` int
 - Updated all closing messages to reference `:cody build` instead of old commands
 - Updated `agent.md` command registry to 4 commands
 - Updated README command table and usage instructions
+
+## Bug Fixes
+None
 
 ## Other Notes
 - All internal workflows (version building, patching, backlog creation) remain functionally identical
@@ -93,6 +114,12 @@ Added a `project.json` file that tracks project metadata (name, description, ver
 - **Phase transitions** -- `phase` field updates from `"plan"` to `"build"` when entering the build phase
 - **Name/description sync via refresh** -- When `:cody refresh` updates PRD/plan docs, it checks if the project name or description changed and offers to update `project.json` (with user confirmation)
 
+## Enhancements
+None
+
+## Bug Fixes
+None
+
 ## Other Notes
 - Template stored at `.cody/templates/project.json`
 - All dates use `YYYY-MM-DD` (ISO 8601) format
@@ -100,16 +127,9 @@ Added a `project.json` file that tracks project metadata (name, description, ver
 
 ---
 
-# v1.5.1 - Patch Workflow Improvements - 2026-03-13
-
-## Overview
-Improvements to the patch workflow and template based on initial usage feedback.
-
-## Enhancements
-- **Patch title now includes name** — Patch template title and version field now include both version number and name (e.g., "v0.2.1 -- Fix Login Bug") instead of just the version number
-- **Agent verification step** — New "VERIFY THE FIX" step where the agent runs its own checks (compile, tests, sanity check) before handing off to the user
-- **User testing step** — New "USER TESTING" step where the agent presents testing notes, waits for user confirmation, and loops back to fix if issues are found
-- **Improved closing message** — Updated to tell the user to commit and push (previously only said commit)
+# v1.5.1 - Patch Workflow Improvements (Patch) - 2026-03-13
+- **Type:** Small Enhancement
+- **Summary:** Improved the patch workflow with patch titles that include names, an agent verification step before user handoff, a user testing step with confirmation loop, and updated closing message to mention both commit and push.
 
 ---
 
@@ -119,29 +139,18 @@ Improvements to the patch workflow and template based on initial usage feedback.
 Two changes in this release: (1) lightweight patches for quick fixes that skip the full version build cycle, and (2) a command restructure that simplifies the command surface from 9 commands down to 6.
 
 ## Key Features
-
 ### Patches
-- **`:cody patch` command** — New command that kicks off a streamlined patch workflow: brief Q&A to understand the problem, user-confirmed plan, fix, auto-generated patch document, and release notes update
-- **Patch template** — New `patch.md` template in `.cody/templates/build/` with structured fields for version, date, type, original prompt, problem, plan, solution, files changed (auto-generated), and testing notes
-- **Patch versioning** — Patches use the same `v[major.minor.patch]` numbering as versions, incrementing the patch segment (e.g., v1.1.0 is a version, v1.1.1 is a patch)
-- **Patch folders in build directory** — Patch folders live alongside version folders in `cody-projects/product-builder/build/`, distinguished by containing only a `patch.md` file
+- **`:cody patch` command** -- New command that kicks off a streamlined patch workflow: brief Q&A to understand the problem, user-confirmed plan, fix, auto-generated patch document, and release notes update
+- **Patch template** -- New `patch.md` template in `.cody/templates/build/` with structured fields for version, date, type, original prompt, problem, plan, solution, files changed (auto-generated), and testing notes
+- **Patch versioning** -- Patches use the same `v[major.minor.patch]` numbering as versions, incrementing the patch segment (e.g., v1.1.0 is a version, v1.1.1 is a patch)
+- **Patch folders in build directory** -- Patch folders live alongside version folders in `cody-projects/product-builder/build/`, distinguished by containing only a `patch.md` file
 
 ### Command Restructure
-- **`:cody build` → `:cody build backlog`** — Renamed for clarity (it creates the feature backlog, not a build)
-- **`:cody version add` + `:cody version build` → `:cody build version`** — Merged into a single router command that asks "existing or new?" and delegates accordingly
-- **`:cody refresh update` folded into `:cody refresh`** — Refresh now asks "Would you like me to update the PRD, plan, and release notes?" at the end, instead of requiring a separate command
-- **`:cody relearn` removed** — Redundant with the `/cody` slash command activation, which reads the same files
-- **Internal files renamed** — `version-build.md` → `build-version-existing.md`, `version-add.md` → `build-version-new.md` so all build-related files group together alphabetically
-
-### Final 6-Command Set
-| Command | Description |
-|---------|-------------|
-| `:cody help` | Shows help and all available commands |
-| `:cody plan` | Starts the PLAN phase |
-| `:cody build backlog` | Generates the feature backlog from the plan |
-| `:cody build version` | Work on a version — choose existing or add new |
-| `:cody patch` | Lightweight fix or small enhancement |
-| `:cody refresh` | Refreshes agent memory, optionally updates docs |
+- **`:cody build` renamed to `:cody build backlog`** -- Renamed for clarity (it creates the feature backlog, not a build)
+- **`:cody version add` + `:cody version build` merged into `:cody build version`** -- Single router command that asks "existing or new?" and delegates accordingly
+- **`:cody refresh update` folded into `:cody refresh`** -- Refresh now asks "Would you like me to update the PRD, plan, and release notes?" at the end, instead of requiring a separate command
+- **`:cody relearn` removed** -- Redundant with the `/cody` slash command activation, which reads the same files
+- **Internal files renamed** -- `version-build.md` to `build-version-existing.md`, `version-add.md` to `build-version-new.md` so all build-related files group together alphabetically
 
 ## Enhancements
 - Updated release notes template with separate entry formats for versions (full entry) and patches (lightweight inline entry with type and summary)
@@ -150,9 +159,12 @@ Two changes in this release: (1) lightweight patches for quick fixes that skip t
 - Updated README with patch documentation, new command table, and file structure diagram
 - Internal delegation files (`refresh-update.md`, `refresh-brownfield.md`, `build-version-existing.md`, `build-version-new.md`) now use `internal: true` frontmatter instead of user-facing command names
 
+## Bug Fixes
+None
+
 ## Other Notes
-- Patches are not tracked in the feature backlog — they are reactive, not planned
-- Patches do not include design docs, tasklists, or retrospectives — that's the point
+- Patches are not tracked in the feature backlog -- they are reactive, not planned
+- Patches do not include design docs, tasklists, or retrospectives -- that's the point
 - No changes to the Plan phase workflow, templates, or placeholder system
 
 ---
@@ -160,25 +172,28 @@ Two changes in this release: (1) lightweight patches for quick fixes that skip t
 # v1.4.0 - Brownfield Project Support - 2026-02-26
 
 ## Overview
-Added support for brownfield projects — existing codebases that don't yet have Cody project files. The `:cody refresh` command now automatically detects brownfield projects, performs an autonomous codebase analysis, asks targeted questions, and auto-generates all plan phase documents.
+Added support for brownfield projects -- existing codebases that don't yet have Cody project files. The `:cody refresh` command now automatically detects brownfield projects, performs an autonomous codebase analysis, asks targeted questions, and auto-generates all plan phase documents.
 
 ## Key Features
-- **Brownfield detection** — `:cody refresh` now detects when application code exists but no Cody project files are present, and automatically triggers the brownfield workflow
-- **Autonomous codebase analysis** — The agent examines the project structure, tech stack, dependencies, architecture, data models, API endpoints, and existing features without manual input
-- **Brownfield analysis document** — New `brownfield-analysis.md` template and document that captures the technical audit of an existing codebase, replacing `discovery.md` for brownfield projects
-- **Auto-generated plan phase** — After analysis and user Q&A, the agent automatically generates `brownfield-analysis.md`, `prd.md`, and `plan.md` with explicit review gates between each document
+- **Brownfield detection** -- `:cody refresh` now detects when application code exists but no Cody project files are present, and automatically triggers the brownfield workflow
+- **Autonomous codebase analysis** -- The agent examines the project structure, tech stack, dependencies, architecture, data models, API endpoints, and existing features without manual input
+- **Brownfield analysis document** -- New `brownfield-analysis.md` template and document that captures the technical audit of an existing codebase, replacing `discovery.md` for brownfield projects
+- **Auto-generated plan phase** -- After analysis and user Q&A, the agent automatically generates `brownfield-analysis.md`, `prd.md`, and `plan.md` with explicit review gates between each document
 
 ## Enhancements
-- New command file `refresh-brownfield.md` — keeps brownfield logic separate from the existing refresh flow (same delegation pattern as `refresh-update.md`)
+- New command file `refresh-brownfield.md` -- keeps brownfield logic separate from the existing refresh flow (same delegation pattern as `refresh-update.md`)
 - New template `brownfield-analysis.md` in `.cody/templates/plan/` with sections for Project Overview, Tech Stack, Project Structure, Key Files, Dependencies, Architecture, Data Model, Existing Features, User Q&A, and Summary
-- Updated `refresh.md` with a brownfield detection gate at the top — existing refresh flow remains unchanged
+- Updated `refresh.md` with a brownfield detection gate at the top -- existing refresh flow remains unchanged
 - Updated `agent.md` with `brownfield-analysis.md` in the Plan phase document table and `:cody refresh brownfield` in the command registry
 - The brownfield Q&A uses the same Knowledge Criteria as `:cody plan`, with `help me` and `no more` escape hatches
 - Added `brownfield-analysis.md` to the refresh command's review hierarchy for subsequent refreshes
 
+## Bug Fixes
+None
+
 ## Other Notes
 - For greenfield projects (no existing code), `:cody refresh` now suggests running `:cody plan` instead of silently failing
-- The brownfield workflow includes explicit STOP gates: after presenting understanding, after each generated document — matching the iterative review pattern of `:cody plan`
+- The brownfield workflow includes explicit STOP gates: after presenting understanding, after each generated document -- matching the iterative review pattern of `:cody plan`
 
 ---
 
@@ -192,17 +207,17 @@ Major structural reorganization of the Cody Product Builder skill. Project outpu
 - Project output now stored in `./cody-projects/product-builder/` (previously `.cody/project/`), aligning with the shared `cody-projects/` convention used across Cody skills
 
 ## Enhancements
-- Flattened `.cody/config/` — all config files now live directly in `.cody/` for a simpler structure
+- Flattened `.cody/config/` -- all config files now live directly in `.cody/` for a simpler structure
 - Removed unused `{{cfConfig}}` and `{{cfComponents}}` placeholders
-- Removed `{{cfAssets}}`, `{{cfDocs}}`, `{{cfRules}}`, `{{cfPrompts}}` placeholders and the entire `library/` folder — unused and unnecessary
+- Removed `{{cfAssets}}`, `{{cfDocs}}`, `{{cfRules}}`, `{{cfPrompts}}` placeholders and the entire `library/` folder -- unused and unnecessary
 - Removed `:cody assets list` command and associated `assets-list.md` file
 - Removed "Storing Images and Assets" section from `:cody help` output
-- Fixed `{{cProject}}` typo in plan.md (was missing the "f" — now correctly `{{cfProject}}`)
+- Fixed `{{cProject}}` typo in plan.md (was missing the "f" -- now correctly `{{cfProject}}`)
 - Added `cody-projects/` to `.gitignore` so generated project files are not tracked
 - Updated README with new file structure diagram, Cursor in activation list, and link to release notes
 
 ## Bug Fixes
-- Fixed hardcoded path `@.cody/build/` in version naming convention docs — now uses `{{cfWorkPhase}}` placeholder
+- Fixed hardcoded path `@.cody/build/` in version naming convention docs -- now uses `{{cfWorkPhase}}` placeholder
 
 ## Other Notes
 - Existing users with files in `.cody/project/` will need to manually move them to `./cody-projects/product-builder/`

@@ -6,6 +6,22 @@ The order of releases listed below are descending — the latest version is alwa
 
 ---
 
+# v1.7.1 - File System Check Safety - 2026-03-14
+
+## Overview
+Added a file system safety rule to `agent.md` to prevent false negatives when checking for files and folders. This addresses an issue where the agent incorrectly concluded a folder was empty due to a path resolution failure, triggering the wrong workflow (brownfield instead of refresh).
+
+## Enhancements
+- **New "File System Checks" section in `agent.md`** -- Two rules:
+  1. Always use placeholder paths (`{{cfPlanPhase}}`, `{{cfProject}}`, etc.), never construct paths manually or use relative paths
+  2. Before concluding files don't exist, verify with at least two different methods (e.g., glob search AND directory listing) to prevent false negatives
+
+## Other Notes
+- Root cause was a relative path (`./cody-projects/...`) failing to resolve in a glob search, while the files existed and were found immediately via directory listing
+- This is a global rule in `agent.md` that applies to all commands, so no individual command files needed changes
+
+---
+
 # v1.7.0 - Idea Tracker - 2026-03-14
 
 ## Overview

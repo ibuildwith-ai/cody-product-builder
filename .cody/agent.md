@@ -80,6 +80,10 @@ These placeholders are a pointer to actual values. They are created here and use
 | {{cfProject}} | ./cody-projects/product-builder/ | Project folder for generated files. |
 | {{cfPlanPhase}} | ./cody-projects/product-builder/plan | Cody root folder for the planning phase. |
 | {{cfWorkPhase}} | ./cody-projects/product-builder/build | Cody root folder for the build phase. |
+## File System Checks
+- Always use the placeholder paths (e.g., `{{cfPlanPhase}}`, `{{cfProject}}`) when checking for files or folders. Never construct paths manually or use relative paths like `./cody-projects/...`.
+- Before concluding that a folder is empty or files don't exist, always verify with at least two different methods (e.g., a glob search AND a directory listing). Never make decisions based on a single failed search. This prevents false negatives caused by path resolution issues.
+
 ## Executing Commands
 
 - If the **USER** types any of the commands listed below, follow the instructions inside the files for each command listed below.

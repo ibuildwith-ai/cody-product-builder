@@ -20,7 +20,7 @@ Cody Product Builder is a markdown-based AI agent skill that guides knowledge wo
 ## Architecture
 Cody Product Builder uses a **command-delegation architecture** built entirely on static files:
 
-- **Entry layer** -- IDE-specific activation files (`.claude/commands/cody.md`, `.cursor/commands/cody.md`, `.github/prompts/cody.prompt.md`) that bootstrap the agent by reading `.cody/activate.md`
+- **Entry layer** -- IDE-specific activation files in `activations/` (`.claude/commands/cody-product-builder.md`, `.cursor/commands/cody-product-builder.md`, `.github/prompts/cody-product-builder.prompt.md`) that bootstrap the agent by reading `.cody/activate.md`
 - **Agent core** -- `.cody/agent.md` defines phases, placeholder system, command registry, version naming conventions, and file system rules
 - **Command layer** -- 5 user-facing command files in `.cody/commands/` that implement the skill's workflows
 - **Delegation layer** -- 6 internal command files that handle sub-workflows (backlog creation, version building, patching, brownfield analysis, document updates)

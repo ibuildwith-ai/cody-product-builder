@@ -4,6 +4,7 @@ This document lists new features, bug fixes and other changes implemented during
 
 The order of releases listed below are descending -- the latest version or patch is always shown at the top.
 
+- [v1.7.3 - Activation Restructure](#v173---activation-restructure-patch---2026-03-17)
 - [v1.7.2 - Consolidate Ideas Into Backlog](#v172---consolidate-ideas-into-backlog---2026-03-15)
 - [v1.7.1 - File System Check Safety](#v171---file-system-check-safety---2026-03-14)
 - [v1.7.0 - Idea Tracker](#v170---idea-tracker---2026-03-14)
@@ -16,13 +17,19 @@ The order of releases listed below are descending -- the latest version or patch
 
 ---
 
+# v1.7.3 - Activation Restructure (Patch) - 2026-03-17
+- **Type:** Small Enhancement
+- **Summary:** Renamed IDE activation command files from `cody` to `cody-product-builder` (slash command is now `/cody-product-builder`). Created an `activations/` folder at the project root and moved `.claude/`, `.cursor/`, and `.github/` into it. Users now copy the folder for their IDE from `activations/` into their project root. Updated `refresh-brownfield.md`, plan docs, and README to reflect the new structure.
+
+---
+
 # v1.7.2 - Consolidate Ideas Into Backlog (Patch) - 2026-03-15
 - **Type:** Small Enhancement
 - **Summary:** Consolidated the separate `ideas.md` tracker into the Backlog section of `feature-backlog.md`. `:cody idea` now writes directly to the backlog with a Source column (User/Agent) to distinguish who added the item. Backlog section simplified to 4 columns (#, Feature, Description, Source) -- no more Priority or Status. Items stay in the Backlog until a version or patch entry is actually written. Deleted `ideas.md` template and project file. Updated all commands, agent.md, templates, and README.
 
 ---
 
-# v1.7.1 - File System Check Safety - 2026-03-14
+# v1.7.1 - File System Check Safety (Patch) - 2026-03-14
 
 ## Overview
 Added a file system safety rule to `agent.md` to prevent false negatives when checking for files and folders. This addresses an issue where the agent incorrectly concluded a folder was empty due to a path resolution failure, triggering the wrong workflow (brownfield instead of refresh).

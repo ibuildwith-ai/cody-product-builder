@@ -15,4 +15,5 @@ Thumbs.db
 *~
 
 # Other
-.claude/settings.local.json
+.claude/
+!activations/.claude/

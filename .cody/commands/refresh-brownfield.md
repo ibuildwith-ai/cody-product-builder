@@ -33,9 +33,9 @@ You (**AGENT**) will thoroughly examine the existing codebase. Review the follow
 
 **IMPORTANT: Skip Cody Product Builder files — they are not part of the application:**
 - `.cody/` — Skip entirely (Cody Product Builder configuration)
-- `.claude/commands/cody.md` — Skip this file only (Cody activation). Other files in `.claude/` may describe the project and should be reviewed.
-- `.cursor/commands/cody.md` — Skip this file only (Cody activation). Other files in `.cursor/` may describe the project and should be reviewed.
-- `.github/prompts/cody.prompt.md` — Skip this file only (Cody activation). Other files in `.github/` may be useful and should be reviewed.
+- `.claude/commands/cody-product-builder.md` — Skip this file only (Cody activation). Other files in `.claude/` may describe the project and should be reviewed.
+- `.cursor/commands/cody-product-builder.md` — Skip this file only (Cody activation). Other files in `.cursor/` may describe the project and should be reviewed.
+- `.github/prompts/cody-product-builder.prompt.md` — Skip this file only (Cody activation). Other files in `.github/` may be useful and should be reviewed.
 
 After your analysis, tell the **USER** what you found. Provide a brief summary of the tech stack, project structure, and what the app appears to do.
 

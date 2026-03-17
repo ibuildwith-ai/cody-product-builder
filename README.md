@@ -2,7 +2,7 @@
 
 ![Cody Product Builder](./cody-product-builder-logo.png)
 
-![Version](https://img.shields.io/badge/version-1.7.2-blue)
+![Version](https://img.shields.io/badge/version-1.7.3-blue)
 [![License](https://img.shields.io/badge/license-Custom-orange)](LICENSE.md)
 [![iBuildWith.ai](https://img.shields.io/badge/by-iBuildWith.ai-20c05b)](https://www.ibuildwith.ai)
 
@@ -120,13 +120,16 @@ Commands use the format: `:cody [command]`
 # File Structure
 
 ```
-.claude/
-└── commands/              # Claude Code slash commands
-    └── cody.md            # Activation command for Claude Code
-
-.cursor/
-└── commands/              # Cursor slash commands
-    └── cody.md            # Activation command for Cursor
+activations/                   # IDE-specific activation files (copy the inner folder for your IDE)
+├── .claude/
+│   └── commands/
+│       └── cody-product-builder.md    # Activation command for Claude Code
+├── .cursor/
+│   └── commands/
+│       └── cody-product-builder.md    # Activation command for Cursor
+└── .github/
+    └── prompts/
+        └── cody-product-builder.prompt.md  # Activation prompt for GitHub Copilot
 
 .cody/
 ├── activate.md            # Activation instructions for AI agents
@@ -139,10 +142,6 @@ Commands use the format: `:cody [command]`
     └── build/             # Templates for feature-backlog.md, release-notes.md, patch.md
         └── version/       # Templates for design.md, tasklist.md, retrospective.md
 
-.github/
-└── prompts/               # GitHub Copilot prompt files
-    └── cody.prompt.md     # Activation prompt for GitHub Copilot
-
 cody-projects/
 └── product-builder/       # Generated project files (created during :cody plan)
     ├── project.json       # Project metadata (name, version, phase, dates)
@@ -154,12 +153,16 @@ cody-projects/
 
 ## Installing
 1. Clone or download Cody Product Builder from: https://github.com/ibuildwith-ai/cody-product-builder
-2. Copy the `.cody`, `.claude`, `.cursor`, and `.github` folders into your project root.
+2. Copy the `.cody` folder into your project root.
+3. From the `activations/` folder, copy the folder for your IDE into your project root:
+   - **Claude Code**: Copy `activations/.claude/` to your project root as `.claude/`
+   - **Cursor**: Copy `activations/.cursor/` to your project root as `.cursor/`
+   - **GitHub Copilot**: Copy `activations/.github/` to your project root as `.github/`
 
 ## Activating
-- **Claude Code**: Use the `/cody` command
-- **Cursor**: Use the `/cody` command
-- **GitHub Copilot**: Use the `/cody` command
+- **Claude Code**: Use the `/cody-product-builder` command
+- **Cursor**: Use the `/cody-product-builder` command
+- **GitHub Copilot**: Use the `/cody-product-builder` command
 - **Other AI Agents**: Say: *"Please read and execute the @.cody/activate.md"*
 
 ## Using

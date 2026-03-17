@@ -18,6 +18,7 @@ This document lists features and enhancements derived from the plan. It is a liv
 | 30 | Brownfield Backlog Options | If it's a brownfield project, when building the backlog, it should ask if we want the backlog to have stuff we already worked on or just start fresh (empty ready to add new versions to it) | User |
 | 31 | Full Management App | Full app for managing coding installations and projects across multiple projects. | User |
 | 33 | Remove Auto-Creation Check | Remove in June 2026, the project.json auto creation check added in v1.5.2. | User |
+| 37 | Configurable Release Notes Location | Allow the user to pick where to store release-notes.md: Cody Product Builder current location (cody-projects/cody-product-builder/build/), their project root, or a custom path in their project. Store the selection in a new field in the cody-projects/cody-product-builder/project.json file. | User |
 
 
 ## v1.3.0 - Restructure and Improvements - 🟢 Completed
@@ -86,13 +87,13 @@ Quick-capture idea tracker for logging ideas mid-flow.
 | 23 | Ideas offered during build | Open ideas shown when starting new versions or patches | Medium | 🟢 Completed |
 | 24 | Idea status tracking | Ideas marked Closed when picked up | Low | 🟢 Completed |
 
-## v1.7.3 - Activation Restructure - 🟢 Completed
-Renamed activation command files and consolidated IDE folders into `activations/`.
+## v1.7.1 - File System Check Safety - 🟢 Completed
+Added file system safety rule to prevent false negatives when checking for files and folders.
 
 | ID  | Feature                 | Description                              | Priority | Status |
 |-----|-------------------------|------------------------------------------|----------|--------|
-| 27 | Rename Commands | Renamed activation command files from `cody` to `cody-product-builder` | High | 🟢 Completed |
-| 32 | Consolidate Command Folders | Created `activations/` folder and moved `.claude/`, `.cursor/`, `.github/` into it | High | 🟢 Completed |
+| 25 | Dual-method file verification | Always verify with at least two methods before concluding files don't exist | High | 🟢 Completed |
+| 26 | Placeholder path enforcement | Always use placeholder paths, never construct paths manually | Medium | 🟢 Completed |
 
 ## v1.7.2 - Consolidate Ideas Into Backlog - 🟢 Completed
 Consolidated ideas.md into the Backlog section of feature-backlog.md.
@@ -103,10 +104,10 @@ Consolidated ideas.md into the Backlog section of feature-backlog.md.
 | 35 | Simplified Backlog columns | Reduced Backlog to #, Feature, Description, Source -- removed Priority and Status | Medium | 🟢 Completed |
 | 36 | Deferred backlog removal | Items stay in Backlog until version/patch entry is written, not when picked | Medium | 🟢 Completed |
 
-## v1.7.1 - File System Check Safety - 🟢 Completed
-Added file system safety rule to prevent false negatives when checking for files and folders.
+## v1.7.3 - Activation Restructure - 🟢 Completed
+Renamed activation command files and consolidated IDE folders into `activations/`.
 
 | ID  | Feature                 | Description                              | Priority | Status |
 |-----|-------------------------|------------------------------------------|----------|--------|
-| 25 | Dual-method file verification | Always verify with at least two methods before concluding files don't exist | High | 🟢 Completed |
-| 26 | Placeholder path enforcement | Always use placeholder paths, never construct paths manually | Medium | 🟢 Completed |
+| 27 | Rename Commands | Renamed activation command files from `cody` to `cody-product-builder` | High | 🟢 Completed |
+| 32 | Consolidate Command Folders | Created `activations/` folder and moved `.claude/`, `.cursor/`, `.github/` into it | High | 🟢 Completed |

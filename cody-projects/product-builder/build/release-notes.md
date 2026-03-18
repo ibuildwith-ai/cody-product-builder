@@ -4,6 +4,7 @@ This document lists new features, bug fixes and other changes implemented during
 
 The order of releases listed below are descending -- the latest version or patch is always shown at the top.
 
+- [v1.8.0 - Agent Optimization](#v180---agent-optimization---2026-03-17)
 - [v1.7.3 - Activation Restructure](#v173---activation-restructure-patch---2026-03-17)
 - [v1.7.2 - Consolidate Ideas Into Backlog](#v172---consolidate-ideas-into-backlog---2026-03-15)
 - [v1.7.1 - File System Check Safety](#v171---file-system-check-safety---2026-03-14)
@@ -14,6 +15,35 @@ The order of releases listed below are descending -- the latest version or patch
 - [v1.5.0 - Patches & Command Restructure](#v150---patches--command-restructure---2026-03-12)
 - [v1.4.0 - Brownfield Project Support](#v140---brownfield-project-support---2026-02-26)
 - [v1.3.0 - Restructure and Improvements](#v130---restructure-and-improvements---2026-02-23)
+
+---
+
+# v1.8.0 - Agent Optimization - 2026-03-17
+
+## Overview
+Optimized the Cody Product Builder agent for progressive disclosure, significantly reducing the token footprint on activation. Shared content extracted into reusable reference files, and the activation flow redesigned to eliminate unnecessary file reads.
+
+## Key Features
+- **Progressive disclosure** -- agent.md slimmed from 102 lines to 53 lines. Phase descriptions, document tables, and version naming conventions moved to on-demand reference files.
+- **References folder** -- new `.cody/references/` directory with shared content (phases.md, knowledge-criteria.md, project-settings-check.md) loaded only when commands need them.
+- **Faster activation** -- removed the instruction to pre-load all 11 command files on activation. Commands are now read only when invoked.
+- **Redesigned activation flow** -- banner, description, and contextual prompt now handled directly in activate.md instead of calling `:cody help`. One fewer file read on every activation.
+
+## Enhancements
+- Moved full "About Cody Product Builder" description from agent.md to help.md, synced with README (source of truth). Agent.md keeps a one-liner.
+- Added `{{cfReferences}}` placeholder to the placeholder table.
+- Extracted duplicated Knowledge Criteria from plan.md and refresh-brownfield.md into references/knowledge-criteria.md.
+- Extracted duplicated project settings check from build.md and refresh.md into references/project-settings-check.md.
+- help.md now shows a contextual prompt based on current phase (plan, build, or unknown).
+- Activation banner redesigned with Option C style (horizontal rules) for cross-agent compatibility.
+- Version number now displayed in the activation banner.
+
+## Bug Fixes
+None
+
+## Other Notes
+- No functional changes to any command workflow -- this is purely a token optimization and UX improvement.
+- refresh-update.md project settings check was not extracted because it has a different flow (checking if name/description changed, not creating project.json).
 
 ---
 

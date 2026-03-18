@@ -2,7 +2,7 @@
 
 ![Cody Product Builder](./cody-product-builder-logo.png)
 
-![Version](https://img.shields.io/badge/version-1.7.3-blue)
+![Version](https://img.shields.io/badge/version-1.8.0-blue)
 [![License](https://img.shields.io/badge/license-Custom-orange)](LICENSE.md)
 [![iBuildWith.ai](https://img.shields.io/badge/by-iBuildWith.ai-20c05b)](https://www.ibuildwith.ai)
 
@@ -136,6 +136,7 @@ activations/                   # IDE-specific activation files (copy the inner f
 ├── agent.md               # Core agent instructions and command registry
 ├── settings.json          # Tool version and settings
 ├── commands/              # Command implementation files
+├── references/            # Shared reference content (loaded on demand by commands)
 └── templates/             # Document templates
     ├── project.json       # Template for project metadata settings
     ├── plan/              # Templates for discovery.md, brownfield-analysis.md, prd.md, plan.md

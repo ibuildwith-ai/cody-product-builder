@@ -13,12 +13,15 @@ This document lists features and enhancements derived from the plan. It is a liv
 
 | #  | Feature             | Description                               | Source |
 |----|---------------------|-------------------------------------------|--------|
-| 28 | Optimize Agent File | Update the agent.md file to be more optimized. Like a skill with progressive disclosure. | User |
 | 29 | Extensive Refresh | Make sure the refresh command is doing an extensive review not just a very simple review (both when refreshing a current Cody project or a brownfield project) | User |
 | 30 | Brownfield Backlog Options | If it's a brownfield project, when building the backlog, it should ask if we want the backlog to have stuff we already worked on or just start fresh (empty ready to add new versions to it) | User |
 | 31 | Full Management App | Full app for managing coding installations and projects across multiple projects. | User |
 | 33 | Remove Auto-Creation Check | Remove in June 2026, the project.json auto creation check added in v1.5.2. | User |
 | 37 | Configurable Release Notes Location | Allow the user to pick where to store release-notes.md: Cody Product Builder current location (cody-projects/cody-product-builder/build/), their project root, or a custom path in their project. Store the selection in a new field in the cody-projects/cody-product-builder/project.json file. | User |
+| 43 | Build Testing Guidelines | Add testing as something Cody recommends to the user with every build. Incorporate testing patterns and guidelines (e.g., unit tests, integration tests, edge cases, regression checks, test coverage expectations) it should follow when building. | User |
+| 44 | Build Security Checks | Add security checks as something Cody recommends to the user with every build. Incorporate security patterns and guidelines (e.g., input validation, auth, dependency vulnerabilities, OWASP top 10) it should follow when building. | User |
+| 45 | Modernize Delegation Language | Replace the verbose `**[AGENT TODO: Read and execute ...]**` delegation pattern with a cleaner, more concise syntax across all command and reference files. Ensure the new format is still visually distinct and searchable. | User |
+| 46 | Codex Activation Command | Add an activation command for Codex to the activations/ folder. | User |
 
 
 ## v1.3.0 - Restructure and Improvements - 🟢 Completed
@@ -111,3 +114,15 @@ Renamed activation command files and consolidated IDE folders into `activations/
 |-----|-------------------------|------------------------------------------|----------|--------|
 | 27 | Rename Commands | Renamed activation command files from `cody` to `cody-product-builder` | High | 🟢 Completed |
 | 32 | Consolidate Command Folders | Created `activations/` folder and moved `.claude/`, `.cursor/`, `.github/` into it | High | 🟢 Completed |
+
+## v1.8.0 - Agent Optimization - 🟢 Completed
+Optimize agent.md for progressive disclosure and reduce token footprint by extracting shared content into references.
+
+| ID  | Feature                 | Description                              | Priority | Status |
+|-----|-------------------------|------------------------------------------|----------|--------|
+| 28 | Slim Down agent.md | Move phase descriptions, document tables, and version naming convention out of agent.md into a references folder. Keep only core instructions, roles, placeholders, file system checks, and command routing. | High | 🟢 Completed |
+| 38 | Remove Read-All-Commands Instruction | Remove the instruction that tells the agent to read all command files on activation. Commands should only be loaded when invoked. | High | 🟢 Completed |
+| 39 | Move About to Help | Move the full "About Cody Product Builder" description to help.md (synced with README, which is the source of truth). Keep a one-liner in agent.md. | Medium | 🟢 Completed |
+| 40 | Create References Folder | Create `.cody/references/` with shared content: phases.md (phase descriptions and document tables), knowledge-criteria.md (shared Q&A criteria used by plan.md and refresh-brownfield.md), project-settings-check.md (shared project.json setup flow used by build.md and refresh.md). Add {{cfReferences}} placeholder. | High | 🟢 Completed |
+| 41 | Extract Knowledge Criteria | Extract the duplicated Knowledge Criteria and Q&A guidance from plan.md and refresh-brownfield.md into references/knowledge-criteria.md. Both commands reference it via AGENT TODO delegation. | Medium | 🟢 Completed |
+| 42 | Extract Project Settings Check | Extract the duplicated project.json check-and-create flow from build.md and refresh.md into references/project-settings-check.md. Both commands reference it via AGENT TODO delegation. | Medium | 🟢 Completed |

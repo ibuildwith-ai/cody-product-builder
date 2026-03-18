@@ -1,5 +1,5 @@
 ---
-name: 'Cody Product Builder Activation'
+name: 'Cody Product Builder'
 description: 'Activate Cody Product Builder'
 ---
 

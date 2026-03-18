@@ -1,26 +1,13 @@
 ---
 command: ":cody help"
-description: Provides the USER with help about Cody.
+description: Shows all available Cody Product Builder commands.
 ---
 
-- **AGENT** show the **USER** the following: 
-```
-+------------------------------------------+
-Cody Product Builder
-+------------------------------------------+
+- Read the "version" key from {{cfRoot}}/settings.json to get the current version number.
 
-Created and maintained by iBuildWith.ai
-(©) 2026 by Red Pill Blue Pill Studios, LLC
+- **AGENT** show the **USER** the following (replace {version} with the version you just read):
 ```
-
-- Provide the **USER** with a short overview of Cody Product Builder.
-- Provide the **USER** the current version of Cody Product Builder.  You can it from the "version" key in {{cfRoot}}/settings.json.
-
-- **AGENT** show the **USER** the following: 
-```
-+---------------------+
-Available Help Commands
-+---------------------+
+Cody Product Builder v{version} - Available Commands
 ```
 
 - Provide the **USER** with a list of all available commands and a short description of what they do.

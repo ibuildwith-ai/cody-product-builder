@@ -2,7 +2,7 @@
 
 ![Cody Product Builder](./cody-product-builder-logo.png)
 
-![Version](https://img.shields.io/badge/version-1.8.0-blue)
+![Version](https://img.shields.io/badge/version-1.9.0-blue)
 [![License](https://img.shields.io/badge/license-Custom-orange)](LICENSE.md)
 [![iBuildWith.ai](https://img.shields.io/badge/by-iBuildWith.ai-20c05b)](https://www.ibuildwith.ai)
 
@@ -141,16 +141,16 @@ activations/                   # IDE-specific activation files (copy the inner f
 ├── commands/              # Command implementation files
 ├── references/            # Shared reference content (loaded on demand by commands)
 └── templates/             # Document templates
-    ├── project.json       # Template for project metadata settings
+    ├── cody.json          # Template for project settings (multi-skill config)
     ├── plan/              # Templates for discovery.md, brownfield-analysis.md, prd.md, plan.md
     └── build/             # Templates for feature-backlog.md, release-notes.md, patch.md
         └── version/       # Templates for design.md, tasklist.md, retrospective.md
 
-cody-projects/
-└── product-builder/       # Generated project files (created during :cody plan)
-    ├── project.json       # Project metadata (name, version, phase, dates)
-    ├── plan/              # Planning phase documents
-    └── build/             # Build phase documents (backlog, versions, patches)
+cody.json                  # Project settings (configurable per skill, created during :cody plan)
+
+<project-path>/            # User-configurable output path (default: cody-projects/product-builder/)
+├── plan/                  # Planning phase documents
+└── build/                 # Build phase documents (backlog, versions, patches)
 ```
 
 # Installing and Using Cody Product Builder
@@ -206,4 +206,4 @@ See [LICENSE.md](LICENSE.md) for complete terms.
 
 ## Release Notes
 
-See [Release Notes](cody-projects/product-builder/build/release-notes.md) for version history.
+See [Release Notes](documentation/build/release-notes.md) for version history.

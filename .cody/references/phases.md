@@ -35,11 +35,11 @@ This phase guides USERS through the iterative development cycle by creating docu
 |----------|-------------|
 | `patch.md` | This document captures a quick fix or small enhancement -- the problem, the plan, the solution, and files changed. It does not require a design doc, tasklist, or retrospective. |
 
-> Project-level settings file, stored at `{{cfProject}}/project.json`:
+> Project-level settings file, stored at `cody.json` in the project root:
 
 | Field | Description |
 |-------|-------------|
-| `project.json` | Tracks project metadata: name, description, current version, creation/update dates (YYYY-MM-DD format), and current phase (plan or build). Created during `:cody plan` or brownfield setup. Updated after version/patch completion and phase transitions. Auto-created on older projects that don't have it yet. |
+| `cody.json` | Multi-skill configuration file at the project root. The `cody-product-builder` section tracks project metadata: name, description, current version, projectPath, creation/update dates (YYYY-MM-DD format), and current phase (plan or build). Created during `:cody plan` or brownfield setup. Updated after version/patch completion and phase transitions. Migrated from legacy `project.json` on older projects. |
 
 > The **Backlog** section of `feature-backlog.md` also serves as the idea capture destination. Items added via `:cody idea` are stored here with Source = `User`. Items suggested by the **AGENT** during backlog creation use Source = `Agent`. Backlog items are removed when they are picked up and written as a version or patch entry.
 

@@ -56,7 +56,7 @@ When you (**AGENT**) reached the end of the version, tell the **USER** this vers
 - Update the retrospective.md file.
 
 ### UPDATE PROJECT SETTINGS
-- Update `{{cfProject}}/project.json`:
+- Update `cody.json` in the project root, in the `cody-product-builder` section:
   - Set **version** to the version number just completed
   - Set **updatedAt** to today's date (use `YYYY-MM-DD` format)
 

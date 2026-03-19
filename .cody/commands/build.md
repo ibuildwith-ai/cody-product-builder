@@ -25,7 +25,7 @@ BUILD PHASE : START
   - If it does NOT exist:
     - Tell the **USER**: "Before we start building, I need to create a Feature Backlog. The backlog is a list of all the features, enhancements, and tasks from your plan, organized into versions. It's what we'll use to decide what gets built and in what order."
     - **[AGENT TODO: Read and execute {{cfCommands}}/build-backlog.md]**
-    - Update `{{cfProject}}/project.json`: set **phase** to `"build"`, set **updatedAt** to today's date (use `YYYY-MM-DD` format).
+    - Update `cody.json` in the project root: in the `cody-product-builder` section, set **phase** to `"build"` and set **updatedAt** to today's date (use `YYYY-MM-DD` format).
     - Tell the **USER** to review the backlog.
     - **STOP** and wait for the **USER**.
 

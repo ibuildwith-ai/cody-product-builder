@@ -4,6 +4,7 @@ This document lists new features, bug fixes and other changes implemented during
 
 The order of releases listed below are descending -- the latest version or patch is always shown at the top.
 
+- [v1.9.0 - Configurable Project Path](#v190---configurable-project-path---2026-03-19)
 - [v1.8.0 - Agent Optimization](#v180---agent-optimization---2026-03-17)
 - [v1.7.3 - Activation Restructure](#v173---activation-restructure-patch---2026-03-17)
 - [v1.7.2 - Consolidate Ideas Into Backlog](#v172---consolidate-ideas-into-backlog---2026-03-15)
@@ -15,6 +16,38 @@ The order of releases listed below are descending -- the latest version or patch
 - [v1.5.0 - Patches & Command Restructure](#v150---patches--command-restructure---2026-03-12)
 - [v1.4.0 - Brownfield Project Support](#v140---brownfield-project-support---2026-02-26)
 - [v1.3.0 - Restructure and Improvements](#v130---restructure-and-improvements---2026-02-23)
+
+---
+
+# v1.9.0 - Configurable Project Path - 2026-03-19
+
+## Overview
+Replaced the hardcoded `cody-projects/product-builder/` output path with a user-configurable project path. Introduced a root-level `cody.json` file structured for multi-skill support, replacing the old `project.json`. Users can now choose where their plan and build folders live during first-time setup.
+
+## Key Features
+- **Root-level `cody.json`** -- New multi-skill config file at the project root, keyed by skill name (`cody-product-builder`, `cody-article-writer`, etc.). Replaces the old `project.json` that lived inside `cody-projects/product-builder/`.
+- **Configurable project path** -- During first-time setup (via `:cody plan` or `:cody refresh`), users are prompted: "The default project path is `cody-projects/product-builder`. Do you want to choose a different one?" The chosen path becomes the direct parent of `plan/` and `build/` folders.
+- **Dynamic placeholder resolution** -- `{{cfProject}}`, `{{cfPlanPhase}}`, and `{{cfWorkPhase}}` are now resolved dynamically from `cody.json > cody-product-builder > projectPath` instead of being hardcoded. Values are read once on activation and cached for the session.
+- **Migration from `project.json`** -- If a legacy `project.json` exists, its data is automatically migrated into `cody.json`. If the user chooses a new path, `plan/` and `build/` folders are moved to the new location, and old directories are cleaned up (with user confirmation).
+
+## Enhancements
+- Activation now triggers the full migration flow when `cody.json` is missing but legacy `project.json` exists, instead of just showing a generic prompt.
+- `project-settings-check.md` fully rewritten with the new migration flow: check `cody.json`, migrate or create fresh, ask for path, move folders if needed.
+- All command files updated to reference `cody.json` instead of `project.json` for version/phase/date updates.
+- `phases.md` reference updated from `project.json` to `cody.json`.
+- Plan phase documentation updated with new architecture, data model, and component references.
+- README updated with new file structure diagram and version badge.
+- Backlog item #33 updated to include removing the `cody.json` migration check by June 2026.
+- Backlog item #37 updated to reference `cody.json` instead of `project.json` for the future `releaseNotesPath` field.
+
+## Bug Fixes
+None
+
+## Other Notes
+- `releaseNotesPath` is intentionally not added in this version. It will be added when backlog item #37 is implemented.
+- The default path (`cody-projects/product-builder`) ensures backward compatibility for users who don't want to change their folder structure.
+- `projectPath` is stored as a relative path from the project root (no leading `./`, no absolute paths).
+- `.cody/settings.json` is unaffected -- it continues to hold the skill version, separate from the project version in `cody.json`.
 
 ---
 

@@ -37,24 +37,28 @@ If you don’t want me to ask any more questions, just type "no more".
 - If not approved, continue asking targeted questions and refine until approved.
 
 # CREATE DISCOVERY DOCUMENT
-- Create folder `cody-projects/` if it doesn't exist.
-- Create folder `cody-projects/product-builder/` if it doesn't exist.
+
+### CREATE PROJECT SETTINGS
+- Create `cody.json` in the project root using the `{{cfTemplates}}/cody.json` template.
+- Fill in the `cody-product-builder` section:
+  - **name** and **description** from what you learned during discovery
+  - **createdAt** and **updatedAt** with today's date (use `YYYY-MM-DD` format)
+  - **version** as `"0.0.0"`
+  - **phase** as `"plan"`
+- Ask the **USER**: "The default project path is `cody-projects/product-builder`. Do you want to choose a different one?"
+- **STOP** and wait for the **USER**.
+- Set **projectPath** to the chosen path (default or custom).
+- Present all values to the **USER** and ask them to confirm or change anything.
+- **STOP** and wait for the **USER**.
+- Apply any changes the USER requests, then continue.
+
+### CREATE PROJECT FOLDERS
+- Create the `{{cfProject}}` folder if it doesn't exist.
 - Create the following folder structure in the `{{cfProject}}` folder:
 ```
 /build
 /plan
 ```
-
-### CREATE PROJECT SETTINGS
-- Copy `{{cfTemplates}}/project.json` to `{{cfProject}}/project.json`.
-- Fill in:
-  - **name** and **description** from what you learned during discovery
-  - **createdAt** and **updatedAt** with today's date (use `YYYY-MM-DD` format)
-  - **version** as `"0.0.0"`
-  - **phase** as `"plan"`
-- Present the values to the **USER** and ask them to confirm or change anything.
-- **STOP** and wait for the **USER**.
-- Apply any changes the USER requests, then continue.
 
 - Copy `{{cfTemplates}}/plan/discovery.md` to `{{cfPlanPhase}}/discovery.md`.
 - Update all sections based on what you learned.

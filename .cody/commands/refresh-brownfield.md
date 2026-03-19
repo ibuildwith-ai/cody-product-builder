@@ -63,28 +63,31 @@ Additional brownfield-specific guidance:
 
 ---
 
-## CREATE PROJECT FOLDERS
+## CREATE PROJECT SETTINGS
 
-- Create folder `cody-projects/` if it doesn't exist.
-- Create folder `cody-projects/product-builder/` if it doesn't exist.
-- Create the following folder structure in the `{{cfProject}}` folder:
-```
-/build
-/plan
-```
-
-### CREATE PROJECT SETTINGS
-- Copy `{{cfTemplates}}/project.json` to `{{cfProject}}/project.json`.
-- Fill in:
+- Create `cody.json` in the project root using the `{{cfTemplates}}/cody.json` template.
+- Fill in the `cody-product-builder` section:
   - **name** and **description** from what you learned during the codebase analysis and Q&A
   - **createdAt** and **updatedAt** with today's date (use `YYYY-MM-DD` format)
   - **phase** as `"build"`
 - Ask the **USER**: `What version is your project currently at? (e.g., 1.0.0, 0.5.0)`
 - **STOP** and wait for the **USER**.
 - Fill in **version** with the USER's answer.
+- Ask the **USER**: "The default project path is `cody-projects/product-builder`. Do you want to choose a different one?"
+- **STOP** and wait for the **USER**.
+- Set **projectPath** to the chosen path (default or custom).
 - Present all values to the **USER** and ask them to confirm or change anything.
 - **STOP** and wait for the **USER**.
 - Apply any changes the USER requests, then continue.
+
+## CREATE PROJECT FOLDERS
+
+- Create the `{{cfProject}}` folder if it doesn't exist.
+- Create the following folder structure in the `{{cfProject}}` folder:
+```
+/build
+/plan
+```
 
 ---
 

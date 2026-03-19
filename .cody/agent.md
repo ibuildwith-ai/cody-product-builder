@@ -23,9 +23,9 @@ These placeholders are a pointer to actual values. They are created here and use
 | {{cfTemplates}} | .cody/templates | Cody templates folder |
 | {{cfCommands}} | .cody/commands | Cody commands to be executed. |
 | {{cfReferences}} | .cody/references | Shared reference content loaded on demand by commands. |
-| {{cfProject}} | ./cody-projects/product-builder/ | Project folder for generated files. |
-| {{cfPlanPhase}} | ./cody-projects/product-builder/plan | Cody root folder for the planning phase. |
-| {{cfWorkPhase}} | ./cody-projects/product-builder/build | Cody root folder for the build phase. |
+| {{cfProject}} | *Dynamic -- resolved from `cody.json`* | Project output folder. Read from `cody.json > cody-product-builder > projectPath`. Default: `cody-projects/product-builder`. Resolved on activation and cached for the session. Re-resolved on `:cody refresh`. |
+| {{cfPlanPhase}} | *`{{cfProject}}/plan`* | Plan phase folder. |
+| {{cfWorkPhase}} | *`{{cfProject}}/build`* | Build phase folder. |
 
 ## File System Checks
 - Always use the placeholder paths (e.g., `{{cfPlanPhase}}`, `{{cfProject}}`) when checking for files or folders. Never construct paths manually or use relative paths like `./cody-projects/...`.

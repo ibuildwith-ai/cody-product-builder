@@ -16,12 +16,14 @@ This document lists features and enhancements derived from the plan. It is a liv
 | 29 | Extensive Refresh | Make sure the refresh command is doing an extensive review not just a very simple review (both when refreshing a current Cody project or a brownfield project) | User |
 | 30 | Brownfield Backlog Options | If it's a brownfield project, when building the backlog, it should ask if we want the backlog to have stuff we already worked on or just start fresh (empty ready to add new versions to it) | User |
 | 31 | Full Management App | Full app for managing coding installations and projects across multiple projects. | User |
-| 33 | Remove Auto-Creation Check | Remove in June 2026, the project.json auto creation check added in v1.5.2. | User |
+| 33 | Remove Legacy Migration Checks | Remove in June 2026: (1) the project.json auto-creation check added in v1.5.2, and (2) the project.json-to-cody.json migration check added in v1.9.0. By then all users should be on cody.json. | User |
 | 37 | Configurable Release Notes Location | Allow the user to pick where to store release-notes.md: Cody Product Builder current location (cody-projects/cody-product-builder/build/), their project root, or a custom path in their project. Store the selection in a new field in the cody-projects/cody-product-builder/project.json file. | User |
 | 43 | Build Testing Guidelines | Add testing as something Cody recommends to the user with every build. Incorporate testing patterns and guidelines (e.g., unit tests, integration tests, edge cases, regression checks, test coverage expectations) it should follow when building. | User |
 | 44 | Build Security Checks | Add security checks as something Cody recommends to the user with every build. Incorporate security patterns and guidelines (e.g., input validation, auth, dependency vulnerabilities, OWASP top 10) it should follow when building. | User |
 | 45 | Modernize Delegation Language | Replace the verbose `**[AGENT TODO: Read and execute ...]**` delegation pattern with a cleaner, more concise syntax across all command and reference files. Ensure the new format is still visually distinct and searchable. | User |
 | 46 | Codex Activation Command | Add an activation command for Codex to the activations/ folder. | User |
+| 47 | README Generation | Generate a README.md file for the project if one does not exist. Give the user the option to create a new one, or review a current one they have and migrate it to the Cody version and keep maintaining it. | User |
+| 48 | Descending Version Order in Backlog | Update feature backlog to show the latest version at the top, below the backlog table. Versions ordered by version number descending (latest first). New versions added to the top, not the bottom. | User |
 
 
 ## v1.3.0 - Restructure and Improvements - 🟢 Completed
@@ -126,3 +128,13 @@ Optimize agent.md for progressive disclosure and reduce token footprint by extra
 | 40 | Create References Folder | Create `.cody/references/` with shared content: phases.md (phase descriptions and document tables), knowledge-criteria.md (shared Q&A criteria used by plan.md and refresh-brownfield.md), project-settings-check.md (shared project.json setup flow used by build.md and refresh.md). Add {{cfReferences}} placeholder. | High | 🟢 Completed |
 | 41 | Extract Knowledge Criteria | Extract the duplicated Knowledge Criteria and Q&A guidance from plan.md and refresh-brownfield.md into references/knowledge-criteria.md. Both commands reference it via AGENT TODO delegation. | Medium | 🟢 Completed |
 | 42 | Extract Project Settings Check | Extract the duplicated project.json check-and-create flow from build.md and refresh.md into references/project-settings-check.md. Both commands reference it via AGENT TODO delegation. | Medium | 🟢 Completed |
+
+## v1.9.0 - Configurable Project Path - 🟢 Completed
+Replace hardcoded project output path with user-configurable location. Introduce root-level `cody.json` for multi-skill config.
+
+| ID  | Feature                 | Description                              | Priority | Status |
+|-----|-------------------------|------------------------------------------|----------|--------|
+| 48 | Root-level cody.json | Replace `project.json` with a root-level `cody.json` file. Multi-skill structure keyed by skill name (`cody-product-builder`, `cody-article-writer`, etc.). | High | 🟢 Completed |
+| 49 | Configurable project path | During first-time setup, prompt the user to choose an output folder. Default: `cody-projects/product-builder`. `plan/` and `build/` created directly inside the chosen path. | High | 🟢 Completed |
+| 50 | Dynamic placeholder resolution | `{{cfProject}}` resolves from `cody.json > cody-product-builder > projectPath`. Read once on activation and on `:cody refresh`. Cached for the session. | High | 🟢 Completed |
+| 51 | Migration from project.json | If `project.json` exists, migrate its data into `cody.json` and delete it. If user picks a new path, move `plan/` and `build/` folders and clean up old directories. | High | 🟢 Completed |

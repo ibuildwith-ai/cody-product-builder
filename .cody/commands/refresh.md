@@ -5,6 +5,16 @@ description: Refreshes the memory about the current project of the AI AGENT.
 
 # REFRESH AGENT MEMORY
 
+### RE-RESOLVE PROJECT PATH
+- Read `cody.json` from the project root.
+  - If it exists and has a `cody-product-builder` section:
+    - Re-resolve `{{cfProject}}` from the `projectPath` value.
+    - Re-resolve `{{cfPlanPhase}}` as `{{cfProject}}/plan`.
+    - Re-resolve `{{cfWorkPhase}}` as `{{cfProject}}/build`.
+    - Cache these resolved values for the rest of the session.
+  - If it does NOT exist:
+    - Use defaults: `{{cfProject}}` = `cody-projects/product-builder`, `{{cfPlanPhase}}` = `cody-projects/product-builder/plan`, `{{cfWorkPhase}}` = `cody-projects/product-builder/build`.
+
 ### CHECK FOR BROWNFIELD PROJECT
 - Check if {{cfPlanPhase}} folder exists and has documents (prd.md, plan.md, or brownfield-analysis.md).
   - If YES → continue to "ANNOUNCE TO THE **USER**" below (existing flow).

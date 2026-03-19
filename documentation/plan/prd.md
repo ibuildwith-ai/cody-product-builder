@@ -36,7 +36,8 @@ Cody Product Builder is an AI agent skill that provides a structured, repeatable
 - **Patch workflow** -- Lightweight fixes and small enhancements that skip the full version build cycle while still tracking changes
 - **Idea quick-capture** -- Log ideas mid-flow without disrupting the current workflow; ideas are offered as starting points for new versions/patches
 - **Release notes management** -- Automatic generation and updates after each version or patch
-- **Project metadata tracking** -- project.json for external tooling consumption
+- **Project metadata tracking** -- `cody.json` at the project root for multi-skill configuration and external tooling consumption
+- **Configurable project path** -- Users choose where plan and build folders live during first-time setup
 - **Agent memory refresh** -- Re-read all project documents so the AI agent can pick up where it left off in a new session
 - **Multi-environment activation** -- Activation entry points for Claude Code, Cursor, and GitHub Copilot
 

@@ -78,7 +78,7 @@ PATCH : START
 - If the **USER** reports issues, go back to "DO THE FIX" and iterate.
 
 ### UPDATE PROJECT SETTINGS
-- Update `{{cfProject}}/project.json`:
+- Update `cody.json` in the project root, in the `cody-product-builder` section:
   - Set **version** to the patch version number just completed
   - If **phase** is `"plan"`, update it to `"build"`
   - Set **updatedAt** to today's date (use `YYYY-MM-DD` format)

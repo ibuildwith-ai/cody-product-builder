@@ -15,7 +15,7 @@ This document defines how the product will be built and when.
 | Environment Setup | Prerequisites or steps to get the app running in a local/dev environment. |
 
 ## Overview
-Cody Product Builder is a markdown-based AI agent skill that guides knowledge workers and domain experts through structured product development using AI coding environments. At v1.7.1, the core two-phase workflow (Plan and Build) is mature, with 5 user-facing commands, brownfield/greenfield support, version and patch workflows, idea tracking, and project metadata management. Future development focuses on refining the existing experience, expanding compatibility, and improving adoption.
+Cody Product Builder is a markdown-based AI agent skill that guides knowledge workers and domain experts through structured product development using AI coding environments. At v1.9.0, the core two-phase workflow (Plan and Build) is mature, with 5 user-facing commands, brownfield/greenfield support, version and patch workflows, idea tracking, configurable project paths, and multi-skill project configuration. Future development focuses on refining the existing experience, expanding compatibility, and improving adoption.
 
 ## Architecture
 Cody Product Builder uses a **command-delegation architecture** built entirely on static files:
@@ -25,9 +25,10 @@ Cody Product Builder uses a **command-delegation architecture** built entirely o
 - **Command layer** -- 5 user-facing command files in `.cody/commands/` that implement the skill's workflows
 - **Delegation layer** -- 6 internal command files that handle sub-workflows (backlog creation, version building, patching, brownfield analysis, document updates)
 - **Template layer** -- 10 template files in `.cody/templates/` that scaffold generated documents with `[AI AGENT TODO]` placeholders
-- **Output layer** -- Generated project files in `cody-projects/product-builder/` (plan docs, build docs, project metadata)
+- **Config layer** -- `cody.json` at the project root stores per-skill settings including the configurable output path
+- **Output layer** -- Generated project files in a user-configurable path (default: `cody-projects/product-builder/`). Contains plan docs, build docs, and version artifacts.
 
-**Placeholder system:** Template variables like `{{cfPlanPhase}}`, `{{cfWorkPhase}}`, `{{cfTemplates}}` abstract file paths so commands remain portable regardless of project structure changes.
+**Placeholder system:** Template variables like `{{cfPlanPhase}}`, `{{cfWorkPhase}}`, `{{cfTemplates}}` abstract file paths so commands remain portable regardless of project structure changes. `{{cfProject}}`, `{{cfPlanPhase}}`, and `{{cfWorkPhase}}` are dynamically resolved from `cody.json` on activation.
 
 **No runtime, no dependencies, no build step.** The AI coding environment is the runtime.
 
@@ -41,14 +42,14 @@ Cody Product Builder uses a **command-delegation architecture** built entirely o
 - **Idea tracker** -- `:cody idea` for quick-capture. Ideas are offered when starting new versions or patches.
 - **Refresh system** -- `:cody refresh` re-reads project documents to restore agent context. Optionally updates PRD, plan, and release notes. Detects brownfield projects.
 - **Template engine** -- Markdown templates with `[AI AGENT TODO]` placeholders that the agent fills in based on context from previous documents and user input.
-- **Project settings** -- `project.json` tracks name, description, version, phase, and dates. Auto-created on older projects.
+- **Project settings** -- `cody.json` at the project root tracks per-skill settings. The `cody-product-builder` section includes name, description, version, phase, projectPath, and dates. Migrated from legacy `project.json` on older projects.
 
 ## Data Model
 All data is file-based. No database.
 
 | File | Location | Format | Purpose |
 |------|----------|--------|---------|
-| `project.json` | `{{cfProject}}/` | JSON | Project metadata (name, description, version, phase, dates) |
+| `cody.json` | Project root | JSON | Multi-skill config. `cody-product-builder` section: name, description, version, phase, projectPath, dates |
 | `feature-backlog.md` Backlog section | `{{cfWorkPhase}}/` | Markdown table | Unscheduled ideas and suggestions (ID, feature, description, source) |
 | `discovery.md` | `{{cfPlanPhase}}/` | Markdown | Greenfield discovery Q&A and summary |
 | `brownfield-analysis.md` | `{{cfPlanPhase}}/` | Markdown | Brownfield codebase audit and Q&A |
@@ -62,7 +63,7 @@ All data is file-based. No database.
 | `patch.md` | `{{cfWorkPhase}}/v[x.y.z]-[name]/` | Markdown | Per-patch problem/plan/solution/files |
 
 ## Major Technical Steps
-Since Cody Product Builder is a mature skill at v1.7.1, future work falls into these categories:
+Since Cody Product Builder is a mature skill at v1.9.0, future work falls into these categories:
 
 - **Refinement** -- Improve existing command flows based on user feedback (clearer prompts, better defaults, smoother transitions between phases)
 - **Compatibility** -- Test and adapt for new AI coding environments as they emerge (Codex, OpenCode, Gemini CLI, etc.)
@@ -94,3 +95,7 @@ Cody Product Builder follows an incremental release model. Each version or patch
 | v1.6.0 | Unified build command | Completed |
 | v1.7.0 | Idea tracker | Completed |
 | v1.7.1 | File system check safety | Completed |
+| v1.7.2 | Consolidate ideas into backlog | Completed |
+| v1.7.3 | Activation restructure | Completed |
+| v1.8.0 | Agent optimization | Completed |
+| v1.9.0 | Configurable project path | Completed |

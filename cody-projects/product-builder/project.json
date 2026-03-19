@@ -1,8 +1,0 @@
-{
-  "name": "Cody Product Builder",
-  "description": "A spec-driven AI agent skill that guides non-developers from idea to finished product through structured planning and iterative building",
-  "version": "1.8.0",
-  "createdAt": "2026-03-15",
-  "updatedAt": "2026-03-17",
-  "phase": "build"
-}

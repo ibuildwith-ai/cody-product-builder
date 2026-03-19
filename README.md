@@ -10,9 +10,9 @@
 ⭐⭐ **If you find this skill helpful, please star this repo to show your support!** ⭐⭐
 
 # About Cody Product Builder
-Cody Product Builder is an AI agent skill that helps you go from idea to finished product, whether you're building apps, workflows, tools, or agents. It guides you through a structured flow of discovery, planning, and building so your AI-built projects are scalable, maintainable, and built right from the start.
+Cody Product Builder is a guided workflow that helps knowledge workers and domain experts turn ideas into real products with AI. It structures your thinking from idea to shipped version so you can build without becoming a developer and without the work collapsing into chaos.
 
-Whether you're a knowledge worker building your first app, a domain expert turning expertise into software, or a product builder scaling an existing project, Cody gives you a repeatable methodology that works with any AI coding environment (Claude Code, Codex, Cursor, OpenCode, GitHub Copilot, and others).
+Whether you're starting fresh, continuing an existing project, or shipping quick fixes, Cody gives you a repeatable workflow that works with any AI coding environment (Claude Code, Cursor, GitHub Copilot, and others). It surfaces and captures AI-generated ideas so good suggestions aren't lost in chat, and keeps your project buildable as it grows.
 
 **Starting fresh?** Cody walks you through idea refinement, requirements, and planning before a single line of code is written.
 
@@ -22,29 +22,32 @@ Whether you're a knowledge worker building your first app, a domain expert turni
 
 # What Cody Product Builder Helps You Do
 
+### **Surface and Evaluate AI-Generated Ideas**
+> Capture ideas from both you and AI in one structured place so good suggestions aren't lost in chat. Evaluate them before integrating them into your codebase.
+
 ### **Idea Discovery & Refinement**  
 > Capture sparks of inspiration and shape them into clear, aligned, well-defined product concepts.
 
 ### **Structured Planning (without killing creativity)**  
-> Use AI-ready documents that organize your thoughts, requirements, flows, and decisions - while still letting ideas evolve naturally.
+> Use AI-ready documents that organize your thoughts, requirements, flows, and decisions while still letting ideas evolve naturally.
 
-### **Chunked Implementation (Versions)**
-> Break the work into manageable, incremental “versions” that you can build, test, and ship faster with AI.
+### **Ship Working Versions**
+> Break the work into manageable, incremental "versions" that you can build, test, and ship faster with AI. Each version is complete and shippable.
 
 ### **Lightweight Patches**
 > Fix bugs and make small enhancements quickly without the overhead of a full version build cycle, while still tracking everything.
 
 # Why Cody Product Builder Exists
 
-AI tools are powerful, but without structure, things fall apart: messy prompts, inconsistent code, unclear requirements, lost context, and endless rework.
+AI tools are powerful, but without structure, things fall apart: messy prompts, inconsistent code, unclear requirements, lost context, and endless rework. At the same time, good ideas from AI get lost in chat transcripts instead of being captured and evaluated.
 
 Cody Product Builder solves this by giving you:
 
-- A repeatable workflow your AI coding tools can follow
-- Templates and commands that eliminate guesswork
-- A shared rhythm between you, your team, and your AI agents
-- A consistent structure for specs, docs, tasks, and versions
-- A methodology for building **products**, not just writing code
+- A repeatable workflow your AI coding tools can follow that surfaces and captures AI-generated ideas
+- Templates and commands that eliminate guesswork and keep momentum going
+- A structure that prevents chaos without killing creativity
+- A consistent way to break work into shippable versions with clear continuity
+- A way to build **real products**, not just generate code
 
 # Two-Phase Development Cycle
 
@@ -88,7 +91,7 @@ Patches are lightweight fixes or small enhancements that skip the full version b
 > Captures the problem, the plan, the solution, and files changed. Does not require a design doc, tasklist, or retrospective.
 
 ### **Quick Ideas**
-Ideas come up all the time while you're building. Instead of losing them or context-switching to another app, `:cody idea` lets you capture them on the spot. They're added directly to the Backlog section of the feature backlog and offered as starting points when you create a new version or patch.
+Ideas come up all the time while you're building, both from you and from AI. Instead of losing them or context-switching to another app, `:cody idea` lets you capture them on the spot. They're added directly to the Backlog section of the feature backlog and offered as starting points when you create a new version or patch.
 
 ### **Release Notes (`release-notes.md`)**
 > Automatically updated after each version or patch, tracking changes, enhancements, and fixes.

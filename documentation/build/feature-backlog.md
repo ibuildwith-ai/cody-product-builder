@@ -24,6 +24,7 @@ This document lists features and enhancements derived from the plan. It is a liv
 | 46 | Codex Activation Command | Add an activation command for Codex to the activations/ folder. | User |
 | 47 | README Generation | Generate a README.md file for the project if one does not exist. Give the user the option to create a new one, or review a current one they have and migrate it to the Cody version and keep maintaining it. | User |
 | 48 | Descending Version Order in Backlog | Update feature backlog to show the latest version at the top, below the backlog table. Versions ordered by version number descending (latest first). New versions added to the top, not the bottom. | User |
+| 49 | Refresh Template Compliance | Cody Refresh should check that plan phase docs (plan.md, prd.md) and build docs (feature-backlog.md, release-notes.md) follow the latest templates. If not, update them with user permission. | User |
 
 
 ## v1.3.0 - Restructure and Improvements - 🟢 Completed

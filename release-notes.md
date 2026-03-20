@@ -4,6 +4,7 @@ This document lists new features, bug fixes and other changes implemented during
 
 The order of releases listed below are descending -- the latest version or patch is always shown at the top.
 
+- [v1.10.0 - Configurable Release Notes Path](#v1100---configurable-release-notes-path---2026-03-20)
 - [v1.9.0 - Configurable Project Path](#v190---configurable-project-path---2026-03-19)
 - [v1.8.0 - Agent Optimization](#v180---agent-optimization---2026-03-17)
 - [v1.7.3 - Activation Restructure](#v173---activation-restructure-patch---2026-03-17)
@@ -16,6 +17,33 @@ The order of releases listed below are descending -- the latest version or patch
 - [v1.5.0 - Patches & Command Restructure](#v150---patches--command-restructure---2026-03-12)
 - [v1.4.0 - Brownfield Project Support](#v140---brownfield-project-support---2026-02-26)
 - [v1.3.0 - Restructure and Improvements](#v130---restructure-and-improvements---2026-02-23)
+
+---
+
+# v1.10.0 - Configurable Release Notes Path - 2026-03-20
+
+## Overview
+Added a configurable release notes location so users can choose where `release-notes.md` is stored. Previously hardcoded to the build folder, users can now pick from three options: the build folder (`{{projectPath}}`), the project root (`{{projectRoot}}`), or a custom path. The chosen location is stored as `releaseNotesPath` in `cody.json` and resolved via a new `{{cfReleaseNotes}}` placeholder.
+
+## Key Features
+- **Configurable release notes path** -- Users choose where to store `release-notes.md` during project setup. Three options: build folder (default for fresh installs is project root), project root, or a custom path. Stored as `releaseNotesPath` in `cody.json`.
+- **`{{cfReleaseNotes}}` placeholder** -- New placeholder in `agent.md` that resolves the release notes location from `cody.json`. Cached on activation, re-resolved on `:cody refresh`.
+- **Self-documenting path values** -- Instead of `null` or `.`, paths use `"{{projectPath}}"` (build folder), `"{{projectRoot}}"` (repo root), or a literal custom path. Values are immediately understandable when reading `cody.json`.
+
+## Enhancements
+- `cody.json` template updated with `releaseNotesPath` field (default: `"{{projectPath}}"`)
+- `project-settings-check.md` updated with Step 4: asks fresh installs for release notes location (default: project root)
+- `activate.md` updated with migration check: if `cody.json` exists but missing `releaseNotesPath`, shows current location and prompts to keep or move
+- `patch.md` updated to use `{{cfReleaseNotes}}` instead of hardcoded `{{cfWorkPhase}}` for release notes
+- `build-version-existing.md` updated to use `{{cfReleaseNotes}}` instead of hardcoded `{{cfWorkPhase}}` for release notes
+
+## Bug Fixes
+None
+
+## Other Notes
+- Existing projects that already have `release-notes.md` in the build folder are prompted on activation to keep or move it. The current location is shown so they can make an informed choice.
+- Fresh installs default to project root (`{{projectRoot}}`), matching the common convention for changelogs.
+- If the user picks a custom path and the directory doesn't exist, it is created automatically before writing.
 
 ---
 

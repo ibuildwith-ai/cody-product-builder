@@ -62,9 +62,10 @@ PATCH : START
   - **Testing Notes** -- how the **USER** can verify the fix
 
 ### UPDATE RELEASE NOTES
-- Check if {{cfWorkPhase}}/release-notes.md exists.
+- Check if {{cfReleaseNotes}}/release-notes.md exists.
   - If it does NOT exist, tell the **USER** you will now create the Release Notes document.
-    - Copy from {{cfTemplates}}/build/release-notes.md to {{cfWorkPhase}}/release-notes.md.
+    - If the {{cfReleaseNotes}} directory does not exist, create it.
+    - Copy from {{cfTemplates}}/build/release-notes.md to {{cfReleaseNotes}}/release-notes.md.
 - Add a patch entry to the release notes in the correct chronological position (latest at the top). Use the patch entry format defined in the release notes template.
 
 ### VERIFY THE FIX

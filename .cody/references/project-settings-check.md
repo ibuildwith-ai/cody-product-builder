@@ -2,7 +2,7 @@
 
 Check if `cody.json` exists in the project root.
 
-- If it exists and has a `cody-product-builder` section with a valid `projectPath`, use it. Done -- no further action needed.
+- If it exists and has a `cody-product-builder` section with a valid `projectPath` and `releaseNotesPath`, use it. Done -- no further action needed.
 
 - If it does NOT exist, continue below.
 
@@ -49,3 +49,16 @@ If the **USER** chose a path different from `cody-projects/product-builder`:
 - If confirmed:
   - Remove the `cody-projects/product-builder/` folder.
   - Check if `cody-projects/` is empty. If empty, remove it too. If not empty (other skills may use it), leave it.
+
+---
+
+## Step 4: Ask for Release Notes Location
+
+- Ask the **USER**: "Where would you like to store release notes? The default is your project root."
+  1. Project root (default)
+  2. Build folder -- `{projectPath}/build/`
+  3. Custom path
+- **STOP** and wait for the **USER**.
+- If project root (or user accepts default), set `releaseNotesPath` to `"{{projectRoot}}"` in `cody.json`.
+- If build folder, set `releaseNotesPath` to `"{{projectPath}}"` in `cody.json`.
+- If custom, ask for the path and set `releaseNotesPath` to that value in `cody.json`.

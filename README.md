@@ -2,9 +2,10 @@
 
 ![Cody Product Builder](./cody-product-builder-logo.png)
 
-![Version](https://img.shields.io/badge/version-1.9.0-blue)
+![Version](https://img.shields.io/badge/version-1.10.0-blue)
 [![License](https://img.shields.io/badge/license-Custom-orange)](LICENSE.md)
 [![iBuildWith.ai](https://img.shields.io/badge/by-iBuildWith.ai-20c05b)](https://www.ibuildwith.ai)
+[![Release Notes](https://img.shields.io/badge/Release_Notes-changelog-blue)](release-notes.md)
 
 # Star the Repo
 ⭐⭐ **If you find this skill helpful, please star this repo to show your support!** ⭐⭐
@@ -147,6 +148,7 @@ activations/                   # IDE-specific activation files (copy the inner f
         └── version/       # Templates for design.md, tasklist.md, retrospective.md
 
 cody.json                  # Project settings (configurable per skill, created during :cody plan)
+release-notes.md           # Release notes (location configurable via releaseNotesPath in cody.json)
 
 <project-path>/            # User-configurable output path (default: cody-projects/product-builder/)
 ├── plan/                  # Planning phase documents
@@ -206,4 +208,4 @@ See [LICENSE.md](LICENSE.md) for complete terms.
 
 ## Release Notes
 
-See [Release Notes](documentation/build/release-notes.md) for version history.
+See [Release Notes](release-notes.md) for version history.

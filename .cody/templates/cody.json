@@ -5,6 +5,7 @@
     "version": "0.0.0",
     "phase": "plan",
     "projectPath": "cody-projects/product-builder",
+    "releaseNotesPath": "{{projectPath}}",
     "createdAt": "[AI AGENT TODO: Add creation date in YYYY-MM-DD format]",
     "updatedAt": "[AI AGENT TODO: Add update date in YYYY-MM-DD format]"
   }

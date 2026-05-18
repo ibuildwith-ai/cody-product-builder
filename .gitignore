@@ -16,8 +16,5 @@ Thumbs.db
 
 # Other
 .claude/
-!activations/.claude/
-.github
-!activations/.github/
-documentation/
-cody.json
+docs/
+/cody.json

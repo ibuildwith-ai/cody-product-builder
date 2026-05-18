@@ -18,7 +18,7 @@ BUILD VERSION : START
 - Ask the **USER** which version they would like to build.
 
 ### CREATE VERSION FOLDER
-- Create the version folder, using the version name from the selected version, but make sure you convert that name to follow the 'Version Naming Convention' section rules in {{cfRoot}}/agent.md file.
+- Create the version folder, using the version name from the selected version, but make sure you convert that name to follow the 'Version Naming Convention' section rules in {{cfReferences}}/phases.md.
 
 ### GENERATE DESIGN DOCUMENT
 - Copy the design.md template from {{cfTemplates}}/build/version/design.md to the version folder you just created.

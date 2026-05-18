@@ -1,8 +1,8 @@
 # Cody Product Builder
 
-![Cody Product Builder](./cody-product-builder-logo.png)
+![Cody Product Builder](./images/cody-product-builder-logo.png)
 
-![Version](https://img.shields.io/badge/version-1.11.0-blue)
+![Version](https://img.shields.io/badge/version-2.0.0-blue)
 [![License](https://img.shields.io/badge/license-Custom-orange)](LICENSE.md)
 [![iBuildWith.ai](https://img.shields.io/badge/by-iBuildWith.ai-20c05b)](https://www.ibuildwith.ai)
 [![Release Notes](https://img.shields.io/badge/Release_Notes-changelog-blue)](release-notes.md)
@@ -11,7 +11,7 @@
 ⭐⭐ **If you find this skill helpful, please star this repo to show your support!** ⭐⭐
 
 # About Cody Product Builder
-Cody Product Builder is a guided workflow that helps knowledge workers and domain experts turn ideas into real products with AI. It structures your thinking from idea to shipped version so you can build without becoming a developer and without the work collapsing into chaos.
+Cody Product Builder is a guided workflow (agent skill) that helps knowledge workers and domain experts turn ideas into real products with AI. It structures your thinking from idea to shipped version so you can build without becoming a developer and without the work collapsing into chaos.
 
 Whether you're starting fresh, continuing an existing project, or shipping quick fixes, Cody gives you a repeatable workflow that works with any AI coding environment (Claude Code, Cursor, GitHub Copilot, and others). It surfaces and captures AI-generated ideas so good suggestions aren't lost in chat, and keeps your project buildable as it grows.
 
@@ -148,55 +148,72 @@ Commands use the format: `:cody [command]`
 
 # File Structure
 
+### The Skill
+
+This is what you install. Cody Product Builder is a single, self-contained Agent Skill folder:
+
 ```
-activations/                   # IDE-specific activation files (copy the inner folder for your IDE)
-├── .claude/
-│   └── commands/
-│       └── cody-product-builder.md    # Activation command for Claude Code
-├── .cursor/
-│   └── commands/
-│       └── cody-product-builder.md    # Activation command for Cursor
-└── .github/
-    └── prompts/
-        └── cody-product-builder.prompt.md  # Activation prompt for GitHub Copilot
+cody-product-builder/          # The skill folder (copy this into your agent's skills directory)
+├── SKILL.md                   # Skill definition: frontmatter plus agent instructions and command registry
+├── commands/                  # Command implementation files
+├── references/                # Shared reference content (loaded on demand by commands)
+└── templates/                 # Document templates
+    ├── cody.json              # Template for project settings
+    ├── plan/                  # Templates for discovery.md, brownfield-analysis.md, prd.md, plan.md
+    ├── build/                 # Templates for feature-backlog.md, release-notes.md, patch.md
+    │   └── version/           # Templates for design.md, tasklist.md, retrospective.md
+    └── prototype/             # Template for prototype.md
+```
 
-.cody/
-├── activate.md            # Activation instructions for AI agents
-├── agent.md               # Core agent instructions and command registry
-├── settings.json          # Tool version and settings
-├── commands/              # Command implementation files
-├── references/            # Shared reference content (loaded on demand by commands)
-└── templates/             # Document templates
-    ├── cody.json          # Template for project settings (multi-skill config)
-    ├── plan/              # Templates for discovery.md, brownfield-analysis.md, prd.md, plan.md
-    ├── build/             # Templates for feature-backlog.md, release-notes.md, patch.md
-    │   └── version/       # Templates for design.md, tasklist.md, retrospective.md
-    └── prototype/         # Template for prototype.md
+In this repository, the skill folder lives at `source/cody-product-builder/`, and a packaged `cody-product-builder.skill` file (a zip of that folder) sits at the repository root for apps that install skills from a file.
 
-cody.json                  # Project settings (configurable per skill, created during :cody plan)
-release-notes.md           # Release notes (location configurable via releaseNotesPath in cody.json)
+### What Cody Creates in Your Project
 
-<project-path>/            # User-configurable output path (default: cody-projects/product-builder/)
-├── plan/                  # Planning phase documents
-├── build/                 # Build phase documents (backlog, versions, patches)
-└── prototypes/            # Throwaway prototypes, each in its own self-contained folder
+Once you start using Cody, it generates these in your own project:
+
+```
+cody.json                      # Project settings (created during :cody plan)
+release-notes.md               # Release notes (location configurable via releaseNotesPath in cody.json)
+
+<project-path>/                 # User-configurable output path (default: cody-projects/product-builder/)
+├── plan/                       # Planning phase documents
+├── build/                      # Build phase documents (backlog, versions, patches)
+└── prototypes/                 # Throwaway prototypes, each in its own self-contained folder
 ```
 
 # Installing and Using Cody Product Builder
 
 ## Installing
+
+Cody Product Builder is an Agent Skill. There are two ways to install it; use whichever your app supports.
+
+### Option 1: The `.skill` file (Claude.ai and other apps that support `.skill`)
+
+For Claude.ai (desktop or web), and any other app that installs skills from a file, use the packaged skill file.
+
+1. Download `cody-product-builder.skill` from the repository root: https://github.com/ibuildwith-ai/cody-product-builder
+2. Add it as a skill in your app by uploading `cody-product-builder.skill`. In Claude.ai, this is done from your skills settings. For other apps, follow that app's process for adding a `.skill` file.
+
+### Option 2: The skill folder (Claude Code, Cursor, GitHub Copilot, Codex, or any other agent that does not support `.skill`)
+
+For coding agents that load skills from a folder, copy the skill folder into the agent's skills directory.
+
 1. Clone or download Cody Product Builder from: https://github.com/ibuildwith-ai/cody-product-builder
-2. Copy the `.cody` folder into your project root.
-3. From the `activations/` folder, copy the folder for your IDE into your project root:
-   - **Claude Code**: Copy `activations/.claude/` to your project root as `.claude/`
-   - **Cursor**: Copy `activations/.cursor/` to your project root as `.cursor/`
-   - **GitHub Copilot**: Copy `activations/.github/` to your project root as `.github/`
+2. Copy the `source/cody-product-builder/` folder into your agent's skills directory, keeping the folder name `cody-product-builder`:
+   - **Claude Code**: `.claude/skills/cody-product-builder/`
+   - **Cursor**: `.cursor/skills/cody-product-builder/`
+   - **GitHub Copilot**: `.github/skills/cody-product-builder/`
+
+A skills directory inside a project makes Cody available for that project only. A skills directory in your home folder makes Cody available across all your projects. Check your agent's documentation for the exact supported locations.
 
 ## Activating
-- **Claude Code**: Use the `/cody-product-builder` command
-- **Cursor**: Use the `/cody-product-builder` command
-- **GitHub Copilot**: Use the `/cody-product-builder` command
-- **Other AI Agents**: Say: *"Please read and execute the @.cody/activate.md"*
+
+Once installed, Cody Product Builder activates two ways:
+
+- **Automatically.** Describe what you want in plain language (for example, "I want to build a product", "help me plan a new app", or "I need to add a new version") and your agent invokes the skill.
+- **Explicitly.** Run the `/cody-product-builder` command.
+
+After it activates, drive Cody with the `:cody` commands listed above.
 
 ## Using
 

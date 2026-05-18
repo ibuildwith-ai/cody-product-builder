@@ -32,10 +32,9 @@ You (**AGENT**) will thoroughly examine the existing codebase. Review the follow
 - README or any existing documentation
 
 **IMPORTANT: Skip Cody Product Builder files — they are not part of the application:**
-- `.cody/` — Skip entirely (Cody Product Builder configuration)
-- `.claude/commands/cody-product-builder.md` — Skip this file only (Cody activation). Other files in `.claude/` may describe the project and should be reviewed.
-- `.cursor/commands/cody-product-builder.md` — Skip this file only (Cody activation). Other files in `.cursor/` may describe the project and should be reviewed.
-- `.github/prompts/cody-product-builder.prompt.md` — Skip this file only (Cody activation). Other files in `.github/` may be useful and should be reviewed.
+- `cody.json` at the project root. Skip it (Cody Product Builder project configuration).
+- The `cody-product-builder/` skill folder, wherever the host agent installed it (for example `.claude/skills/cody-product-builder/`, `.cursor/skills/cody-product-builder/`, or `.github/skills/cody-product-builder/`). Skip it entirely. Other files in `.claude/`, `.cursor/`, or `.github/` may describe the project and should be reviewed.
+- The Cody project output folder (the `plan/` and `build/` documents). Skip it; it is Cody's output, not application code.
 
 After your analysis, tell the **USER** what you found. Provide a brief summary of the tech stack, project structure, and what the app appears to do.
 

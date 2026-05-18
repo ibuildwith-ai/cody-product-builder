@@ -31,7 +31,7 @@ PATCH : START
 
 ### DETERMINE PATCH VERSION
 - Look at all existing version and patch folders in {{cfWorkPhase}} to determine the next available patch version number.
-- Suggest a patch version number and a short name to the **USER** (following the Version Naming Convention in {{cfRoot}}/agent.md -- the patch increment of `v[major.minor.patch]`).
+- Suggest a patch version number and a short name to the **USER** (following the Version Naming Convention in {{cfReferences}}/phases.md -- the patch increment of `v[major.minor.patch]`).
 - Ask the **USER** to confirm the version number and name.
 - **STOP** and wait for the **USER**.
 

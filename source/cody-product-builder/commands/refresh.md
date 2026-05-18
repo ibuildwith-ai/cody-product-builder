@@ -18,7 +18,7 @@ description: Refreshes the memory about the current project of the AI AGENT.
 ### CHECK FOR BROWNFIELD PROJECT
 - Check if {{cfPlanPhase}} folder exists and has documents (prd.md, plan.md, or brownfield-analysis.md).
   - If YES → continue to "ANNOUNCE TO THE **USER**" below (existing flow).
-  - If NO → check if the project root has application code (source files, package files, config files beyond just `.cody/`).
+  - If NO → check if the project root has application code (source files, package files, config files beyond just `cody.json`).
     - If YES (brownfield) → **[AGENT TODO: Read and execute {{cfCommands}}/refresh-brownfield.md]**. Stop here.
     - If NO (empty project) → tell the **USER** no project files were found. Suggest running `:cody plan` to start from scratch. Stop here.
 

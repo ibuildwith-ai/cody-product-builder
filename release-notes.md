@@ -4,6 +4,7 @@ This document lists new features, bug fixes and other changes implemented during
 
 The order of releases listed below are descending -- the latest version or patch is always shown at the top.
 
+- [v2.0.0 - Migrate to Agent Skill](#v200---migrate-to-agent-skill---2026-05-18)
 - [v1.11.0 - Prototype Command](#v1110---prototype-command---2026-05-18)
 - [v1.10.0 - Configurable Release Notes Path](#v1100---configurable-release-notes-path---2026-03-20)
 - [v1.9.0 - Configurable Project Path](#v190---configurable-project-path---2026-03-19)
@@ -18,6 +19,32 @@ The order of releases listed below are descending -- the latest version or patch
 - [v1.5.0 - Patches & Command Restructure](#v150---patches--command-restructure---2026-03-12)
 - [v1.4.0 - Brownfield Project Support](#v140---brownfield-project-support---2026-02-26)
 - [v1.3.0 - Restructure and Improvements](#v130---restructure-and-improvements---2026-02-23)
+
+---
+
+# v2.0.0 - Migrate to Agent Skill - 2026-05-18
+
+## Overview
+Cody Product Builder migrates to the Agent Skill open standard. The framework is now a single, self-contained skill folder, `cody-product-builder/`, with a `SKILL.md` at its root plus bundled `commands/`, `references/`, and `templates/`. The host agent discovers and loads it directly. The old `.cody/` framework folder, the `activations/` layer, and the per-IDE activation commands are removed.
+
+## Key Features
+- **`SKILL.md`** -- The agent core (formerly `agent.md`) and the activation steps (formerly `activate.md`) are merged into a single `SKILL.md` at the skill root, with YAML frontmatter (`name`, `description`, `version`). This is the standard Agent Skill entry file, discovered automatically by the host agent.
+- **Single skill folder** -- Cody is now one portable folder, `cody-product-builder/`, containing `SKILL.md`, `commands/`, `references/`, and `templates/`. You install it by copying it into your agent's skills directory.
+- **Triggering description** -- The frontmatter `description` lets the skill activate from natural language (for example "I want to build a product") as well as from the explicit `/cody-product-builder` command.
+
+## Enhancements
+- Path placeholders (`{{cfRoot}}`, `{{cfCommands}}`, `{{cfReferences}}`, `{{cfTemplates}}`) are redefined relative to the skill folder.
+- The skill version moved from a separate `settings.json` into the `SKILL.md` frontmatter. `help.md` reads the version from the frontmatter.
+- The README file-structure, install, and activation sections are rewritten for the Agent Skill standard.
+- The `:cody` commands are unchanged. They are text patterns the skill body watches for, not host slash commands, so they carry over as-is.
+
+## Bug Fixes
+- `patch.md` and `build-version-existing.md` referenced `agent.md` for the Version Naming Convention, but that section was moved to `references/phases.md` back in v1.8.0. The stale references are now repointed to `{{cfReferences}}/phases.md`.
+
+## Other Notes
+- **The old framework is fully removed.** The `.cody/` folder, the `activations/` folder, the repo-root activation command, `agent.md`, `activate.md`, and `settings.json` are all gone. v2.0.0 ships only the skill folder.
+- **Installation changed.** Instead of copying `.cody/` and a per-IDE activation file into your project, you now copy the `cody-product-builder/` skill folder into your agent's skills directory (`.claude/skills/`, `.cursor/skills/`, `.github/skills/`, and so on). See the README.
+- Folder names `commands/` and `templates/` are kept for now. Aligning them to the Agent Skill resource conventions (`references/`, `scripts/`, `assets/`) is deferred to a later version.
 
 ---
 

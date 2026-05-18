@@ -37,8 +37,8 @@ Cody Product Builder is an AI agent skill for domain experts and knowledge worke
 
     5. Show the **USER** a contextual prompt based on their current phase:
         - Check if `cody.json` exists and has a `cody-product-builder` section.
-          - If it exists and **phase** is `"plan"`: show `"Ready to get started? Type :cody plan to begin, or :cody help to see all available commands."`
-          - If it exists and **phase** is `"build"`: show `"What would you like to work on? Type :cody build to continue building, :cody idea to capture a quick thought, :cody refresh to refresh project memory, or :cody help to see all available commands."`
+          - If it exists and **phase** is `"plan"`: show `"Ready to get started? Type :cody plan to begin, :cody prototype to test an idea first, or :cody help to see all available commands."`
+          - If it exists and **phase** is `"build"`: show `"What would you like to work on? Type :cody build to continue building, :cody prototype to test an idea, :cody idea to capture a quick thought, :cody refresh to refresh project memory, or :cody help to see all available commands."`
           - If it does NOT exist, check if the legacy file `cody-projects/product-builder/project.json` exists.
             - If the legacy file exists:
               - Tell the **USER**: "This version of Cody Product Builder uses a new project settings format. Let me migrate your settings."

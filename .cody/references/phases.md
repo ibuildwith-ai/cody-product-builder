@@ -35,6 +35,12 @@ This phase guides USERS through the iterative development cycle by creating docu
 |----------|-------------|
 | `patch.md` | This document captures a quick fix or small enhancement -- the problem, the plan, the solution, and files changed. It does not require a design doc, tasklist, or retrospective. |
 
+> Prototypes are throwaway, interactive mockups built to test an idea. They live in the `{{cfPrototypes}}` folder, each in its own self-contained subfolder. Prototyping is independent of the two phases -- a prototype can be built anytime via `:cody prototype` and is referenced on demand when planning or building.
+
+| Document | Description |
+|----------|-------------|
+| `prototype.md` | This document captures a single prototype -- the idea being tested, what to test, build approach, an iterative findings log, and the **USER's** likes and dislikes. Created and worked via `:cody prototype`. |
+
 > Project-level settings file, stored at `cody.json` in the project root:
 
 | Field | Description |

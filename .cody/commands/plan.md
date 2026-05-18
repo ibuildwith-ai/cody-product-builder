@@ -17,6 +17,12 @@ PLAN PHASE : START
 +-----------------+
 ```
 
+### NOTE AVAILABLE PROTOTYPES
+- Check the `{{cfPrototypes}}` folder for any prototypes. Verify with at least two methods before concluding there are none.
+- If there are none, continue silently to the next section.
+- If there are any, mention them to the **USER** in a single line so they know the prototypes are available (for example: `You have these prototypes available if you'd like to use one: <names>`). Do NOT ask a question and do NOT stop.
+- If the **USER** asks to use a prototype, read its `prototype.md` from `{{cfPrototypes}}` (and look at its artifact if helpful) and factor it into the planning work.
+
 # TALK ABOUT IDEA
 - Start by asking the **USER**:  
   `What do you want to create?` **STOP**

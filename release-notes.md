@@ -4,6 +4,7 @@ This document lists new features, bug fixes and other changes implemented during
 
 The order of releases listed below are descending -- the latest version or patch is always shown at the top.
 
+- [v1.11.0 - Prototype Command](#v1110---prototype-command---2026-05-18)
 - [v1.10.0 - Configurable Release Notes Path](#v1100---configurable-release-notes-path---2026-03-20)
 - [v1.9.0 - Configurable Project Path](#v190---configurable-project-path---2026-03-19)
 - [v1.8.0 - Agent Optimization](#v180---agent-optimization---2026-03-17)
@@ -17,6 +18,35 @@ The order of releases listed below are descending -- the latest version or patch
 - [v1.5.0 - Patches & Command Restructure](#v150---patches--command-restructure---2026-03-12)
 - [v1.4.0 - Brownfield Project Support](#v140---brownfield-project-support---2026-02-26)
 - [v1.3.0 - Restructure and Improvements](#v130---restructure-and-improvements---2026-02-23)
+
+---
+
+# v1.11.0 - Prototype Command - 2026-05-18
+
+## Overview
+Added the standalone `:cody prototype` command for building throwaway, interactive prototypes that test an idea. Prototyping is independent of the Plan and Build phases: it can be run anytime, has no status tracking, and delivers a self-contained prototype folder. Plan and build add a passive one-line mention of available prototypes so the user can choose to reference one.
+
+## Key Features
+- **`:cody prototype` command** -- New standalone command that runs the whole prototype workflow in a single file: name the prototype, create its self-contained folder, warn about git, discover the idea, scaffold `prototype.md`, build and iterate while recording findings and likes and dislikes, wrap up against the stated purpose, then keep or delete.
+- **Independent of the phases** -- Prototyping is not a phase. `:cody prototype` can run anytime, before, during, or after planning or building, and never changes the `phase` value in `cody.json`.
+- **`prototype.md` document** -- Each prototype has its own document capturing the idea being tested, what to test, the build approach, an iterative findings log, and the user's likes and dislikes.
+- **Passive mention in plan and build** -- `:cody plan` and `:cody build` mention available prototypes in a single non-blocking line. If the user asks to use a prototype, the flow reads its `prototype.md` and factors it in.
+
+## Enhancements
+- New `{{cfPrototypes}}` placeholder in `agent.md`, resolving to `{{cfProject}}/prototypes`
+- New `prototype.md` template in `.cody/templates/prototype/`
+- `:cody prototype` registered in the `agent.md` command registry
+- `phases.md` updated with a prototype description
+- `activate.md` welcome prompts updated to mention `:cody prototype`
+- README updated with a Prototyping section, including guidance on running a prototype in the same session or a separate one
+
+## Bug Fixes
+None
+
+## Other Notes
+- Cody ships no `.gitignore` for prototypes and does not manage their git status. When a prototype folder is created, Cody warns that everything inside it will be committed if the project uses git.
+- A prototype is a single-session artifact. There is no "resume an existing prototype" flow; to revisit, reference the kept `prototype.md` or build a fresh prototype.
+- The design was reworked during the build. An earlier version coupled prototypes to the phases with two-way findings checks, a status and outcome model, and an apply-on-close flow. Testing showed that machinery created dead-ends, so it was dropped in favor of the independent model.
 
 ---
 

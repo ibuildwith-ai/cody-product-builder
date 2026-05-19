@@ -4,13 +4,13 @@ description: Creates a Cody project and starts the PLAN phase.
 ---
 
 ### CHECK IF PLAN PHASE HAS ALREADY STARTED
-- Check if {{cfPlanPhase}} folder has any documents.  
-    - If it does, list the documents already started.
-    - Tell the **USER** that the plan phase was already started.
-    - End here.
+Starting over would overwrite documents the **USER** has already worked on, so check before doing anything else.
+
+- Check if {{cfPlanPhase}} folder has any documents.
+    - If it does, list the documents already started, tell the **USER** the plan phase was already started, and end here.
 - If it does not, continue to the next section.
 
-- **AGENT** show the **USER** the following: 
+- **AGENT** show the **USER** the following:
 ```
 +-----------------+
 PLAN PHASE : START
@@ -18,17 +18,11 @@ PLAN PHASE : START
 ```
 
 ### NOTE AVAILABLE PROTOTYPES
-- Check the `{{cfPrototypes}}` folder for any prototypes. Verify with at least two methods before concluding there are none.
-- If there are none, continue silently to the next section.
-- If there are any, mention them to the **USER** in a single line so they know the prototypes are available (for example: `You have these prototypes available if you'd like to use one: <names>`). Do NOT ask a question and do NOT stop.
-- If the **USER** asks to use a prototype, read its `prototype.md` from `{{cfPrototypes}}` (and look at its artifact if helpful) and factor it into the planning work.
+**[AGENT TODO: Read and execute {{cfReferences}}/note-available-prototypes.md]**
 
 # TALK ABOUT IDEA
-- Start by asking the **USER**:  
-  `What do you want to create?` **STOP**
-- After the **USER** responds, display this message:  
-
-- **AGENT** show the **USER** the following: 
+- Start by asking the **USER**: `What do you want to create?` **STOP**
+- After the **USER** responds, show them the following:
 ```
 Great. I’m going to ask you questions to fully understand the outcome you want.
 If you are not sure how to answer, just type "help me" and I’ll provide you with some example answers based on your idea.
@@ -38,35 +32,20 @@ If you don’t want me to ask any more questions, just type "no more".
 **[AGENT TODO: Read {{cfReferences}}/knowledge-criteria.md and follow the Knowledge Criteria, Q&A Guidance, and Example Questions defined there.]**
 
 # PROVIDE YOUR UNDERSTANDING TO THE **USER**
+The plan documents are only as good as the shared understanding behind them, so confirm that understanding before writing anything.
+
 - Summarize your understanding of the idea back to the **USER**.
 - Ask for approval explicitly. **STOP** for **USER APPROVAL**.
 - If not approved, continue asking targeted questions and refine until approved.
 
 # CREATE DISCOVERY DOCUMENT
 
-### CREATE PROJECT SETTINGS
-- Create `cody.json` in the project root using the `{{cfTemplates}}/cody.json` template.
-- Fill in the `cody-product-builder` section:
-  - **name** and **description** from what you learned during discovery
-  - **createdAt** and **updatedAt** with today's date (use `YYYY-MM-DD` format)
-  - **version** as `"0.0.0"`
-  - **phase** as `"plan"`
-- Ask the **USER**: "The default project path is `cody-projects/product-builder`. Do you want to choose a different one?"
-- **STOP** and wait for the **USER**.
-- Set **projectPath** to the chosen path (default or custom).
-- Present all values to the **USER** and ask them to confirm or change anything.
-- **STOP** and wait for the **USER**.
-- Apply any changes the USER requests, then continue.
+### CREATE PROJECT WORKSPACE
+**[AGENT TODO: Read and execute {{cfReferences}}/create-project-workspace.md with these values: name/description source = what you learned during discovery; version = `"0.0.0"`; phase = `"plan"`.]**
 
-### CREATE PROJECT FOLDERS
-- Create the `{{cfProject}}` folder if it doesn't exist.
-- Create the following folder structure in the `{{cfProject}}` folder:
-```
-/build
-/plan
-```
+### COPY DISCOVERY DOCUMENT
 
-- Copy `{{cfTemplates}}/plan/discovery.md` to `{{cfPlanPhase}}/discovery.md`.
+- Copy `{{cfAssets}}/plan/discovery.md` to `{{cfPlanPhase}}/discovery.md`.
 - Update all sections based on what you learned.
 - Make sure you update the "DISCOVERY SUMMARY" section in the discovery.md file with your understanding summary listed previously.
 - Tell the **USER**:
@@ -79,18 +58,20 @@ If you didn't, just say “continue”.
 ```
 
 ### CREATE PRD DOCUMENT
-- Copy from {{cfTemplates}}/plan/prd.md into {{cfPlanPhase}}
+The PRD turns raw discovery notes into a structured definition of what is being built and why; the plan document then builds on it.
+
+- Copy from {{cfAssets}}/plan/prd.md into {{cfPlanPhase}}
 - You (**AGENT**) will review the discovery.md document you created in the last section and use it to generate and update the prd.md document you just copied.
 - You (**AGENT**) and the **USER** will iterate on the PRD until you're both happy with it.
 
 ### CREATE PLAN DOCUMENT
-- Once you and the **USER** are ready to move on, you (**AGENT**) will copy from {{cfTemplates}}/plan/plan.md into {{cfPlanPhase}}
+- Once you and the **USER** are ready to move on, you (**AGENT**) will copy from {{cfAssets}}/plan/plan.md into {{cfPlanPhase}}
 - You will review the prd.md document and use it to generate and update the plan.md document you just copied.
 - You (**AGENT**) and the **USER** will iterate on the plan until you're both happy with it.
 
 ### PLAN PHASE ENDS
 
-- **AGENT** show the **USER** the following: 
+- **AGENT** show the **USER** the following:
 ```
 +--------------------+
 PLAN PHASE : COMPLETED

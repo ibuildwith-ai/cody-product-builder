@@ -31,7 +31,7 @@ You (**AGENT**) will thoroughly examine the existing codebase. Review the follow
 - API routes/endpoints if present
 - README or any existing documentation
 
-**IMPORTANT: Skip Cody Product Builder files — they are not part of the application:**
+**Skip Cody Product Builder files — they are not part of the application:**
 - `cody.json` at the project root. Skip it (Cody Product Builder project configuration).
 - The `cody-product-builder/` skill folder, wherever the host agent installed it (for example `.claude/skills/cody-product-builder/`, `.cursor/skills/cody-product-builder/`, or `.github/skills/cody-product-builder/`). Skip it entirely. Other files in `.claude/`, `.cursor/`, or `.github/` may describe the project and should be reviewed.
 - The Cody project output folder (the `plan/` and `build/` documents). Skip it; it is Cody's output, not application code.
@@ -62,37 +62,18 @@ Additional brownfield-specific guidance:
 
 ---
 
-## CREATE PROJECT SETTINGS
+## CREATE PROJECT WORKSPACE
 
-- Create `cody.json` in the project root using the `{{cfTemplates}}/cody.json` template.
-- Fill in the `cody-product-builder` section:
-  - **name** and **description** from what you learned during the codebase analysis and Q&A
-  - **createdAt** and **updatedAt** with today's date (use `YYYY-MM-DD` format)
-  - **phase** as `"build"`
 - Ask the **USER**: `What version is your project currently at? (e.g., 1.0.0, 0.5.0)`
 - **STOP** and wait for the **USER**.
-- Fill in **version** with the USER's answer.
-- Ask the **USER**: "The default project path is `cody-projects/product-builder`. Do you want to choose a different one?"
-- **STOP** and wait for the **USER**.
-- Set **projectPath** to the chosen path (default or custom).
-- Present all values to the **USER** and ask them to confirm or change anything.
-- **STOP** and wait for the **USER**.
-- Apply any changes the USER requests, then continue.
 
-## CREATE PROJECT FOLDERS
-
-- Create the `{{cfProject}}` folder if it doesn't exist.
-- Create the following folder structure in the `{{cfProject}}` folder:
-```
-/build
-/plan
-```
+**[AGENT TODO: Read and execute {{cfReferences}}/create-project-workspace.md with these values: name/description source = what you learned during the codebase analysis and Q&A; version = the version the USER just provided; phase = `"build"`.]**
 
 ---
 
 ## WRITE BROWNFIELD ANALYSIS
 
-- Copy `{{cfTemplates}}/plan/brownfield-analysis.md` to `{{cfPlanPhase}}/brownfield-analysis.md`.
+- Copy `{{cfAssets}}/plan/brownfield-analysis.md` to `{{cfPlanPhase}}/brownfield-analysis.md`.
 - Update all sections based on what you learned from the codebase analysis and user Q&A.
 - Tell the **USER**:
 ```
@@ -116,7 +97,7 @@ If you didn't, just say "continue".
 GENERATING PRD
 +--------------+
 ```
-- Copy from `{{cfTemplates}}/plan/prd.md` into `{{cfPlanPhase}}`.
+- Copy from `{{cfAssets}}/plan/prd.md` into `{{cfPlanPhase}}`.
 - Review the brownfield-analysis.md document and use it to generate and update the prd.md document.
 - Tell the **USER** to review the PRD document.
 - **STOP** and wait for the **USER**.
@@ -132,7 +113,7 @@ GENERATING PRD
 GENERATING PLAN
 +----------------+
 ```
-- Once the **USER** approves the PRD, copy from `{{cfTemplates}}/plan/plan.md` into `{{cfPlanPhase}}`.
+- Once the **USER** approves the PRD, copy from `{{cfAssets}}/plan/plan.md` into `{{cfPlanPhase}}`.
 - Review the prd.md document and the brownfield-analysis.md document and use them to generate and update the plan.md document.
 - Tell the **USER** to review the Plan document.
 - **STOP** and wait for the **USER**.

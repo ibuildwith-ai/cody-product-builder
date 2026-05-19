@@ -13,6 +13,8 @@ BUILD PHASE : START
 ```
 
 ### CHECK PREREQUISITES
+Build work is driven by the plan, so confirm the plan phase produced its documents before going any further.
+
 - Check if {{cfPlanPhase}} folder exists and has plan phase documents (prd.md or plan.md).
   - If it does NOT exist, tell the **USER** they need to complete the plan phase first (`:cody plan`). Stop here.
 - If {{cfWorkPhase}} folder does not exist, create it.
@@ -21,6 +23,8 @@ BUILD PHASE : START
 **[AGENT TODO: Read and execute {{cfReferences}}/project-settings-check.md]**
 
 ### CHECK FEATURE BACKLOG
+The feature backlog is the single source of what gets built and in what order; every version and patch is drawn from it.
+
 - Check if {{cfWorkPhase}}/feature-backlog.md exists.
   - If it does NOT exist:
     - Tell the **USER**: "Before we start building, I need to create a Feature Backlog. The backlog is a list of all the features, enhancements, and tasks from your plan, organized into versions. It's what we'll use to decide what gets built and in what order."
@@ -30,10 +34,7 @@ BUILD PHASE : START
     - **STOP** and wait for the **USER**.
 
 ### NOTE AVAILABLE PROTOTYPES
-- Check the `{{cfPrototypes}}` folder for any prototypes. Verify with at least two methods before concluding there are none.
-- If there are none, continue silently to the next section.
-- If there are any, mention them to the **USER** in a single line so they know the prototypes are available (for example: `You have these prototypes available if you'd like to use one: <names>`). Do NOT ask a question and do NOT stop.
-- If the **USER** asks to use a prototype, read its `prototype.md` from `{{cfPrototypes}}` (and look at its artifact if helpful) and factor it into the build work.
+**[AGENT TODO: Read and execute {{cfReferences}}/note-available-prototypes.md]**
 
 ### WHAT WOULD YOU LIKE TO DO?
 

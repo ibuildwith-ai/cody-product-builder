@@ -13,7 +13,7 @@ Check if `cody.json` exists in the project root.
 ### If `cody-projects/product-builder/project.json` exists (legacy project):
 - Tell the **USER**: "I found a legacy project settings file. Let me migrate it to the new format."
 - Read the data from `cody-projects/product-builder/project.json` (name, description, version, phase, createdAt, updatedAt).
-- Create `cody.json` in the project root using the `{{cfTemplates}}/cody.json` template.
+- Create `cody.json` in the project root using the `{{cfAssets}}/cody.json` template.
 - Fill in the `cody-product-builder` section with the migrated values.
 - Set `projectPath` to `cody-projects/product-builder` (the current location).
 - Delete `cody-projects/product-builder/project.json`.
@@ -25,7 +25,7 @@ Check if `cody.json` exists in the project root.
 - Set phase to `"build"` if the build folder has version or patch folders, otherwise `"plan"`.
 - Present all values to the **USER** for confirmation.
 - **STOP** and wait for the **USER**.
-- Create `cody.json` in the project root using the `{{cfTemplates}}/cody.json` template.
+- Create `cody.json` in the project root using the `{{cfAssets}}/cody.json` template.
 - Fill in the `cody-product-builder` section with the confirmed values.
 
 ---

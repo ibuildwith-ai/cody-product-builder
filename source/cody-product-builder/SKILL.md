@@ -1,7 +1,8 @@
 ---
 name: cody-product-builder
 description: Guides knowledge workers and domain experts from idea to finished product through a structured two-phase workflow (Plan and Build). Use this skill whenever the user wants to plan, design, build, or ship a product, app, tool, or feature; add a new version or patch to an existing project; prototype or test an idea quickly; capture a product idea; or types any :cody command. Trigger it even when the user does not say "Cody" but describes wanting to build something, start a project, scope features, write a PRD, or organize product development.
-version: 2.0.0
+metadata:
+  version: 2.1.0
 ---
 
 # Cody Product Builder
@@ -16,21 +17,17 @@ version: 2.0.0
 - The roles are as follows:
     - **USER** Is the human guiding you in the building process.
     - **AGENT** That's you! The AI Development **AGENT**.
-
-## About Cody Product Builder
-Cody Product Builder is an AI agent skill that guides users from idea to finished product through structured planning and iterative building.
-
-For detailed phase descriptions, document references, and version naming conventions, see `{{cfReferences}}/phases.md`.
+- For detailed phase descriptions, document references, and version naming conventions, see `{{cfReferences}}/phases.md`.
 
 ## Template Placeholder Values
 These placeholders are a pointer to actual values. They are created here and used throughout various commands. When you encounter a placeholder, you will replace it with its value and consider that as the literal (e.g. `{{cfCommands}}/help.md` translates to `commands/help.md`).
 
-The skill-file placeholders (`{{cfRoot}}`, `{{cfTemplates}}`, `{{cfCommands}}`, `{{cfReferences}}`) are paths relative to this skill's own folder.
+The skill-file placeholders (`{{cfRoot}}`, `{{cfAssets}}`, `{{cfCommands}}`, `{{cfReferences}}`) are paths relative to this skill's own folder.
 
 | Placeholder | Maps to | Description |
 |------------|---------|-------------|
 | {{cfRoot}} | . | This skill's root folder. |
-| {{cfTemplates}} | templates | Cody templates folder. |
+| {{cfAssets}} | assets | Cody assets folder (templates and other static resources). |
 | {{cfCommands}} | commands | Cody commands to be executed. |
 | {{cfReferences}} | references | Shared reference content loaded on demand by commands. |
 | {{cfProject}} | *Dynamic -- resolved from `cody.json`* | Project output folder. Read from `cody.json > cody-product-builder > projectPath`. Default: `cody-projects/product-builder`. Resolved on activation and cached for the session. Re-resolved on `:cody refresh`. |
@@ -70,30 +67,29 @@ The skill-file placeholders (`{{cfRoot}}`, `{{cfTemplates}}`, `{{cfCommands}}`, 
 
 When this skill is activated, **AGENT**, please execute the following exactly:
 
-1. Read `cody.json` from the project root.
-   - If it exists and has a `cody-product-builder` section:
-     - Resolve `{{cfProject}}` from the `projectPath` value.
-     - Resolve `{{cfPlanPhase}}` as `{{cfProject}}/plan`.
-     - Resolve `{{cfWorkPhase}}` as `{{cfProject}}/build`.
-     - Resolve `{{cfReleaseNotes}}` from the `releaseNotesPath` value: if `"{{projectPath}}"` use `{{cfWorkPhase}}`, if `"{{projectRoot}}"` use the project root, otherwise use the custom path.
-     - Cache these resolved values for the rest of the session.
-     - If the `releaseNotesPath` field is missing from `cody.json`:
-       - Tell the **USER** where `release-notes.md` currently lives (check `{{cfWorkPhase}}/release-notes.md`).
-       - Ask: "Would you like to keep release notes there, or move them?" with options:
-         1. Keep current location
-         2. Project root
-         3. Custom path
-       - **STOP** and wait for the **USER**.
-       - If they keep the current location, set `releaseNotesPath` to `"{{projectPath}}"` in `cody.json`.
-       - If project root, set `releaseNotesPath` to `"{{projectRoot}}"` in `cody.json`.
-       - If custom, ask for the path and set `releaseNotesPath` to that value in `cody.json`.
-       - If they chose a different location and `release-notes.md` exists at the current location, move it to the new location.
-       - Re-resolve `{{cfReleaseNotes}}` and cache it.
-   - If it does NOT exist:
-     - Use defaults: `{{cfProject}}` = `cody-projects/product-builder`, `{{cfPlanPhase}}` = `cody-projects/product-builder/plan`, `{{cfWorkPhase}}` = `cody-projects/product-builder/build`, `{{cfReleaseNotes}}` = `cody-projects/product-builder/build`.
-     - Cache these defaults for the rest of the session.
+1. Resolve the project configuration. Resolving placeholder paths from `cody.json` is deterministic work, so the skill ships a script to do it reliably and cheaply.
 
-2. Show the **USER** the following banner (replace {version} with the `version` value from this file's frontmatter):
+   **Run the resolver script.** From the project root, run `{{cfRoot}}/scripts/resolve-config.py`. It reads `cody.json` and prints a JSON object: the resolved placeholder paths under `resolved` (`cfProject`, `cfPlanPhase`, `cfWorkPhase`, `cfReleaseNotes`, `cfPrototypes`), plus the flags `cody_json_exists`, `has_section`, `release_notes_path_present`, and `legacy_project_json_exists`. Cache the five resolved values for the rest of the session.
+
+   **Fallback** -- only if the script cannot run (no Python runtime, or code execution unavailable). Resolve the values by hand:
+   - If `cody.json` exists with a `cody-product-builder` section: `{{cfProject}}` = `projectPath`; `{{cfPlanPhase}}` = `{{cfProject}}/plan`; `{{cfWorkPhase}}` = `{{cfProject}}/build`; `{{cfPrototypes}}` = `{{cfProject}}/prototypes`; `{{cfReleaseNotes}}` from `releaseNotesPath` (`"{{projectPath}}"` resolves to `{{cfWorkPhase}}`, `"{{projectRoot}}"` to the project root, any other value to that path).
+   - If `cody.json` does not exist: use defaults -- `{{cfProject}}` = `cody-projects/product-builder`, with `/plan`, `/build`, and `/prototypes` beneath it, and `{{cfReleaseNotes}}` = `{{cfWorkPhase}}`.
+   - Cache the resolved values for the rest of the session.
+
+   **One-time migration -- missing `releaseNotesPath`.** If `cody.json` exists with a `cody-product-builder` section but no `releaseNotesPath` field (script flag `has_section` is true and `release_notes_path_present` is false), handle it here -- the script leaves this to the skill because it needs the **USER**:
+   - Tell the **USER** where `release-notes.md` currently lives (check `{{cfWorkPhase}}/release-notes.md`).
+   - Ask: "Would you like to keep release notes there, or move them?" with options:
+     1. Keep current location
+     2. Project root
+     3. Custom path
+   - **STOP** and wait for the **USER**.
+   - If they keep the current location, set `releaseNotesPath` to `"{{projectPath}}"` in `cody.json`.
+   - If project root, set `releaseNotesPath` to `"{{projectRoot}}"` in `cody.json`.
+   - If custom, ask for the path and set `releaseNotesPath` to that value in `cody.json`.
+   - If they chose a different location and `release-notes.md` exists at the current location, move it to the new location.
+   - Re-resolve `{{cfReleaseNotes}}` (re-run the script) and cache it.
+
+2. Show the **USER** the following banner (replace {version} with the `metadata.version` value from this file's frontmatter):
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

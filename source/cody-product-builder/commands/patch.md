@@ -5,6 +5,8 @@ description: Creates a lightweight patch for a quick bug fix or small enhancemen
 
 # PATCH
 
+A patch is a lightweight fix or small enhancement. It skips the full version cycle -- no design doc, tasklist, or retrospective -- so small work stays fast.
+
 ### ASK WHAT NEEDS TO BE DONE
 
 - **AGENT** show the **USER** the following:
@@ -17,7 +19,7 @@ PATCH : START
 ### CHECK BACKLOG FOR IDEAS
 - Check if `{{cfWorkPhase}}/feature-backlog.md` exists and has items in the **Backlog** section.
   - If YES, show the Backlog items and ask the **USER**: "Would you like to work on one of these backlog items, or describe something new?"
-    - If the **USER** picks a backlog item, use it as the starting point for understanding the problem. Do NOT remove it from the Backlog section yet -- it will be removed when the patch entry is written in the feature backlog.
+    - If the **USER** picks a backlog item, use it as the starting point for understanding the problem. Do not remove it from the Backlog section yet -- it will be removed when the patch entry is written in the feature backlog.
     - If the **USER** wants something new, continue with the normal flow below.
   - If NO (no file or no Backlog items), continue with the normal flow below.
 
@@ -37,7 +39,7 @@ PATCH : START
 
 ### CREATE PATCH FOLDER AND DOCUMENT
 - Create the patch folder in {{cfWorkPhase}} using the confirmed version name (e.g., `v0.2.1-fix-login-bug`).
-- Copy `{{cfTemplates}}/build/patch.md` to the patch folder.
+- Copy `{{cfAssets}}/build/patch.md` to the patch folder.
 - Fill in the following sections of the patch document:
   - **Patch Version** -- the confirmed version number and name
   - **Date** -- today's date
@@ -65,7 +67,7 @@ PATCH : START
 - Check if {{cfReleaseNotes}}/release-notes.md exists.
   - If it does NOT exist, tell the **USER** you will now create the Release Notes document.
     - If the {{cfReleaseNotes}} directory does not exist, create it.
-    - Copy from {{cfTemplates}}/build/release-notes.md to {{cfReleaseNotes}}/release-notes.md.
+    - Copy from {{cfAssets}}/build/release-notes.md to {{cfReleaseNotes}}/release-notes.md.
 - Add a patch entry to the release notes in the correct chronological position (latest at the top). Use the patch entry format defined in the release notes template.
 
 ### VERIFY THE FIX

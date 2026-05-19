@@ -2,7 +2,7 @@
 
 ![Cody Product Builder](./images/cody-product-builder-logo.png)
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue)
+![Version](https://img.shields.io/badge/version-2.1.0-blue)
 [![License](https://img.shields.io/badge/license-Custom-orange)](LICENSE.md)
 [![iBuildWith.ai](https://img.shields.io/badge/by-iBuildWith.ai-20c05b)](https://www.ibuildwith.ai)
 [![Release Notes](https://img.shields.io/badge/Release_Notes-changelog-blue)](release-notes.md)
@@ -157,7 +157,8 @@ cody-product-builder/          # The skill folder (copy this into your agent's s
 ├── SKILL.md                   # Skill definition: frontmatter plus agent instructions and command registry
 ├── commands/                  # Command implementation files
 ├── references/                # Shared reference content (loaded on demand by commands)
-└── templates/                 # Document templates
+├── scripts/                   # Helper scripts (e.g. activation config resolution)
+└── assets/                    # Document templates and other static resources
     ├── cody.json              # Template for project settings
     ├── plan/                  # Templates for discovery.md, brownfield-analysis.md, prd.md, plan.md
     ├── build/                 # Templates for feature-backlog.md, release-notes.md, patch.md

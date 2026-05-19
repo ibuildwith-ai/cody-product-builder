@@ -3,7 +3,7 @@ command: ":cody help"
 description: Shows all available Cody Product Builder commands.
 ---
 
-- Read the "version" key from the {{cfRoot}}/SKILL.md frontmatter to get the current version number.
+- Read the `metadata.version` key from the {{cfRoot}}/SKILL.md frontmatter to get the current version number.
 
 - **AGENT** show the **USER** the following (replace {version} with the version you just read):
 ```

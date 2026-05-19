@@ -11,6 +11,8 @@ description: Refreshes memory and updates PRD, plan, and release notes. Delegate
 
 
 ### MAKE BACKUPS
+The PRD and plan are about to be rewritten in place, so back them up first -- that gives the **USER** a way to recover the previous version if an update goes wrong.
+
 - Tell the **USER** that you will create backups of some documents.
 - Create a folder named "old" (if it does not exists) in `{{cfPlanPhase}}`.
 - Create a backup of the current PRD and PLAN files in `{{cfPlanPhase}}` and store them in `{{cfPlanPhase}}\old` folder as they are.
@@ -38,7 +40,7 @@ description: Refreshes memory and updates PRD, plan, and release notes. Delegate
 - Tell the **USER** that you are reading and updating the Release Notes document with the latest project information.
 - Find the release-notes.md file in `{{cfWorkPhase}}` root folder.
         - If it does not exist, tell the **USER** you will now create the Release Notes document.
-                - Copy from `{{cfTemplates}}/build/release-notes.md` to `{{cfWorkPhase}}/release-notes.md`.
+                - Copy from `{{cfAssets}}/build/release-notes.md` to `{{cfWorkPhase}}/release-notes.md`.
 - Read that file completely and thoroughly.
 - Review the all the available versions in the `{{cfWorkPhase}}\build` folder. 
 - Add any new versions that are missing `{{cfWorkPhase}}/release-notes.md`.

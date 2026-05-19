@@ -21,14 +21,18 @@ BUILD VERSION : START
 - Create the version folder, using the version name from the selected version, but make sure you convert that name to follow the 'Version Naming Convention' section rules in {{cfReferences}}/phases.md.
 
 ### GENERATE DESIGN DOCUMENT
-- Copy the design.md template from {{cfTemplates}}/build/version/design.md to the version folder you just created.
+The design document is the technical plan for the version; building from a written design keeps the work coherent instead of improvised.
+
+- Copy the design.md template from {{cfAssets}}/build/version/design.md to the version folder you just created.
 - Generate and update the design.md document with details from the version the **USER** chose to build.
 - Tell the **USER** to check the design.md document in the current version.
 - Tell the **USER** to announce when they are done.
 - Stop and wait for the **USER**.
 
 ### GENERATE TASKLIST
-- Copy the tasklist.md template from {{cfTemplates}}/build/version/tasklist.md to the version folder you just created.
+The task list breaks the design into ordered, trackable steps so the build proceeds in sequence and nothing is skipped.
+
+- Copy the tasklist.md template from {{cfAssets}}/build/version/tasklist.md to the version folder you just created.
 - Create and generate the tasklist.md document using any of the previous documents created as reference.
 - Tell the **USER** to review the tasklist.md document in the current version and when they are done, to tell you.
 - Stop and wait for the **USER**.
@@ -52,7 +56,7 @@ When you (**AGENT**) reached the end of the version, tell the **USER** this vers
 
 ### CREATE RETROSPECTIVE
 - Tell the **USER** that you will create a Retrospective now.
-- Copy from {{cfTemplates}}/build/version/retrospective.md to the current version folder.
+- Copy from {{cfAssets}}/build/version/retrospective.md to the current version folder.
 - Update the retrospective.md file.
 
 ### UPDATE PROJECT SETTINGS
@@ -64,7 +68,7 @@ When you (**AGENT**) reached the end of the version, tell the **USER** this vers
 - Check to see if the {{cfReleaseNotes}}/release-notes.md file exists.
     - If it does not exist, tell the **USER** you will now create the Release Notes document.
         - If the {{cfReleaseNotes}} directory does not exist, create it.
-        - Copy from {{cfTemplates}}/build/release-notes.md to {{cfReleaseNotes}}/release-notes.md.
+        - Copy from {{cfAssets}}/build/release-notes.md to {{cfReleaseNotes}}/release-notes.md.
 - Read and follow the instructions in the {{cfReleaseNotes}}/release-notes.md file for updating it.
 
 ### REFRESH AI AGENT MEMORY AND PROJECT DOCUMENTS

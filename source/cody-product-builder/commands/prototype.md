@@ -37,7 +37,7 @@ prototype -- will be committed unless you exclude it yourself.
 - Ask the **USER** what specific things they want to be able to test in the prototype.
 
 ### SCAFFOLD THE PROTOTYPE DOCUMENT
-- Copy `{{cfTemplates}}/prototype/prototype.md` to `{{cfPrototypes}}/<slug>/prototype.md`.
+- Copy `{{cfAssets}}/prototype/prototype.md` to `{{cfPrototypes}}/<slug>/prototype.md`.
 - Fill in:
   - **Prototype name** -- the name the **USER** chose
   - **Created** and **Last Updated** -- today's date (YYYY-MM-DD)

@@ -4,6 +4,7 @@ This document lists new features, bug fixes and other changes implemented during
 
 The order of releases listed below are descending -- the latest version or patch is always shown at the top.
 
+- [v2.1.0 - Standards Compliance](#v210---standards-compliance---2026-05-19)
 - [v2.0.0 - Migrate to Agent Skill](#v200---migrate-to-agent-skill---2026-05-18)
 - [v1.11.0 - Prototype Command](#v1110---prototype-command---2026-05-18)
 - [v1.10.0 - Configurable Release Notes Path](#v1100---configurable-release-notes-path---2026-03-20)
@@ -19,6 +20,33 @@ The order of releases listed below are descending -- the latest version or patch
 - [v1.5.0 - Patches & Command Restructure](#v150---patches--command-restructure---2026-03-12)
 - [v1.4.0 - Brownfield Project Support](#v140---brownfield-project-support---2026-02-26)
 - [v1.3.0 - Restructure and Improvements](#v130---restructure-and-improvements---2026-02-23)
+
+---
+
+# v2.1.0 - Standards Compliance - 2026-05-19
+
+## Overview
+Brings Cody Product Builder into compliance with the agentskills.io specification and the Cody Skill Framework, and applies instruction-quality fixes surfaced by a full skill audit. Two spec failures are corrected and several maintainability improvements land alongside them.
+
+## Key Features
+- **Spec-compliant frontmatter** -- the skill `version` moves from a top-level frontmatter field into `metadata.version`, where the agentskills.io spec expects non-standard fields (audit rule F1).
+- **`assets/` folder** -- the `templates/` folder is renamed to `assets/` to match the Cody Skill Framework convention (audit rule O3). The `{{cfTemplates}}` placeholder is renamed to `{{cfAssets}}`.
+- **Config resolution script** -- a new `scripts/resolve-config.py` resolves the dynamic placeholder paths from `cody.json` deterministically. SKILL.md activation and `:cody refresh` call it, with a markdown fallback for environments without a Python runtime.
+
+## Enhancements
+- Duplicated instruction blocks extracted into shared references: `note-available-prototypes.md` (used by plan and build) and `create-project-workspace.md` (used by plan and brownfield refresh).
+- Brief "why" rationale added to consequential steps across the command files.
+- Inline emphasis toned down (`Do NOT` to `do not` where non-critical, redundant `IMPORTANT:` removed); ALL-CAPS section headers kept.
+- The redundant "About Cody Product Builder" section trimmed from SKILL.md -- it restated the frontmatter description.
+- README file structure updated for the `assets/` and `scripts/` folders.
+
+## Bug Fixes
+None
+
+## Other Notes
+- `:cody refresh` previously re-resolved only three placeholders by hand; it now uses the shared script and resolves all five (`cfReleaseNotes` and `cfPrototypes` were being skipped).
+- Two audit findings were intentionally deferred to the backlog rather than fixed here: the human-mode output path convention (#68) and adding a skill eval set (#69).
+- The skill remains human-only by design; the audit's skill-mode and composability rules do not apply.
 
 ---
 

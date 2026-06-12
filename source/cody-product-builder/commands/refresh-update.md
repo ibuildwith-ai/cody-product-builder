@@ -46,6 +46,18 @@ The PRD and plan are about to be rewritten in place, so back them up first -- th
 - Add any new versions that are missing `{{cfWorkPhase}}/release-notes.md`.
 - Make any other necessary changes you see fit to keep this document updated.
 
+# PRUNE BEST PRACTICES
+The best-practices file accrues across builds, so refresh is a natural moment to tidy it -- this is the manual way to keep it lean and current.
+
+- If `{{cfBestPractices}}/project-best-practices.md` does not exist or has no entries (only category headers), there is nothing to prune -- skip this section.
+- Otherwise, ask the **USER**: `Would you like me to prune project-best-practices.md -- remove stale, redundant, or contradicted rules so it reflects the current state of the project?`
+- **STOP** and wait for the **USER**.
+- If YES:
+  - Read `{{cfBestPractices}}/project-best-practices.md`.
+  - Remove entries that are stale, duplicated, or contradicted by the current state of the project; consolidate overlapping rules; drop categories that are now empty. This is a cleanup pass only -- do not add new learnings here.
+  - Tell the **USER** what you removed or consolidated.
+- If NO, leave it as is.
+
 ### CHECK PROJECT SETTINGS
 - Check if `cody.json` exists in the project root and has a `cody-product-builder` section.
   - If it does NOT exist, skip this section.

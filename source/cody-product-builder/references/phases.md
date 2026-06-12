@@ -41,6 +41,12 @@ This phase guides USERS through the iterative development cycle by creating docu
 |----------|-------------|
 | `prototype.md` | This document captures a single prototype -- the idea being tested, what to test, build approach, an iterative findings log, and the **USER's** likes and dislikes. Created and worked via `:cody prototype`. |
 
+> Best practices are the project's own learned rules. They live in the `{{cfBestPractices}}` folder, a project-level folder alongside the Plan and Build phases. Cody writes to them after every build (version or patch) and reads them during every build and on `:cody refresh`.
+
+| Document | Description |
+|----------|-------------|
+| `project-best-practices.md` | The project's living record of best practices learned while building it, organized by category. Created (empty) when the project workspace is set up, or lazily on first build/refresh for older projects. Written after every version or patch build (capture from the retrospective/patch plus the session), read when generating a design, starting a patch, during implementation, and on refresh. Kept lean -- contradicted rules are changed or removed, not appended. |
+
 > Project-level settings file, stored at `cody.json` in the project root:
 
 | Field | Description |

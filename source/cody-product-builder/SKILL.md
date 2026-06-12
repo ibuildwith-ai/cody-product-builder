@@ -2,7 +2,7 @@
 name: cody-product-builder
 description: Guides knowledge workers and domain experts from idea to finished product through a structured two-phase workflow (Plan and Build). Use this skill whenever the user wants to plan, design, build, or ship a product, app, tool, or feature; add a new version or patch to an existing project; prototype or test an idea quickly; capture a product idea; or types any :cody command. Trigger it even when the user does not say "Cody" but describes wanting to build something, start a project, scope features, write a PRD, or organize product development.
 metadata:
-  version: 2.1.0
+  version: 2.2.0
 ---
 
 # Cody Product Builder
@@ -35,6 +35,7 @@ The skill-file placeholders (`{{cfRoot}}`, `{{cfAssets}}`, `{{cfCommands}}`, `{{
 | {{cfWorkPhase}} | *`{{cfProject}}/build`* | Build phase folder. |
 | {{cfReleaseNotes}} | *Dynamic -- resolved from `cody.json`* | Release notes folder. Read from `cody.json > cody-product-builder > releaseNotesPath`. If `"{{projectPath}}"`: resolves to `{{cfWorkPhase}}`. If `"{{projectRoot}}"`: resolves to project root. Otherwise: resolves to the custom path. Resolved on activation and cached for the session. Re-resolved on `:cody refresh`. |
 | {{cfPrototypes}} | *`{{cfProject}}/prototypes`* | Prototype output folder. Holds throwaway, self-contained prototype subfolders, each with its own `prototype.md` and code. Sits outside the Plan and Build phases. |
+| {{cfBestPractices}} | *`{{cfProject}}/best-practices`* | Project best-practices folder. Holds `project-best-practices.md`, the project's living record of build learnings. A project-level folder alongside the Plan and Build phases. |
 
 ## File System Checks
 - Always use the placeholder paths (e.g., `{{cfPlanPhase}}`, `{{cfProject}}`) when checking for files or folders. Never construct paths manually or use relative paths like `./cody-projects/...`.
@@ -69,11 +70,11 @@ When this skill is activated, **AGENT**, please execute the following exactly:
 
 1. Resolve the project configuration. Resolving placeholder paths from `cody.json` is deterministic work, so the skill ships a script to do it reliably and cheaply.
 
-   **Run the resolver script.** From the project root, run `{{cfRoot}}/scripts/resolve-config.py`. It reads `cody.json` and prints a JSON object: the resolved placeholder paths under `resolved` (`cfProject`, `cfPlanPhase`, `cfWorkPhase`, `cfReleaseNotes`, `cfPrototypes`), plus the flags `cody_json_exists`, `has_section`, `release_notes_path_present`, and `legacy_project_json_exists`. Cache the five resolved values for the rest of the session.
+   **Run the resolver script.** From the project root, run `{{cfRoot}}/scripts/resolve-config.py`. It reads `cody.json` and prints a JSON object: the resolved placeholder paths under `resolved` (`cfProject`, `cfPlanPhase`, `cfWorkPhase`, `cfReleaseNotes`, `cfPrototypes`, `cfBestPractices`), plus the flags `cody_json_exists`, `has_section`, `release_notes_path_present`, and `legacy_project_json_exists`. Cache the six resolved values for the rest of the session.
 
    **Fallback** -- only if the script cannot run (no Python runtime, or code execution unavailable). Resolve the values by hand:
-   - If `cody.json` exists with a `cody-product-builder` section: `{{cfProject}}` = `projectPath`; `{{cfPlanPhase}}` = `{{cfProject}}/plan`; `{{cfWorkPhase}}` = `{{cfProject}}/build`; `{{cfPrototypes}}` = `{{cfProject}}/prototypes`; `{{cfReleaseNotes}}` from `releaseNotesPath` (`"{{projectPath}}"` resolves to `{{cfWorkPhase}}`, `"{{projectRoot}}"` to the project root, any other value to that path).
-   - If `cody.json` does not exist: use defaults -- `{{cfProject}}` = `cody-projects/product-builder`, with `/plan`, `/build`, and `/prototypes` beneath it, and `{{cfReleaseNotes}}` = `{{cfWorkPhase}}`.
+   - If `cody.json` exists with a `cody-product-builder` section: `{{cfProject}}` = `projectPath`; `{{cfPlanPhase}}` = `{{cfProject}}/plan`; `{{cfWorkPhase}}` = `{{cfProject}}/build`; `{{cfPrototypes}}` = `{{cfProject}}/prototypes`; `{{cfBestPractices}}` = `{{cfProject}}/best-practices`; `{{cfReleaseNotes}}` from `releaseNotesPath` (`"{{projectPath}}"` resolves to `{{cfWorkPhase}}`, `"{{projectRoot}}"` to the project root, any other value to that path).
+   - If `cody.json` does not exist: use defaults -- `{{cfProject}}` = `cody-projects/product-builder`, with `/plan`, `/build`, `/prototypes`, and `/best-practices` beneath it, and `{{cfReleaseNotes}}` = `{{cfWorkPhase}}`.
    - Cache the resolved values for the rest of the session.
 
    **One-time migration -- missing `releaseNotesPath`.** If `cody.json` exists with a `cody-product-builder` section but no `releaseNotesPath` field (script flag `has_section` is true and `release_notes_path_present` is false), handle it here -- the script leaves this to the skill because it needs the **USER**:

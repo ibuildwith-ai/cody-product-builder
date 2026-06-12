@@ -4,8 +4,8 @@ resolve-config.py -- Cody Product Builder activation config resolver.
 
 Reads cody.json from the project root and resolves the dynamic skill
 placeholders ({{cfProject}}, {{cfPlanPhase}}, {{cfWorkPhase}},
-{{cfReleaseNotes}}, {{cfPrototypes}}) to concrete paths. Emits a JSON
-object on stdout.
+{{cfReleaseNotes}}, {{cfPrototypes}}, {{cfBestPractices}}) to concrete
+paths. Emits a JSON object on stdout.
 
 This is the deterministic half of the skill's activation step. SKILL.md
 keeps a markdown fallback for environments where this script cannot run,
@@ -75,6 +75,7 @@ def resolve(project_root: Path) -> dict:
         "cfWorkPhase": work_phase,
         "cfReleaseNotes": release_notes,
         "cfPrototypes": f"{project_path}/prototypes",
+        "cfBestPractices": f"{project_path}/best-practices",
     }
     return result
 

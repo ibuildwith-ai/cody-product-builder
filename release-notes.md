@@ -4,6 +4,7 @@ This document lists new features, bug fixes and other changes implemented during
 
 The order of releases listed below are descending -- the latest version or patch is always shown at the top.
 
+- [v2.2.0 - Best Practices Engine](#v220---best-practices-engine---2026-06-12)
 - [v2.1.0 - Standards Compliance](#v210---standards-compliance---2026-05-19)
 - [v2.0.0 - Migrate to Agent Skill](#v200---migrate-to-agent-skill---2026-05-18)
 - [v1.11.0 - Prototype Command](#v1110---prototype-command---2026-05-18)
@@ -22,6 +23,26 @@ The order of releases listed below are descending -- the latest version or patch
 - [v1.3.0 - Restructure and Improvements](#v130---restructure-and-improvements---2026-02-23)
 
 ---
+
+# v2.2.0 - Best Practices Engine - 2026-06-12
+
+## Overview
+Adds the core best-practices loop to Cody Product Builder. Each project now keeps a living record of the best practices it learns while being built: Cody writes to it after every build and reads it back during every build, so the work follows the standards the project has already settled on. This release is the engine; seeding existing and brownfield projects (v2.3.0) and web-researched stack best practices (v2.4.0) build on top of it.
+
+## Key Features
+- **Project best-practices file** -- a new project-level `best-practices/` folder holds `project-best-practices.md`, the project's living, categorized record of build learnings. It is created with the project workspace, or lazily on first build/refresh for existing projects.
+- **Capture after every build** -- at the end of a version (from the retrospective) or a patch (from the patch doc), plus a scan of the working session, Cody inserts, updates, and prunes the file so it stays lean and current. Contradicted rules are changed or removed, not appended.
+- **Consult during every build** -- Cody loads the file when generating a design, starting a patch, during implementation, and on `:cody refresh`, so each build follows the project's own rules.
+- **New `{{cfBestPractices}}` placeholder** -- resolves to `{{cfProject}}/best-practices` across the resolver script and the markdown fallbacks.
+
+## Enhancements
+- Two shared references, `best-practices-consult.md` (read) and `best-practices-capture.md` (write), keep the command wiring thin and consistent.
+- `:cody refresh` update flow offers to prune `project-best-practices.md`.
+- README and `phases.md` document the new best-practices system.
+- A design-time decision to read best practices on demand rather than inject them into `CLAUDE.md`/`AGENTS.md` is recorded with supporting research, preserving cross-agent portability and progressive disclosure.
+
+## Bug Fixes
+None
 
 # v2.1.0 - Standards Compliance - 2026-05-19
 

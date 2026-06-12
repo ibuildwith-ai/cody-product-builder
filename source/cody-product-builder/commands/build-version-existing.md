@@ -20,6 +20,11 @@ BUILD VERSION : START
 ### CREATE VERSION FOLDER
 - Create the version folder, using the version name from the selected version, but make sure you convert that name to follow the 'Version Naming Convention' section rules in {{cfReferences}}/phases.md.
 
+### CONSULT BEST PRACTICES
+Loading the project's learned rules before you design means the design follows the standards the project has already settled on.
+
+**[AGENT TODO: Read and execute {{cfReferences}}/best-practices-consult.md]**
+
 ### GENERATE DESIGN DOCUMENT
 The design document is the technical plan for the version; building from a written design keeps the work coherent instead of improvised.
 
@@ -42,6 +47,7 @@ The task list breaks the design into ordered, trackable steps so the build proce
 - Stop here and wait for **USER** to tell you.
 
 ### CODING TIME
+- Follow the best practices you loaded in CONSULT BEST PRACTICES as you write the code.
 - Iterate with the **USER** on the work until completed and approved by **USER**.
 - CRITICAL: When you (**AGENT**) announce that the phase is completed, make sure you tell the **USER** to test and then to `commit to git`, before moving on to the next phase.
 - Once completed, ask **USER** what to work on next.
@@ -58,6 +64,11 @@ When you (**AGENT**) reached the end of the version, tell the **USER** this vers
 - Tell the **USER** that you will create a Retrospective now.
 - Copy from {{cfAssets}}/build/version/retrospective.md to the current version folder.
 - Update the retrospective.md file.
+
+### CAPTURE BEST PRACTICES
+Recording what this version taught you keeps the project's best practices current for the next build. The retrospective you just wrote is the source doc.
+
+**[AGENT TODO: Read and execute {{cfReferences}}/best-practices-capture.md]** -- build type: `version`; source doc: the `retrospective.md` in the current version folder.
 
 ### UPDATE PROJECT SETTINGS
 - Update `cody.json` in the project root, in the `cody-product-builder` section:

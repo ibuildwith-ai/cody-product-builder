@@ -31,6 +31,11 @@ PATCH : START
 - If the **USER** types `help me`, provide 3 possible ways they can clarify.
 - Once you understand the problem, continue.
 
+### CONSULT BEST PRACTICES
+Loading the project's learned rules now means the plan and the fix both follow the standards the project already settled on.
+
+**[AGENT TODO: Read and execute {{cfReferences}}/best-practices-consult.md]**
+
 ### DETERMINE PATCH VERSION
 - Look at all existing version and patch folders in {{cfWorkPhase}} to determine the next available patch version number.
 - Suggest a patch version number and a short name to the **USER** (following the Version Naming Convention in {{cfReferences}}/phases.md -- the patch increment of `v[major.minor.patch]`).
@@ -55,6 +60,7 @@ PATCH : START
 
 ### DO THE FIX
 - Once the **USER** confirms the plan, implement the fix.
+- Follow the best practices you loaded in CONSULT BEST PRACTICES as you make the fix.
 - Iterate with the **USER** until the fix is completed and approved.
 
 ### UPDATE PATCH DOCUMENT
@@ -79,6 +85,11 @@ PATCH : START
 - Ask the **USER** to test the fix and confirm it works.
 - **STOP** and wait for the **USER**.
 - If the **USER** reports issues, go back to "DO THE FIX" and iterate.
+
+### CAPTURE BEST PRACTICES
+Even a small patch can teach the project something worth keeping. The patch document you just filled in is the source doc.
+
+**[AGENT TODO: Read and execute {{cfReferences}}/best-practices-capture.md]** -- build type: `patch`; source doc: the `patch.md` in the current patch folder.
 
 ### UPDATE PROJECT SETTINGS
 - Update `cody.json` in the project root, in the `cody-product-builder` section:

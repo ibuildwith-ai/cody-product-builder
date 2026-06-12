@@ -10,10 +10,10 @@ A new AI session starts with no memory of the project. Refresh rebuilds that con
 ### RE-RESOLVE PROJECT PATH
 The project path can change between sessions -- a moved folder, an edited `cody.json` -- so re-resolve it before doing anything else. This is the same deterministic resolution the skill performs on activation, so it uses the same script.
 
-- Run `{{cfRoot}}/scripts/resolve-config.py` from the project root. Cache the resolved `cfProject`, `cfPlanPhase`, `cfWorkPhase`, `cfReleaseNotes`, and `cfPrototypes` values for the rest of the session.
+- Run `{{cfRoot}}/scripts/resolve-config.py` from the project root. Cache the resolved `cfProject`, `cfPlanPhase`, `cfWorkPhase`, `cfReleaseNotes`, `cfPrototypes`, and `cfBestPractices` values for the rest of the session.
 - Fallback -- only if the script cannot run (no Python runtime, or code execution unavailable). Read `cody.json` from the project root and resolve by hand:
-  - If it has a `cody-product-builder` section: `{{cfProject}}` = `projectPath`; `{{cfPlanPhase}}` = `{{cfProject}}/plan`; `{{cfWorkPhase}}` = `{{cfProject}}/build`; `{{cfPrototypes}}` = `{{cfProject}}/prototypes`; `{{cfReleaseNotes}}` from `releaseNotesPath` (`"{{projectPath}}"` resolves to `{{cfWorkPhase}}`, `"{{projectRoot}}"` to the project root, any other value to that path).
-  - If `cody.json` does not exist: use defaults -- `{{cfProject}}` = `cody-projects/product-builder`, with `/plan`, `/build`, and `/prototypes` beneath it, and `{{cfReleaseNotes}}` = `{{cfWorkPhase}}`.
+  - If it has a `cody-product-builder` section: `{{cfProject}}` = `projectPath`; `{{cfPlanPhase}}` = `{{cfProject}}/plan`; `{{cfWorkPhase}}` = `{{cfProject}}/build`; `{{cfPrototypes}}` = `{{cfProject}}/prototypes`; `{{cfBestPractices}}` = `{{cfProject}}/best-practices`; `{{cfReleaseNotes}}` from `releaseNotesPath` (`"{{projectPath}}"` resolves to `{{cfWorkPhase}}`, `"{{projectRoot}}"` to the project root, any other value to that path).
+  - If `cody.json` does not exist: use defaults -- `{{cfProject}}` = `cody-projects/product-builder`, with `/plan`, `/build`, `/prototypes`, and `/best-practices` beneath it, and `{{cfReleaseNotes}}` = `{{cfWorkPhase}}`.
 
 ### CHECK FOR BROWNFIELD PROJECT
 - Check if {{cfPlanPhase}} folder exists and has documents (prd.md, plan.md, or brownfield-analysis.md).
@@ -37,6 +37,11 @@ The project path can change between sessions -- a moved folder, an edited `cody.
 - If you still need more information, read the most recent patch documents in the {{cfWorkPhase}} folder (patch folders contain a `patch.md` file)
 - If you still need more information, review the entire project, from the root level.
 - If you still need more information, ask the **USER**.
+
+### LOAD BEST PRACTICES
+Best practices are the project's own learned rules, so loading them as part of the memory rebuild means the agent works to the project's standards from the start of the session.
+
+**[AGENT TODO: Read and execute {{cfReferences}}/best-practices-consult.md]**
 
 ### DONE REVIEWING THE ENTIRE PROJECT
 - Please tell the **USER** that your memory is refreshed and that you are ready to start working.

@@ -102,6 +102,9 @@ Ideas come up all the time while you're building, both from you and from AI. Ins
 ### **Release Notes (`release-notes.md`)**
 > Automatically updated after each version or patch, tracking changes, enhancements, and fixes.
 
+### **Best Practices (`project-best-practices.md`)**
+> Your project's living record of best practices, learned as you build. After every version or patch, Cody captures what it learned (from the retrospective or patch plus the session) into a categorized best-practices file, and reads it back when designing a version, starting a patch, building, and on `:cody refresh`, so every build follows the standards the project has already settled on. Cody keeps it lean: when a new learning contradicts an old rule, it changes or removes the old one rather than piling on. The file lives in a project-level `best-practices/` folder and starts empty, filling in as you build.
+
 # Prototyping
 
 Sometimes you want to test an idea before you commit to it. `:cody prototype` lets you build a throwaway, interactive mockup for exactly that. Prototyping is independent of the Plan and Build phases: you can run it anytime, before planning, while planning, before or during a build, or after one. You build the prototype beginning to end in one session.
@@ -163,7 +166,8 @@ cody-product-builder/          # The skill folder (copy this into your agent's s
     ├── plan/                  # Templates for discovery.md, brownfield-analysis.md, prd.md, plan.md
     ├── build/                 # Templates for feature-backlog.md, release-notes.md, patch.md
     │   └── version/           # Templates for design.md, tasklist.md, retrospective.md
-    └── prototype/             # Template for prototype.md
+    ├── prototype/             # Template for prototype.md
+    └── best-practices/        # Template for project-best-practices.md
 ```
 
 In this repository, the skill folder lives at `source/cody-product-builder/`, and a packaged `cody-product-builder.skill` file (a zip of that folder) sits at the repository root for apps that install skills from a file.
@@ -179,7 +183,8 @@ release-notes.md               # Release notes (location configurable via releas
 <project-path>/                 # User-configurable output path (default: cody-projects/product-builder/)
 ├── plan/                       # Planning phase documents
 ├── build/                      # Build phase documents (backlog, versions, patches)
-└── prototypes/                 # Throwaway prototypes, each in its own self-contained folder
+├── prototypes/                 # Throwaway prototypes, each in its own self-contained folder
+└── best-practices/             # project-best-practices.md, the project's learned rules
 ```
 
 # Installing and Using Cody Product Builder

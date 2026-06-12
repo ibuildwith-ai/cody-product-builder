@@ -31,4 +31,7 @@ The calling command provides these three values before invoking this snippet:
 ```
 /build
 /plan
+/best-practices
 ```
+
+- Seed the best-practices file so it exists from the start: copy the template from `{{cfAssets}}/best-practices/project-best-practices.md` to `{{cfBestPractices}}/project-best-practices.md` (it starts empty, with category headers only).
